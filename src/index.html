@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LRTP Input Map</title>
+  <meta name="Description" content="Provide input for the Long Range Transportation Plan">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#16161d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta http-equiv="x-ua-compatible" content="IE=Edge"/>
+
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
+
+  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.4/mapbox-gl-draw.js'></script>
+  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.4/mapbox-gl-draw.css' type='text/css' />
+
+  <script src="/build/lrtp.js"></script>
+
+  <link rel="apple-touch-icon" href="/assets/icon/icon.png">
+  <link rel="icon" type="image/x-icon" href="/assets/icon/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+  <lrtp-app token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwdWJsaWMiLCJleHAiOjE1Mjk2MDU5ODgsImlzcyI6ImNjcnBjLm9yZyIsImlhdCI6MTUyNzAxMzk4N30.pw6AipSzy3DewRkglbzCYcTvKrBSXchU--G4YrEohFg"></lrtp-app>
+  <script type="text/html" id="comment-form">
+    <gl-facet name="pedestrian"
+      image="/public/img/pedestrian.png">Walking or Wheelchair</gl-facet>
+    <gl-facet name="bicycle"
+      image="/public/img/bicycle.png">Bicycle</gl-facet>
+    <gl-facet name="bus"
+      image="/public/img/bus.png">Bus</gl-facet>
+    <gl-facet name="vehicle"
+      image="/public/img/vehicle.png">Personal Vehicle</gl-facet>
+    <gl-facet name="freight"
+      image="/public/img/freight.png">Freight Vehicle</gl-facet>
+    <gl-facet name="train"
+      image="/public/img/train.png">Train</gl-facet>
+    <gl-facet name="plane"
+      image="/public/img/plane.png">Plane</gl-facet>
+
+    <gl-facet name="pedestrian-sidewalk" facets="pedestrian"
+      image="/public/img/pedestrian.png">Sidewalk</gl-facet>
+    <gl-facet name="pedestrian-crosswalk" facets="pedestrian"
+      image="/public/img/pedestrian.png">Crosswalk</gl-facet>
+    <gl-facet name="pedestrian-curbramp" facets="pedestrian"
+      image="/public/img/pedestrian.png">Curb Ramp</gl-facet>
+    <gl-facet name="pedestrian-signal" facets="pedestrian"
+      image="/public/img/pedestrian.png">Pedestrian Signal</gl-facet>
+    <gl-facet name="pedestrian-other" facets="pedestrian"
+      image="/public/img/pedestrian.png">Other</gl-facet>
+
+    <gl-field attribute="comment_type" label="Type of Concern"
+      facets="pedestrian-sidewalk" widget="radio">
+      <gl-option value="pedestrian-sidewalk-missing"
+        image="/public/img/pedestrian.png">Missing Sidewalk</gl-option>
+      <gl-option value="pedestrian-sidewalk-width"
+        image="/public/img/pedestrian.png">Too Narrow</gl-option>
+      <gl-option value="pedestrian-sidewalk-obstruction"
+        image="/public/img/pedestrian.png">Obstructed</gl-option>
+      <gl-option value="pedestrian-sidewalk-condition"
+        image="/public/img/pedestrian.png">Poor Condition</gl-option>
+      <gl-option value="pedestrian-sidewalk-other"
+        image="/public/img/pedestrian.png">Other</gl-option>
+    </gl-field>
+
+    <gl-field facets="pedestrian-*"
+      attribute="description" type="text" widget="textarea"
+      label="Additional Details (optional)"></gl-field>
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{
+  "name": "@cuuats/lrtp-input-map",
+  "private": true,
+  "version": "0.0.1",
+  "description": "LRTP Public Input Map",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "stencil build --prerender",
+    "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
+    "serve": "stencil-dev-server",
+    "start": "npm run dev",
+    "test": "jest --no-cache",
+    "test.watch": "jest --watch --no-cache"
+  },
+  "dependencies": {
+    "@cuuats/webmapgl": "^0.1.0",
+    "@stencil/core": "0.9.4",
+    "@stencil/sass": "^0.0.5"
+  },
+  "devDependencies": {
+    "@stencil/dev-server": "latest",
+    "@stencil/utils": "latest",
+    "@types/jest": "^21.1.1",
+    "jest": "^21.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CUUATS/lrtp-input-map.git"
+  },
+  "author": "CUUATS",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/CUUATS/lrtp-input-map"
+  },
+  "homepage": "https://github.com/CUUATS/lrtp-input-map",
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx"
+    ]
+  }
+}

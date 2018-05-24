@@ -1,0 +1,65 @@
+{
+  "version": 8,
+  "sources": {
+    "comments": {
+      "type": "geojson",
+      "data": "https://gis.ccrpc.org/pcd/public/lrtp.comment_2045_web?token=${TOKEN}",
+      "cluster": true,
+      "clusterMaxZoom": 14,
+      "clusterRadius": 50
+    }
+  },
+  "layers": [
+    {
+      "id": "cluster",
+      "type": "circle",
+      "source": "comments",
+      "filter": ["has", "point_count"],
+      "minzoom": 0,
+      "maxzoom": 22,
+      "paint": {
+        "circle-color": [
+          "step",
+          ["get", "point_count"],
+          "#51bbd6",
+          10,
+          "#f1f075",
+          50,
+          "#f28cb1"
+        ],
+        "circle-radius": [
+          "step",
+          ["get", "point_count"],
+          20,
+          10,
+          30,
+          50,
+          40
+        ]
+      }
+    },
+    {
+      "id": "cluster-count",
+      "type": "symbol",
+      "source": "comments",
+      "filter": ["has", "point_count"],
+      "layout": {
+        "text-field": "{point_count_abbreviated}",
+        "text-font": ["Open Sans Semibold"],
+        "text-size": 12
+      }
+    },
+    {
+      "id": "comment",
+      "type": "circle",
+      "source": "comments",
+      "filter": ["!has", "point_count"],
+      "paint": {
+        "circle-color": "#11b4da",
+        "circle-radius": 4,
+        "circle-stroke-width": 1,
+        "circle-stroke-color": "#fff"
+      }
+    }
+  ]
+}

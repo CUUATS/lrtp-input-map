@@ -1,0 +1,13 @@
+{
+  "name": "Transportation Choices",
+  "short_name": "LRTP",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [{
+    "src": "assets/icon/icon.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "background_color": "#16161d",
+  "theme_color": "#16161d"
+}
