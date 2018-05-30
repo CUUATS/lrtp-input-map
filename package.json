@@ -15,7 +15,7 @@
     "test.watch": "jest --watch --no-cache"
   },
   "dependencies": {
-    "@cuuats/webmapgl": "0.1.1",
+    "@cuuats/webmapgl": "0.1.2",
     "@stencil/core": "0.9.5",
     "@stencil/sass": "^0.0.5"
   },
