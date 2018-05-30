@@ -2,13 +2,14 @@
 # yarn lockfile v1
 
 
-"@cuuats/webmapgl@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@cuuats/webmapgl/-/webmapgl-0.1.0.tgz#431806d939aebe47a17cb7e5923bd3d970a75fe7"
+"@cuuats/webmapgl@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@cuuats/webmapgl/-/webmapgl-0.1.1.tgz#ea85aa932d97125c1c67ab0dd0282fe940e385db"
   dependencies:
     "@ionic/core" "4.0.0-alpha.7"
-    "@stencil/core" "0.9.4"
+    "@stencil/core" "0.9.5"
     "@stencil/router" "0.0.25"
+    "@types/screenfull" "^3.3.1"
     screenfull "^3.3.2"
 
 "@ionic/core@4.0.0-alpha.7":
@@ -23,9 +24,9 @@
   dependencies:
     netmask "^1.0.6"
 
-"@stencil/core@0.9.4":
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-0.9.4.tgz#aad59510c588ed78a2c2c3fd4784b913d1141f21"
+"@stencil/core@0.9.5":
+  version "0.9.5"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-0.9.5.tgz#0ddab133d18a04c5be6b664b254aab22529777eb"
   dependencies:
     chokidar "2.0.3"
     jsdom "11.5.1"
@@ -74,6 +75,10 @@
 "@types/node@*":
   version "10.1.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.1.2.tgz#1b928a0baa408fc8ae3ac012cc81375addc147c6"
+
+"@types/screenfull@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@types/screenfull/-/screenfull-3.3.1.tgz#9d9919025c47327c6012110ebd7880cae9e0913e"
 
 abab@^1.0.3:
   version "1.0.4"
