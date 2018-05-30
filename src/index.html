@@ -488,6 +488,50 @@
       </gl-option>
     </gl-field>
 
+    <gl-field attribute="comment_type" label="Comment"
+      facets="train" widget="radio">
+      <gl-option value="train-ok">
+        I like the current options for train travel
+      </gl-option>
+      <gl-option value="train-highspeed">
+        Add high-speed or bullet train access to Chicago
+      </gl-option>
+      <gl-option value="train-frequency">
+        Increase train trip frequency
+      </gl-option>
+      <gl-option value="train-delay">
+        Reduce train delays
+      </gl-option>
+      <gl-option value="train-prices">
+        Reduce train ticket prices
+      </gl-option>
+      <gl-option value="train-other">
+        Other (please describe below)
+      </gl-option>
+    </gl-field>
+
+    <gl-field attribute="comment_type" label="Comment"
+      facets="plane" widget="radio">
+      <gl-option value="plane-ok">
+        I like the current options for plane travel
+      </gl-option>
+      <gl-option value="plane-flight">
+        Add direct flights to additional locations
+      </gl-option>
+      <gl-option value="plane-frequency">
+        Add more departure and arrival times
+      </gl-option>
+      <gl-option value="plane-transit">
+        Add transit option to and from the airport
+      </gl-option>
+      <gl-option value="plane-parking">
+        Offer free parking at the airport
+      </gl-option>
+      <gl-option value="plane-other">
+        Other (please describe below)
+      </gl-option>
+    </gl-field>
+
     <gl-field facets="pedestrian-*,bicycle-*,bus-*,automobile-*,train,plane"
       attribute="description" type="text" widget="textarea"
       label="Additional Details (optional)"></gl-field>
