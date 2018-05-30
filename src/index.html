@@ -32,7 +32,7 @@
     <gl-facet name="bus"
       image="/public/img/bus.png">Bus</gl-facet>
     <gl-facet name="automobile"
-      image="/public/img/vehicle.png">Automobile</gl-facet>
+      image="/public/img/automobile.png">Automobile</gl-facet>
     <gl-facet name="train"
       image="/public/img/train.png">Train</gl-facet>
     <gl-facet name="plane"
@@ -254,7 +254,8 @@
     </gl-field>
 
     <gl-facet name="bus-amenity" facets="bus"
-      image="/public/img/bus-amenity.jpg">Benches, Shelters, and Amenities</gl-facet>
+      image="/public/img/bus-amenity.jpg">
+      Benches, Shelters, and Amenities</gl-facet>
     <gl-facet name="bus-stop" facets="bus"
       image="/public/img/bus-stop.jpg">Bus Stop Locations</gl-facet>
     <gl-facet name="bus-schedule" facets="bus"
@@ -352,6 +353,137 @@
         Reduce conflicts between buses and other roadway users
       </gl-option>
       <gl-option value="bus-other-other">
+        Other (please describe below)
+      </gl-option>
+    </gl-field>
+
+    <gl-facet name="automobile-driving" facets="automobile"
+      image="/public/img/automobile-driving.jpg">Driving Conditions</gl-facet>
+    <gl-facet name="automobile-parking" facets="automobile"
+      image="/public/img/automobile-parking.jpg">Parking</gl-facet>
+    <gl-facet name="automobile-multimodal" facets="automobile"
+      image="/public/img/automobile-multimodal.jpg">
+      Pedestrian, Bike, and Bus Facilities</gl-facet>
+    <gl-facet name="automobile-sign" facets="automobile"
+      image="/public/img/automobile-sign.jpg">Signs and Signals</gl-facet>
+    <gl-facet name="automobile-other" facets="automobile"
+      image="/public/img/automobile-other.png">Other</gl-facet>
+
+    <gl-field attribute="comment_type" label="Comment"
+      facets="automobile-driving" widget="radio">
+      <gl-option value="automobile-driving-ok">
+        Good automobile circulation here
+      </gl-option>
+      <gl-option value="automobile-driving-lighting">
+        Add street lighting
+      </gl-option>
+      <gl-option value="automobile-driving-design">
+        Change roadway design or width
+      </gl-option>
+      <gl-option value="automobile-driving-pavement">
+        Fix uneven pavement
+      </gl-option>
+      <gl-option value="automobile-driving-markings">
+        Improve pavement markings
+      </gl-option>
+      <gl-option value="automobile-driving-visibility">
+        Improve visibility for drivers
+      </gl-option>
+      <gl-option value="automobile-driving-speed">
+        Reduce speed limit
+      </gl-option>
+      <gl-option value="automobile-driving-congestion">
+        Reduce traffic congestion
+      </gl-option>
+      <gl-option value="automobile-driving-other">
+        Other (please describe below)
+      </gl-option>
+    </gl-field>
+
+    <gl-field attribute="comment_type" label="Comment"
+      facets="automobile-multimodal" widget="radio">
+      <gl-option value="automobile-multimodal-ok">
+        Good accessibility for multiple modes here
+      </gl-option>
+      <gl-option value="automobile-multimodal-addbikelane">
+        Add an on-street bike lane
+      </gl-option>
+      <gl-option value="automobile-multimodal-addsidepath">
+        Add an off-street sidepath
+      </gl-option>
+      <gl-option value="automobile-multimodal-addsidewalk">
+        Add an off-street sidewalk
+      </gl-option>
+      <gl-option value="automobile-multimodal-addbuslane">
+        Add a dedicated bus lane
+      </gl-option>
+      <gl-option value="automobile-multimodal-other">
+        Other (please describe below)
+      </gl-option>
+    </gl-field>
+
+    <gl-field attribute="comment_type" label="Comment"
+      facets="automobile-sign" widget="radio">
+      <gl-option value="automobile-sign-ok">
+        Signs and signals function well
+      </gl-option>
+      <gl-option value="automobile-sign-addbikeactivatedsignal">
+        Add bike-activated traffic signals here
+      </gl-option>
+      <gl-option value="automobile-sign-addstopsign">
+        Add stop signs here
+      </gl-option>
+      <gl-option value="automobile-sign-wayfinding">
+        Add or improve wayfinding signs for cyclists
+      </gl-option>
+      <gl-option value="automobile-sign-crossingtime">
+        Increase crossing time
+      </gl-option>
+      <gl-option value="automobile-sign-speed">
+        Reduce speed limit
+      </gl-option>
+      <gl-option value="automobile-sign-other">
+        Other (please describe below)
+      </gl-option>
+    </gl-field>
+
+    <gl-field attribute="comment_type" label="Comment"
+      facets="automobile-parking" widget="radio">
+      <gl-option value="automobile-parking-ok">
+        Parking functions well
+      </gl-option>
+      <gl-option value="automobile-parking-addautomobile">
+        Add automobile parking here
+      </gl-option>
+      <gl-option value="automobile-parking-reduceautomobile">
+        Reduce automobile parking here
+      </gl-option>
+      <gl-option value="automobile-parking-addbicycle">
+        Add bicycle racks here
+      </gl-option>
+      <gl-option value="automobile-parking-other">
+        Other (please describe below)
+      </gl-option>
+    </gl-field>
+
+    <gl-field attribute="comment_type" label="Comment"
+      facets="automobile-other" widget="radio">
+      <gl-option value="automobile-other-accessibility">
+        Good accessibility for multiple modes here
+      </gl-option>
+      <gl-option value="automobile-other-lignting">
+        Add street lighting
+      </gl-option>
+      <gl-option value="automobile-other-roundabout">
+        Convert intersection to a roundabout
+      </gl-option>
+      <gl-option value="automobile-other-visibility">
+        Improve visibility for drivers
+      </gl-option>
+      <gl-option value="automobile-other-separation">
+        Increase separation between motorists and cyclists
+      </gl-option>
+      <gl-option value="automobile-other-other">
         Other (please describe below)
       </gl-option>
     </gl-field>
