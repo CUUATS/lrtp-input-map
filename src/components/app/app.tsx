@@ -41,7 +41,9 @@ export class App {
           <gl-feature-add layers="lrtp:comment"
             url="https://gis.ccrpc.org/pcd/public/lrtp.comment_2045"
             token={this.token} onClick={() => this.closeDrawer()}
-            schema={this.schemaUrl} label="Add a Comment">
+            schema={this.schemaUrl} label="Add a Comment"
+            successMessage="Your comment is awaiting moderation."
+            failureMessage="An error occurred. Please try again later.">
           </gl-feature-add>
         </gl-feature-buttons>
         <gl-drawer slot="after-content" drawer-title="Comments">
