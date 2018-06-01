@@ -8,19 +8,13 @@ import '@cuuats/webmapgl';
 export class App {
   @Element() el: HTMLLrtpAppElement;
 
+  @Prop() schemaUrl: string;
+  @Prop() styleUrl: string;
   @Prop() token: string;
 
   closeDrawer() {
     let drawer = this.el.querySelector('gl-drawer');
     if (drawer.open) drawer.toggle();
-  }
-
-  loadFormComponents() {
-    return ([
-      <gl-facet></gl-facet>,
-      <gl-field></gl-field>,
-      <gl-option></gl-option>
-    ]);
   }
 
   render() {
@@ -32,7 +26,7 @@ export class App {
         </gl-drawer-toggle>
         <gl-map
             longitude={-88.228878} latitude={40.110319} zoom={12} maxzoom={22}>
-          <gl-style url="/public/style.json" id="lrtp"
+          <gl-style url={this.styleUrl} id="lrtp"
             name="Comments" enabled={true} token={this.token}></gl-style>
           <gl-style url="https://maps.cuuats.org/basemaps/imagery/style.json"
             basemap={true}
@@ -47,9 +41,10 @@ export class App {
           <gl-feature-add layers="lrtp:comment"
             url="https://gis.ccrpc.org/pcd/public/lrtp.comment_2045"
             token={this.token} onClick={() => this.closeDrawer()}
-            template="comment-form">Add a Comment</gl-feature-add>
+            schema={this.schemaUrl} label="Add a Comment">
+          </gl-feature-add>
         </gl-feature-buttons>
-        <gl-drawer slot="after-content" open={true} drawer-title="Comments">
+        <gl-drawer slot="after-content" drawer-title="Comments">
         </gl-drawer>
       </gl-app>
     ]);

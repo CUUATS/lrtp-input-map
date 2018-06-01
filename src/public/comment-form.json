@@ -1,0 +1,571 @@
+{
+  "facets": [{
+    "value": "pedestrian",
+    "image": "/public/img/pedestrian.png",
+    "label": "Walking or Wheelchair"
+  }, {
+    "value": "bicycle",
+    "image": "/public/img/bicycle.png",
+    "label": "Bicycle"
+  }, {
+    "value": "bus",
+    "image": "/public/img/bus.png",
+    "label": "Bus"
+  }, {
+    "value": "automobile",
+    "image": "/public/img/automobile.png",
+    "label": "Automobile"
+  }, {
+    "value": "train",
+    "image": "/public/img/train.png",
+    "label": "Train"
+  }, {
+    "value": "plane",
+    "image": "/public/img/plane.png",
+    "label": "Plane"
+  }, {
+    "value": "pedestrian-crosswalk",
+    "facets": ["pedestrian"],
+    "image": "/public/img/pedestrian-crosswalk.jpg",
+    "label": "Crosswalks"
+  }, {
+    "value": "pedestrian-curbramp",
+    "facets": ["pedestrian"],
+    "image": "/public/img/pedestrian-curbramp.jpg",
+    "label": "Curb Ramps"
+  }, {
+    "value": "pedestrian-sidewalk",
+    "facets": ["pedestrian"],
+    "image": "/public/img/pedestrian-sidewalk.jpg",
+    "label": "Sidewalks"
+  }, {
+    "value": "pedestrian-sign",
+    "facets": ["pedestrian"],
+    "image": "/public/img/pedestrian-signal.jpg",
+    "label": "Signs and Signals"
+  }, {
+    "value": "pedestrian-other",
+    "facets": ["pedestrian"],
+    "image": "/public/img/pedestrian-other.png",
+    "label": "Other"
+  }, {
+    "value": "bicycle-facility",
+    "facets": ["bicycle"],
+    "image": "/public/img/bicycle-facility.jpg",
+    "label": "Bike Lanes and Paths"
+  }, {
+    "value": "bicycle-parking",
+    "facets": ["bicycle"],
+    "image": "/public/img/bicycle-parking.jpg",
+    "label": "Bike Parking"
+  }, {
+    "value": "bicycle-sign",
+    "facets": ["bicycle"],
+    "image": "/public/img/bicycle-sign.jpg",
+    "label": "Signs and Signals"
+  }, {
+    "value": "bicycle-other",
+    "facets": ["bicycle"],
+    "image": "/public/img/bicycle-other.png",
+    "label": "Other"
+  }, {
+    "value": "bus-amenity",
+    "facets": ["bus"],
+    "image": "/public/img/bus-amenity.jpg",
+    "label": "Benches, Shelters, and Amenities"
+  }, {
+    "value": "bus-stop",
+    "facets": ["bus"],
+    "image": "/public/img/bus-stop.jpg",
+    "label": "Bus Stop Locations"
+  }, {
+    "value": "bus-schedule",
+    "facets": ["bus"],
+    "image": "/public/img/bus-schedule.jpg",
+    "label": "Schedule and Service"
+  }, {
+    "value": "bus-other",
+    "facets": ["bus"],
+    "image": "/public/img/bus-other.png",
+    "label": "Other"
+  }, {
+    "value": "automobile-driving",
+    "facets": ["automobile"],
+    "image": "/public/img/automobile-driving.jpg",
+    "label": "Driving Conditions"
+  }, {
+    "value": "automobile-parking",
+    "facets": ["automobile"],
+    "image": "/public/img/automobile-parking.jpg",
+    "label": "Parking"
+  }, {
+    "value": "automobile-multimodal",
+    "facets": ["automobile"],
+    "image": "/public/img/automobile-multimodal.jpg",
+    "label": "Pedestrian, Bike, and Bus Facilities"
+  }, {
+    "value": "automobile-sign",
+    "facets": ["automobile"],
+    "image": "/public/img/automobile-sign.jpg",
+    "label": "Signs and Signals"
+  }, {
+    "value": "automobile-other",
+    "facets": ["automobile"],
+    "image": "/public/img/automobile-other.png",
+    "label": "Other"
+  }],
+  "fields": [{
+    "attribute": "comment_type",
+    "label": "Comment",
+    "widget": "radio",
+    "required": true,
+    "facets": ["pedestrian-*", "bicycle-*", "bus-*", "automobile-*", "train", "plane"],
+    "options": [{
+      "value": "Walking or Wheelchair: Crosswalk functions well",
+      "facets": ["pedestrian-crosswalk"],
+      "label": "Crosswalk functions well"
+    }, {
+      "value": "Walking or Wheelchair: Add a crosswalk here",
+      "facets": ["pedestrian-crosswalk"],
+      "label": "Add a crosswalk here"
+    }, {
+      "value": "Walking or Wheelchair: Fix uneven pavement in crosswalk",
+      "facets": ["pedestrian-crosswalk"],
+      "label": "Fix uneven pavement in crosswalk"
+    }, {
+      "value": "Walking or Wheelchair: Repaint crosswalk",
+      "facets": ["pedestrian-crosswalk"],
+      "label": "Repaint crosswalk"
+    }, {
+      "value": "Walking or Wheelchair: Curb ramp functions well",
+      "facets": ["pedestrian-curbramp"],
+      "label": "Curb ramp functions well"
+    }, {
+      "value": "Walking or Wheelchair: Add a curb ramp here",
+      "facets": ["pedestrian-curbramp"],
+      "label": "Add a curb ramp here"
+    }, {
+      "value": "Walking or Wheelchair: Change curb ramp design",
+      "facets": ["pedestrian-curbramp"],
+      "label": "Change curb ramp design"
+    }, {
+      "value": "Walking or Wheelchair: Repair or replace curb ramp",
+      "facets": ["pedestrian-curbramp"],
+      "label": "Repair or replace curb ramp"
+    }, {
+      "value": "Walking or Wheelchair: Sidewalk functions well",
+      "facets": ["pedestrian-sidewalk"],
+      "label": "Sidewalk functions well"
+    }, {
+      "value": "Walking or Wheelchair: Add a sidewalk here",
+      "facets": ["pedestrian-sidewalk"],
+      "label": "Add a sidewalk here"
+    }, {
+      "value": "Walking or Wheelchair: Remove a sidewalk obstruction",
+      "facets": ["pedestrian-sidewalk"],
+      "label": "Remove a sidewalk obstruction"
+    }, {
+      "value": "Walking or Wheelchair: Repair or replace sidewalk",
+      "facets": ["pedestrian-sidewalk"],
+      "label": "Repair or replace sidewalk"
+    }, {
+      "value": "Walking or Wheelchair: Widen narrow sidewalk",
+      "facets": ["pedestrian-sidewalk"],
+      "label": "Widen narrow sidewalk"
+    }, {
+      "value": "Walking or Wheelchair: Signs and signals function well",
+      "facets": ["pedestrian-sign"],
+      "label": "Signs and signals function well"
+    }, {
+      "value": "Walking or Wheelchair: Add stop signs here",
+      "facets": ["pedestrian-sign"],
+      "label": "Add stop signs here"
+    }, {
+      "value": "Walking or Wheelchair: Add pedestrian signals here",
+      "facets": ["pedestrian-sign"],
+      "label": "Add pedestrian signals here"
+    }, {
+      "value": "Walking or Wheelchair: Add traffic signals here",
+      "facets": ["pedestrian-sign"],
+      "label": "Add traffic signals here"
+    }, {
+      "value": "Walking or Wheelchair: Increase crossing time",
+      "facets": ["pedestrian-sign"],
+      "label": "Increase crossing time"
+    }, {
+      "value": "Walking or Wheelchair: Move pedestrian signal or pushbutton",
+      "facets": ["pedestrian-sign"],
+      "label": "Move pedestrian signal or pushbutton"
+    }, {
+      "value": "Walking or Wheelchair: Reduce roadway speed limit",
+      "facets": ["pedestrian-sign"],
+      "label": "Reduce roadway speed limit"
+    }, {
+      "value": "Walking or Wheelchair: Good accessibility for multiple modes here",
+      "facets": ["pedestrian-other"],
+      "label": "Good accessibility for multiple modes here"
+    }, {
+      "value": "Walking or Wheelchair: Add lighting here",
+      "facets": ["pedestrian-other"],
+      "label": "Add lighting here"
+    }, {
+      "value": "Walking or Wheelchair: Convert intersection to a roundabout",
+      "facets": ["pedestrian-other"],
+      "label": "Convert intersection to a roundabout"
+    }, {
+      "value": "Walking or Wheelchair: Increase separation between motorists and pedestrians",
+      "facets": ["pedestrian-other"],
+      "label": "Increase separation between motorists and pedestrians"
+    }, {
+      "value": "Walking or Wheelchair: Other",
+      "facets": ["pedestrian-*"],
+      "label": "Other (please describe below)"
+    }, {
+      "value": "Bicycle: Bike lanes and paths function well",
+      "facets": ["bicycle-facility"],
+      "label": "Bike lanes and paths function well"
+    }, {
+      "value": "Bicycle: Add an on-street bike lane",
+      "facets": ["bicycle-facility"],
+      "label": "Add an on-street bike lane"
+    }, {
+      "value": "Bicycle: Add an off-street sidepath",
+      "facets": ["bicycle-facility"],
+      "label": "Add an off-street sidepath"
+    }, {
+      "value": "Bicycle: Fix uneven pavement in bike lane or path",
+      "facets": ["bicycle-facility"],
+      "label": "Fix uneven pavement in bike lane or path"
+    }, {
+      "value": "Bicycle: Repair or replace bike lanes or paths",
+      "facets": ["bicycle-facility"],
+      "label": "Repair or replace bike lanes or paths"
+    }, {
+      "value": "Bicycle: Bike parking functions well",
+      "facets": ["bicycle-parking"],
+      "label": "Bike parking functions well"
+    }, {
+      "value": "Bicycle: Add bike racks",
+      "facets": ["bicycle-parking"],
+      "label": "Add bike racks"
+    }, {
+      "value": "Bicycle: Change type of bike racks",
+      "facets": ["bicycle-parking"],
+      "label": "Change type of bike racks"
+    }, {
+      "value": "Bicycle: Repair or replace bike racks",
+      "facets": ["bicycle-parking"],
+      "label": "Repair or replace bike racks"
+    }, {
+      "value": "Bicycle: Signs and signals function well",
+      "facets": ["bicycle-sign"],
+      "label": "Signs and signals function well"
+    }, {
+      "value": "Bicycle: Add bike-activated traffic signals here",
+      "facets": ["bicycle-sign"],
+      "label": "Add bike-activated traffic signals here"
+    }, {
+      "value": "Bicycle: Add stop signs here",
+      "facets": ["bicycle-sign"],
+      "label": "Add stop signs here"
+    }, {
+      "value": "Bicycle: Add or improve wayfinding signs for cyclists",
+      "facets": ["bicycle-sign"],
+      "label": "Add or improve wayfinding signs for cyclists"
+    }, {
+      "value": "Bicycle: Increase crossing time",
+      "facets": ["bicycle-sign"],
+      "label": "Increase crossing time"
+    }, {
+      "value": "Bicycle: Reduce speed limit",
+      "facets": ["bicycle-sign"],
+      "label": "Reduce speed limit"
+    }, {
+      "value": "Bicycle: Good accessibility for multiple modes here",
+      "facets": ["bicycle-other"],
+      "label": "Good accessibility for multiple modes here"
+    }, {
+      "value": "Bicycle: Add lighting here",
+      "facets": ["bicycle-other"],
+      "label": "Add lighting here"
+    }, {
+      "value": "Bicycle: Convert intersection to a roundabout",
+      "facets": ["bicycle-other"],
+      "label": "Convert intersection to a roundabout"
+    }, {
+      "value": "Bicycle: Improve visibility for cyclists",
+      "facets": ["bicycle-other"],
+      "label": "Improve visibility for cyclists"
+    }, {
+      "value": "Bicycle: Increase separation between motorists and cyclists",
+      "facets": ["bicycle-other"],
+      "label": "Increase separation between motorists and cyclists"
+    }, {
+      "value": "Bicycle: Other",
+      "facets": ["bicycle-*"],
+      "label": "Other (please describe below)"
+    }, {
+      "value": "Bus: Amenities at this stop function well",
+      "facets": ["bus-amenity"],
+      "label": "Amenities at this stop function well"
+    }, {
+      "value": "Bus: Add a bench at this stop",
+      "facets": ["bus-amenity"],
+      "label": "Add a bench at this stop"
+    }, {
+      "value": "Bus: Add a landing pad at the stop for easier boarding",
+      "facets": ["bus-amenity"],
+      "label": "Add a landing pad at the stop for easier boarding"
+    }, {
+      "value": "Bus: Add a shelter at this stop",
+      "facets": ["bus-amenity"],
+      "label": "Add a shelter at this stop"
+    }, {
+      "value": "Bus: Add audible signage at this stop for routes and information",
+      "facets": ["bus-amenity"],
+      "label": "Add audible signage at this stop for routes and information"
+    }, {
+      "value": "Bus: Add bike parking at this stop",
+      "facets": ["bus-amenity"],
+      "label": "Add bike parking at this stop"
+    }, {
+      "value": "Bus: Add lighting at this stop",
+      "facets": ["bus-amenity"],
+      "label": "Add lighting at this stop"
+    }, {
+      "value": "Bus: Bus stop location funcitons well",
+      "facets": ["bus-stop"],
+      "label": "Bus stop location funcitons well"
+    }, {
+      "value": "Bus: I feel safe at this stop",
+      "facets": ["bus-stop"],
+      "label": "I feel safe at this stop"
+    }, {
+      "value": "Bus: I feel unsafe at this stop",
+      "facets": ["bus-stop"],
+      "label": "I feel unsafe at this stop"
+    }, {
+      "value": "Bus: Add a stop here",
+      "facets": ["bus-stop"],
+      "label": "Add a stop here"
+    }, {
+      "value": "Bus: Remove this stop",
+      "facets": ["bus-stop"],
+      "label": "Remove this stop"
+    }, {
+      "value": "Bus: Bus service at this location functions well",
+      "facets": ["bus-schedule"],
+      "label": "Bus service at this location functions well"
+    }, {
+      "value": "Bus: Add a new route here",
+      "facets": ["bus-schedule"],
+      "label": "Add a new route here"
+    }, {
+      "value": "Bus: Increase bus frequency here",
+      "facets": ["bus-schedule"],
+      "label": "Increase bus frequency here"
+    }, {
+      "value": "Bus: Increase weekday service hours here",
+      "facets": ["bus-schedule"],
+      "label": "Increase weekday service hours here"
+    }, {
+      "value": "Bus: Increase weekend service hours here",
+      "facets": ["bus-schedule"],
+      "label": "Increase weekend service hours here"
+    }, {
+      "value": "Bus: Reduce late buses here",
+      "facets": ["bus-schedule"],
+      "label": "Reduce late buses here"
+    }, {
+      "value": "Bus: Good accessibility for multiple modes here",
+      "facets": ["bus-other"],
+      "label": "Good accessibility for multiple modes here"
+    }, {
+      "value": "Bus: Improve pavement condition for buses",
+      "facets": ["bus-other"],
+      "label": "Improve pavement condition for buses"
+    }, {
+      "value": "Bus: Increase separation between buses and other roadway users",
+      "facets": ["bus-other"],
+      "label": "Increase separation between buses and other roadway users"
+    }, {
+      "value": "Bus: Reduce conflicts between buses and other roadway users",
+      "facets": ["bus-other"],
+      "label": "Reduce conflicts between buses and other roadway users"
+    }, {
+      "value": "Bus: Other",
+      "facets": ["bus-*"],
+      "label": "Other (please describe below)"
+    }, {
+      "value": "Automobile: Good automobile circulation here",
+      "facets": ["automobile-driving"],
+      "label": "Good automobile circulation here"
+    }, {
+      "value": "Automobile: Add street lighting",
+      "facets": ["automobile-driving"],
+      "label": "Add street lighting"
+    }, {
+      "value": "Automobile: Change roadway design or width",
+      "facets": ["automobile-driving"],
+      "label": "Change roadway design or width"
+    }, {
+      "value": "Automobile: Fix uneven pavement",
+      "facets": ["automobile-driving"],
+      "label": "Fix uneven pavement"
+    }, {
+      "value": "Automobile: Improve pavement markings",
+      "facets": ["automobile-driving"],
+      "label": "Improve pavement markings"
+    }, {
+      "value": "Automobile: Improve visibility for drivers",
+      "facets": ["automobile-driving"],
+      "label": "Improve visibility for drivers"
+    }, {
+      "value": "Automobile: Reduce speed limit",
+      "facets": ["automobile-driving"],
+      "label": "Reduce speed limit"
+    }, {
+      "value": "Automobile: Reduce traffic congestion",
+      "facets": ["automobile-driving"],
+      "label": "Reduce traffic congestion"
+    }, {
+      "value": "Automobile: Good accessibility for multiple modes here",
+      "facets": ["automobile-multimodal"],
+      "label": "Good accessibility for multiple modes here"
+    }, {
+      "value": "Automobile: Add an on-street bike lane",
+      "facets": ["automobile-multimodal"],
+      "label": "Add an on-street bike lane"
+    }, {
+      "value": "Automobile: Add an off-street sidepath",
+      "facets": ["automobile-multimodal"],
+      "label": "Add an off-street sidepath"
+    }, {
+      "value": "Automobile: Add an off-street sidewalk",
+      "facets": ["automobile-multimodal"],
+      "label": "Add an off-street sidewalk"
+    }, {
+      "value": "Automobile: Add a dedicated bus lane",
+      "facets": ["automobile-multimodal"],
+      "label": "Add a dedicated bus lane"
+    }, {
+      "value": "Automobile: Signs and signals function well",
+      "facets": ["automobile-sign"],
+      "label": "Signs and signals function well"
+    }, {
+      "value": "Automobile: Add bike-activated traffic signals here",
+      "facets": ["automobile-sign"],
+      "label": "Add bike-activated traffic signals here"
+    }, {
+      "value": "Automobile: Add stop signs here",
+      "facets": ["automobile-sign"],
+      "label": "Add stop signs here"
+    }, {
+      "value": "Automobile: Add or improve wayfinding signs for cyclists",
+      "facets": ["automobile-sign"],
+      "label": "Add or improve wayfinding signs for cyclists"
+    }, {
+      "value": "Automobile: Increase crossing time",
+      "facets": ["automobile-sign"],
+      "label": "Increase crossing time"
+    }, {
+      "value": "Automobile: Reduce speed limit",
+      "facets": ["automobile-sign"],
+      "label": "Reduce speed limit"
+    }, {
+      "value": "Automobile: Parking functions well",
+      "facets": ["automobile-parking"],
+      "label": "Parking functions well"
+    }, {
+      "value": "Automobile: Add automobile parking here",
+      "facets": ["automobile-parking"],
+      "label": "Add automobile parking here"
+    }, {
+      "value": "Automobile: Reduce automobile parking here",
+      "facets": ["automobile-parking"],
+      "label": "Reduce automobile parking here"
+    }, {
+      "value": "Automobile: Add bicycle racks here",
+      "facets": ["automobile-parking"],
+      "label": "Add bicycle racks here"
+    }, {
+      "value": "Automobile: Good accessibility for multiple modes here",
+      "facets": ["automobile-other"],
+      "label": "Good accessibility for multiple modes here"
+    }, {
+      "value": "Automobile: Add street lighting",
+      "facets": ["automobile-other"],
+      "label": "Add street lighting"
+    }, {
+      "value": "Automobile: Convert intersection to a roundabout",
+      "facets": ["automobile-other"],
+      "label": "Convert intersection to a roundabout"
+    }, {
+      "value": "Automobile: Improve visibility for drivers",
+      "facets": ["automobile-other"],
+      "label": "Improve visibility for drivers"
+    }, {
+      "value": "Automobile: Increase separation between motorists and cyclists",
+      "facets": ["automobile-other"],
+      "label": "Increase separation between motorists and cyclists"
+    }, {
+      "value": "Automobile: Other",
+      "facets": ["automobile-*"],
+      "label": "Other (please describe below)"
+    }, {
+      "value": "Train: I like the current options for train travel",
+      "facets": ["train"],
+      "label": "I like the current options for train travel"
+    }, {
+      "value": "Train: Add high-speed or bullet train access to Chicago",
+      "facets": ["train"],
+      "label": "Add high-speed or bullet train access to Chicago"
+    }, {
+      "value": "Train: Increase train trip frequency",
+      "facets": ["train"],
+      "label": "Increase train trip frequency"
+    }, {
+      "value": "Train: Reduce train delays",
+      "facets": ["train"],
+      "label": "Reduce train delays"
+    }, {
+      "value": "Train: Reduce train ticket prices",
+      "facets": ["train"],
+      "label": "Reduce train ticket prices"
+    }, {
+      "value": "Train: Other",
+      "facets": ["train"],
+      "label": "Other (please describe below)"
+    }, {
+      "value": "Plane: I like the current options for plane travel",
+      "facets": ["plane"],
+      "label": "I like the current options for plane travel"
+    }, {
+      "value": "Plane: Add direct flights to additional locations",
+      "facets": ["plane"],
+      "label": "Add direct flights to additional locations"
+    }, {
+      "value": "Plane: Add more departure and arrival times",
+      "facets": ["plane"],
+      "label": "Add more departure and arrival times"
+    }, {
+      "value": "Plane: Add transit option to and from the airport",
+      "facets": ["plane"],
+      "label": "Add transit option to and from the airport"
+    }, {
+      "value": "Plane: Offer free parking at the airport",
+      "facets": ["plane"],
+      "label": "Offer free parking at the airport"
+    }, {
+      "value": "Plane: Other",
+      "facets": ["plane"],
+      "label": "Other (please describe below)"
+    }]
+  }, {
+    "attribute": "comment_description",
+    "type": "text",
+    "widget": "textarea",
+    "label": "Additional Details (optional)",
+    "facets": ["pedestrian-*", "bicycle-*", "bus-*", "automobile-*", "train", "plane"]
+  }]
+}

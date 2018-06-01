@@ -35,6 +35,8 @@ declare global {
 
   namespace StencilComponents {
     interface LrtpApp {
+      'schemaUrl': string;
+      'styleUrl': string;
       'token': string;
     }
   }
@@ -58,6 +60,8 @@ declare global {
   }
   namespace JSXElements {
     export interface LrtpAppAttributes extends HTMLAttributes {
+      'schemaUrl'?: string;
+      'styleUrl'?: string;
       'token'?: string;
     }
   }
