@@ -4,18 +4,18 @@ exports.config = {
   namespace: 'lrtp',
   copy: [
     {
-      src: 'public',
-      dest: 'lrtp-input/public'
+      src: 'public'
     }
   ],
   outputTargets: [
     {
       type: 'www',
+      baseUrl: '/lrtp-input',
+      dir: 'deploy',
       serviceWorker: null
     }
   ],
   plugins: [
     sass()
-  ],
-  watch: true
+  ]
 };
