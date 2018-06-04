@@ -13,6 +13,7 @@ log.txt
 *.sublime-project
 *.sublime-workspace
 !yarn.lock
+*.sh
 
 .idea/
 .vscode/
