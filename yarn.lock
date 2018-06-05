@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@cuuats/webmapgl@0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@cuuats/webmapgl/-/webmapgl-0.2.1.tgz#29de7830b783d329fe7acd8433210803b0fbf74f"
+"@cuuats/webmapgl@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@cuuats/webmapgl/-/webmapgl-0.3.0.tgz#8f92da40261faa95fafbf8a7222e95d8161d1088"
   dependencies:
     "@ionic/core" "4.0.0-alpha.7"
     "@stencil/core" "0.9.7"
