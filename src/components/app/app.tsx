@@ -3,7 +3,8 @@ import '@cuuats/webmapgl';
 
 
 @Component({
- tag: 'lrtp-app'
+  styleUrl: 'app.scss',
+  tag: 'lrtp-app'
 })
 export class App {
   @Element() el: HTMLLrtpAppElement;
