@@ -36,7 +36,7 @@ export class CommentDetail {
     let dateStr = '';
     let date = new Date(this.feature.properties._created);
     if (!isNaN(date.getTime())) {
-      dateStr = `${monthNames[date.getMonth()]} ${date.getDay()}, `
+      dateStr = `${monthNames[date.getMonth()]} ${date.getDate()}, `
         + `${date.getFullYear()}`;
       if (props.comment_description) dateStr += ':';
     }
