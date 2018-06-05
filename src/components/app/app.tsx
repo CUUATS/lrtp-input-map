@@ -8,6 +8,8 @@ import '@cuuats/webmapgl';
 export class App {
   @Element() el: HTMLLrtpAppElement;
 
+  @Prop() commentUrl: string;
+  @Prop() likeUrl: string;
   @Prop() schemaUrl: string;
   @Prop() styleUrl: string;
   @Prop() token: string;
@@ -39,14 +41,19 @@ export class App {
         </gl-map>
         <gl-feature-buttons vertical="bottom" horizontal="end">
           <gl-feature-add layers="lrtp:comment"
-            url="https://gis.ccrpc.org/pcd/public/lrtp.comment_2045"
+            url={this.commentUrl}
             token={this.token} onClick={() => this.closeDrawer()}
             schema={this.schemaUrl} label="Add a Comment"
             successMessage="Your comment is awaiting moderation."
             failureMessage="An error occurred. Please try again later.">
           </gl-feature-add>
         </gl-feature-buttons>
-        <gl-drawer slot="after-content" drawer-title="Comments">
+        <gl-drawer slot="after-content" open={true} drawer-title="Comments">
+          <gl-feature-list source="lrtp:comments" item={false}
+            component="lrtp-comment-detail"
+            componentOptions={{'like-url': this.likeUrl, 'token': this.token}}
+            orderBy="_likes" order="desc">
+          </gl-feature-list>
         </gl-drawer>
       </gl-app>
     ]);

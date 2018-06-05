@@ -35,6 +35,8 @@ declare global {
 
   namespace StencilComponents {
     interface LrtpApp {
+      'commentUrl': string;
+      'likeUrl': string;
       'schemaUrl': string;
       'styleUrl': string;
       'token': string;
@@ -60,8 +62,47 @@ declare global {
   }
   namespace JSXElements {
     export interface LrtpAppAttributes extends HTMLAttributes {
+      'commentUrl'?: string;
+      'likeUrl'?: string;
       'schemaUrl'?: string;
       'styleUrl'?: string;
+      'token'?: string;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface LrtpCommentDetail {
+      'feature': any;
+      'likeUrl': string;
+      'token': string;
+    }
+  }
+
+  interface HTMLLrtpCommentDetailElement extends StencilComponents.LrtpCommentDetail, HTMLStencilElement {}
+
+  var HTMLLrtpCommentDetailElement: {
+    prototype: HTMLLrtpCommentDetailElement;
+    new (): HTMLLrtpCommentDetailElement;
+  };
+  interface HTMLElementTagNameMap {
+    'lrtp-comment-detail': HTMLLrtpCommentDetailElement;
+  }
+  interface ElementTagNameMap {
+    'lrtp-comment-detail': HTMLLrtpCommentDetailElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'lrtp-comment-detail': JSXElements.LrtpCommentDetailAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface LrtpCommentDetailAttributes extends HTMLAttributes {
+      'feature'?: any;
+      'likeUrl'?: string;
       'token'?: string;
     }
   }
