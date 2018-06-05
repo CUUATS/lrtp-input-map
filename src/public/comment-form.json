@@ -359,7 +359,7 @@
     }, {
       "value": "Bus: Add a new route here",
       "facets": ["bus-schedule"],
-      "label": "Add a new route here"
+      "label": "Add a new route here (please describe below)"
     }, {
       "value": "Bus: Increase bus frequency here",
       "facets": ["bus-schedule"],
@@ -373,7 +373,7 @@
       "facets": ["bus-schedule"],
       "label": "Increase weekend service hours here"
     }, {
-      "value": "Bus: Reduce late buses here",
+      "value": "Bus: Reduce delayed buses here",
       "facets": ["bus-schedule"],
       "label": "Reduce late buses here"
     }, {
