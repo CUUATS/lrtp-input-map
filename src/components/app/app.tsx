@@ -1,4 +1,4 @@
-import { Component, Element, Prop } from '@stencil/core';
+import { Component, Element, Listen, Prop } from '@stencil/core';
 import '@cuuats/webmapgl';
 
 
@@ -7,6 +7,9 @@ import '@cuuats/webmapgl';
 })
 export class App {
   @Element() el: HTMLLrtpAppElement;
+
+  @Prop({connect: 'ion-toast-controller'}) toastCtrl!:
+    HTMLIonToastControllerElement;
 
   @Prop() commentUrl: string;
   @Prop() likeUrl: string;
@@ -17,6 +20,31 @@ export class App {
   closeDrawer() {
     let drawer = this.el.querySelector('gl-drawer');
     if (drawer.open) drawer.toggle();
+  }
+
+  @Listen('glFeatureAdd')
+  async handleFeatureAdd(e: CustomEvent) {
+    const success = e.detail.success;
+    const feature = e.detail.feature;
+
+    let message;
+    if (success) {
+      let desc = feature.properties.comment_description;
+      message = (!desc || desc == '') ?
+        'Your comment has been added.' :
+        'Your comment is awaiting moderation.';
+    } else {
+      message = 'An error occurred. Please try again later.';
+    }
+
+    let options = {
+      message: message,
+      duration: 3000
+    };
+
+    let toast = await this.toastCtrl.create(options);
+    await toast.present();
+    return toast;
   }
 
   render() {
@@ -43,16 +71,14 @@ export class App {
           <gl-feature-add layers="lrtp:comment"
             url={this.commentUrl}
             token={this.token} onClick={() => this.closeDrawer()}
-            schema={this.schemaUrl} label="Add a Comment"
-            successMessage="Your comment is awaiting moderation."
-            failureMessage="An error occurred. Please try again later.">
+            schema={this.schemaUrl} label="Add a Comment" alertDuration={0}>
           </gl-feature-add>
         </gl-feature-buttons>
         <gl-drawer slot="after-content" open={true} drawer-title="Comments">
           <gl-feature-list source="lrtp:comments" item={false}
             component="lrtp-comment-detail"
             componentOptions={{'like-url': this.likeUrl, 'token': this.token}}
-            orderBy="_likes" order="desc">
+            orderBy="_created" order="desc">
           </gl-feature-list>
         </gl-drawer>
       </gl-app>
