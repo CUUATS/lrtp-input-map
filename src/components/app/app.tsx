@@ -7,8 +7,14 @@ import '@cuuats/webmapgl';
   tag: 'lrtp-app'
 })
 export class App {
+  clickCtrl?: HTMLGlClickControllerElement;
+  drawer?: HTMLGlDrawerElement;
+  map?: HTMLGlMapElement;
+
   @Element() el: HTMLLrtpAppElement;
 
+  @Prop({connect: 'gl-click-controller'}) lazyClickCtrl!:
+    HTMLGlClickControllerElement;
   @Prop({connect: 'ion-toast-controller'}) toastCtrl!:
     HTMLIonToastControllerElement;
 
@@ -18,9 +24,46 @@ export class App {
   @Prop() styleUrl: string;
   @Prop() token: string;
 
+  async componentDidLoad() {
+    this.clickCtrl = await this.lazyClickCtrl.componentOnReady();
+    this.clickCtrl.setClickable('lrtp:cluster', true);
+    this.clickCtrl.setClickable('lrtp:comment', true);
+  }
+
   closeDrawer() {
     let drawer = this.el.querySelector('gl-drawer');
     if (drawer.open) drawer.toggle();
+  }
+
+  @Listen('body:glFeatureClick')
+  async handleClick(e: CustomEvent) {
+    const features = e.detail.features;
+    if (!features || !features.length) return
+
+    const feature = features[0];
+    if (feature.layer.id === 'lrtp:comment') {
+      this.drawer.open = true;
+      let [fx, fy] = feature.geometry.coordinates;
+      let found = 0;
+      Array.from(document.querySelectorAll('lrtp-comment-detail'))
+        .forEach((detail) => {
+          let [dx, dy] = detail.feature.geometry.coordinates;
+          if (Math.abs(fx - dx) > 0.00001 || Math.abs(fy - dy) > 0.00001)
+            return;
+          if (found++ === 0)
+            detail.closest('ion-scroll').scrollTop = detail.offsetTop;
+          let container = detail.querySelector('div.item');
+          container.classList.add('flash');
+          setTimeout(() => container.classList.remove('flash'), 1500);
+        });
+    } else {
+      const zoom = await this.map.getZoom();
+      const maxZoom = await this.map.getMaxZoom();
+      this.map.easeTo({
+        center: feature.geometry.coordinates,
+        zoom: (zoom + 1 <= maxZoom) ? zoom + 1 : maxZoom
+      });
+    }
   }
 
   @Listen('glFeatureAdd')
@@ -55,7 +98,7 @@ export class App {
         <gl-fullscreen slot="end-buttons"></gl-fullscreen>
         <gl-drawer-toggle slot="end-buttons" icon="chatbubbles">
         </gl-drawer-toggle>
-        <gl-map
+        <gl-map ref={(r: HTMLGlMapElement) => this.map = r}
             longitude={-88.228878} latitude={40.110319} zoom={12} maxzoom={22}>
           <gl-style url={this.styleUrl} id="lrtp"
             name="Comments" enabled={true} token={this.token}></gl-style>
@@ -75,7 +118,8 @@ export class App {
             schema={this.schemaUrl} label="Add a Comment" alertDuration={0}>
           </gl-feature-add>
         </gl-feature-buttons>
-        <gl-drawer slot="after-content" open={true} drawer-title="Comments">
+        <gl-drawer slot="after-content" open={true} drawer-title="Comments"
+            ref={(r: HTMLGlDrawerElement) => this.drawer = r}>
           <gl-feature-list source="lrtp:comments" item={false}
             component="lrtp-comment-detail"
             componentOptions={{'like-url': this.likeUrl, 'token': this.token}}

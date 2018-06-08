@@ -5,4 +5,21 @@ lrtp-app {
       margin-bottom: 0;
     }
   }
+  .flash {
+    -webkit-animation-name: flash-animation;
+    -webkit-animation-duration: 1.5s;
+
+    animation-name: flash-animation;
+    animation-duration: 1.5s;
+  }
+
+  @-webkit-keyframes flash-animation {
+      from { background: yellow; }
+      to   { background: default; }
+  }
+
+  @keyframes flash-animation {
+      from { background: yellow; }
+      to   { background: default; }
+  }
 }
