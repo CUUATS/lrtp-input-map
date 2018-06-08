@@ -3,7 +3,7 @@
   "sources": {
     "comments": {
       "type": "geojson",
-      "data": "https://gis.ccrpc.org/pcd/public/lrtp.comment_2045_web?token=${TOKEN}",
+      "data": "https://maps.cuuats.org/data/public/lrtp.comment_2045_web?token=${TOKEN}",
       "cluster": true,
       "clusterMaxZoom": 14,
       "clusterRadius": 50
