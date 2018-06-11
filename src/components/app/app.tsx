@@ -1,5 +1,6 @@
 import { Component, Element, Listen, Prop } from '@stencil/core';
 import '@cuuats/webmapgl';
+import '@ionic/core';
 
 
 @Component({
@@ -8,6 +9,7 @@ import '@cuuats/webmapgl';
 })
 export class App {
   clickCtrl?: HTMLGlClickControllerElement;
+  surveyCtrl?: HTMLLrtpSurveyControllerElement;
   drawer?: HTMLGlDrawerElement;
   map?: HTMLGlMapElement;
 
@@ -15,6 +17,8 @@ export class App {
 
   @Prop({connect: 'gl-click-controller'}) lazyClickCtrl!:
     HTMLGlClickControllerElement;
+  @Prop({connect: 'lrtp-survey-controller'}) lazySurveyCtrl!:
+    HTMLLrtpSurveyControllerElement;
   @Prop({connect: 'ion-toast-controller'}) toastCtrl!:
     HTMLIonToastControllerElement;
 
@@ -28,6 +32,7 @@ export class App {
     this.clickCtrl = await this.lazyClickCtrl.componentOnReady();
     this.clickCtrl.setClickable('lrtp:cluster', true);
     this.clickCtrl.setClickable('lrtp:comment', true);
+    this.surveyCtrl = await this.lazySurveyCtrl.componentOnReady();
   }
 
   closeDrawer() {
@@ -91,11 +96,19 @@ export class App {
     return toast;
   }
 
+  async openSurvey() {
+    let alert = await this.surveyCtrl.create();
+    return await alert.present();
+  }
+
   render() {
     return ([
       <gl-app label="Transportation Choices" menu={false}>
         <gl-fullscreen slot="start-buttons"></gl-fullscreen>
-        <gl-basemaps slot="end-buttons"></gl-basemaps>
+        <gl-basemaps slot="start-buttons"></gl-basemaps>
+        <ion-button slot="end-buttons" onClick={() => this.openSurvey()}>
+          <ion-icon slot="icon-only" name="bulb"></ion-icon>
+        </ion-button>
         <gl-drawer-toggle slot="end-buttons" icon="chatbubbles">
         </gl-drawer-toggle>
         <gl-map ref={(r: HTMLGlMapElement) => this.map = r}

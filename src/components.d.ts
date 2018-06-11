@@ -108,4 +108,44 @@ declare global {
   }
 }
 
+
+declare global {
+
+  namespace StencilComponents {
+    interface LrtpSurveyController {
+      'commentThreshold': number;
+      'create': () => Promise<HTMLIonAlertElement>;
+      'delay': number;
+      'likeThreshold': number;
+      'surveyUrl': string;
+    }
+  }
+
+  interface HTMLLrtpSurveyControllerElement extends StencilComponents.LrtpSurveyController, HTMLStencilElement {}
+
+  var HTMLLrtpSurveyControllerElement: {
+    prototype: HTMLLrtpSurveyControllerElement;
+    new (): HTMLLrtpSurveyControllerElement;
+  };
+  interface HTMLElementTagNameMap {
+    'lrtp-survey-controller': HTMLLrtpSurveyControllerElement;
+  }
+  interface ElementTagNameMap {
+    'lrtp-survey-controller': HTMLLrtpSurveyControllerElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'lrtp-survey-controller': JSXElements.LrtpSurveyControllerAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface LrtpSurveyControllerAttributes extends HTMLAttributes {
+      'commentThreshold'?: number;
+      'delay'?: number;
+      'likeThreshold'?: number;
+      'surveyUrl'?: string;
+    }
+  }
+}
+
 declare global { namespace JSX { interface StencilJSX {} } }
