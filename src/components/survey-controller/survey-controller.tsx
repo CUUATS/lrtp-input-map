@@ -54,8 +54,8 @@ export class SurveyController {
     return this.alertCtrl.create({
       header: 'Take the Transportation Survey',
       message: 'Please share your thoughts about the future of ' +
-        'transportation in our community by taking a brief survey. If you ' +
-        'choose not to take the survey now, you can access it later using ' +
+        'transportation in our community by taking a brief survey. ' +
+        'You can access the survey later using ' +
         'the <ion-icon name="bulb"></ion-icon> icon in the top toolbar.',
       buttons: [
         {
