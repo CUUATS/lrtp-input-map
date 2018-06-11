@@ -23,3 +23,9 @@ lrtp-app {
       to   { background: default; }
   }
 }
+
+@media (max-width: 640px) {
+  ion-toolbar ion-title .toolbar-title {
+    font-size: 1em;
+  }
+}

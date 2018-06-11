@@ -1,0 +1,24 @@
+@media (max-width: 640px) {
+  lrtp-comment-detail {
+    border-left: 10px solid #888888;
+    display: block;
+    &.lrtp-mode-walking {
+      border-left-color: #944089;
+    }
+    &.lrtp-mode-bicycle {
+      border-left-color: #bdd938;
+    }
+    &.lrtp-mode-bus {
+      border-left-color: #e9891d;
+    }
+    &.lrtp-mode-automobile {
+      border-left-color: #50b3d0;
+    }
+    &.lrtp-mode-train {
+      border-left-color: #f1330d;
+    }
+    &.lrtp-mode-plane {
+      border-left-color: #4d63ac;
+    }
+  }
+}

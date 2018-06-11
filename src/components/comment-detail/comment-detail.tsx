@@ -5,7 +5,8 @@ const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'];
 
 @Component({
- tag: 'lrtp-comment-detail'
+  styleUrl: 'comment-detail.scss',
+  tag: 'lrtp-comment-detail'
 })
 export class CommentDetail {
   @Prop() likeUrl: string;
@@ -19,6 +20,12 @@ export class CommentDetail {
       center: this.feature.geometry.coordinates,
       zoom: 18
     });
+  }
+
+  hostData() {
+    return {
+      class: `lrtp-mode-${this.feature.properties.comment_mode}`
+    };
   }
 
   render() {
@@ -41,11 +48,13 @@ export class CommentDetail {
       if (props.comment_description) dateStr += ':';
     }
 
+    const small = screen.width <= 640;
+
     return (
       <ion-item lines="full" text-wrap>
-        <ion-avatar slot="start">
-          <img src={modeImage} alt={mode} />
-        </ion-avatar>
+        {(small) ? null: <ion-avatar slot="start">
+            <img src={modeImage} alt={mode} />
+          </ion-avatar>}
         <ion-label>
           <h2>{props.comment_type}</h2>
           <p>

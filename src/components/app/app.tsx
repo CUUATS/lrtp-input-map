@@ -94,8 +94,8 @@ export class App {
   render() {
     return ([
       <gl-app label="Transportation Choices" menu={false}>
+        <gl-fullscreen slot="start-buttons"></gl-fullscreen>
         <gl-basemaps slot="end-buttons"></gl-basemaps>
-        <gl-fullscreen slot="end-buttons"></gl-fullscreen>
         <gl-drawer-toggle slot="end-buttons" icon="chatbubbles">
         </gl-drawer-toggle>
         <gl-map ref={(r: HTMLGlMapElement) => this.map = r}
