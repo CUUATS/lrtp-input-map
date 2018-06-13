@@ -31,7 +31,7 @@ export class CommentDetail {
   render() {
     const props = this.feature.properties;
     const mode = this.feature.properties.comment_type.split(':')[0];
-    const modeImage = '/lrtp-input/public/img/' + {
+    const modeImage = '/voices/public/img/' + {
       'Walking or Wheelchair': 'pedestrian.png',
       'Bicycle': 'bicycle.png',
       'Bus': 'bus.png',

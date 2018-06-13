@@ -5,7 +5,7 @@ exports.config = {
   copy: [
     {
       src: 'public',
-      dest: 'lrtp-input/public'
+      dest: 'voices/public'
     }
   ],
   outputTargets: [

@@ -1,117 +1,117 @@
 {
   "facets": [{
     "value": "pedestrian",
-    "image": "/lrtp-input/public/img/pedestrian.png",
+    "image": "/voices/public/img/pedestrian.png",
     "label": "Walking or Wheelchair"
   }, {
     "value": "bicycle",
-    "image": "/lrtp-input/public/img/bicycle.png",
+    "image": "/voices/public/img/bicycle.png",
     "label": "Bicycle"
   }, {
     "value": "bus",
-    "image": "/lrtp-input/public/img/bus.png",
+    "image": "/voices/public/img/bus.png",
     "label": "Bus"
   }, {
     "value": "automobile",
-    "image": "/lrtp-input/public/img/automobile.png",
+    "image": "/voices/public/img/automobile.png",
     "label": "Automobile"
   }, {
     "value": "train",
-    "image": "/lrtp-input/public/img/train.png",
+    "image": "/voices/public/img/train.png",
     "label": "Train"
   }, {
     "value": "plane",
-    "image": "/lrtp-input/public/img/plane.png",
+    "image": "/voices/public/img/plane.png",
     "label": "Plane"
   }, {
     "value": "pedestrian-crosswalk",
     "facets": ["pedestrian"],
-    "image": "/lrtp-input/public/img/pedestrian-crosswalk.jpg",
+    "image": "/voices/public/img/pedestrian-crosswalk.jpg",
     "label": "Crosswalks"
   }, {
     "value": "pedestrian-curbramp",
     "facets": ["pedestrian"],
-    "image": "/lrtp-input/public/img/pedestrian-curbramp.jpg",
+    "image": "/voices/public/img/pedestrian-curbramp.jpg",
     "label": "Curb Ramps"
   }, {
     "value": "pedestrian-sidewalk",
     "facets": ["pedestrian"],
-    "image": "/lrtp-input/public/img/pedestrian-sidewalk.jpg",
+    "image": "/voices/public/img/pedestrian-sidewalk.jpg",
     "label": "Sidewalks"
   }, {
     "value": "pedestrian-sign",
     "facets": ["pedestrian"],
-    "image": "/lrtp-input/public/img/pedestrian-signal.jpg",
+    "image": "/voices/public/img/pedestrian-signal.jpg",
     "label": "Signs and Signals"
   }, {
     "value": "pedestrian-other",
     "facets": ["pedestrian"],
-    "image": "/lrtp-input/public/img/pedestrian-other.png",
+    "image": "/voices/public/img/pedestrian-other.png",
     "label": "Other"
   }, {
     "value": "bicycle-facility",
     "facets": ["bicycle"],
-    "image": "/lrtp-input/public/img/bicycle-facility.jpg",
+    "image": "/voices/public/img/bicycle-facility.jpg",
     "label": "Bike Lanes and Paths"
   }, {
     "value": "bicycle-parking",
     "facets": ["bicycle"],
-    "image": "/lrtp-input/public/img/bicycle-parking.jpg",
+    "image": "/voices/public/img/bicycle-parking.jpg",
     "label": "Bike Parking"
   }, {
     "value": "bicycle-sign",
     "facets": ["bicycle"],
-    "image": "/lrtp-input/public/img/bicycle-sign.jpg",
+    "image": "/voices/public/img/bicycle-sign.jpg",
     "label": "Signs and Signals"
   }, {
     "value": "bicycle-other",
     "facets": ["bicycle"],
-    "image": "/lrtp-input/public/img/bicycle-other.png",
+    "image": "/voices/public/img/bicycle-other.png",
     "label": "Other"
   }, {
     "value": "bus-amenity",
     "facets": ["bus"],
-    "image": "/lrtp-input/public/img/bus-amenity.jpg",
+    "image": "/voices/public/img/bus-amenity.jpg",
     "label": "Benches, Shelters, and Amenities"
   }, {
     "value": "bus-stop",
     "facets": ["bus"],
-    "image": "/lrtp-input/public/img/bus-stop.jpg",
+    "image": "/voices/public/img/bus-stop.jpg",
     "label": "Bus Stop Locations"
   }, {
     "value": "bus-schedule",
     "facets": ["bus"],
-    "image": "/lrtp-input/public/img/bus-schedule.jpg",
+    "image": "/voices/public/img/bus-schedule.jpg",
     "label": "Schedule and Service"
   }, {
     "value": "bus-other",
     "facets": ["bus"],
-    "image": "/lrtp-input/public/img/bus-other.png",
+    "image": "/voices/public/img/bus-other.png",
     "label": "Other"
   }, {
     "value": "automobile-driving",
     "facets": ["automobile"],
-    "image": "/lrtp-input/public/img/automobile-driving.jpg",
+    "image": "/voices/public/img/automobile-driving.jpg",
     "label": "Driving Conditions"
   }, {
     "value": "automobile-parking",
     "facets": ["automobile"],
-    "image": "/lrtp-input/public/img/automobile-parking.jpg",
+    "image": "/voices/public/img/automobile-parking.jpg",
     "label": "Parking"
   }, {
     "value": "automobile-multimodal",
     "facets": ["automobile"],
-    "image": "/lrtp-input/public/img/automobile-multimodal.jpg",
+    "image": "/voices/public/img/automobile-multimodal.jpg",
     "label": "Pedestrian, Bike, and Bus Facilities"
   }, {
     "value": "automobile-sign",
     "facets": ["automobile"],
-    "image": "/lrtp-input/public/img/automobile-sign.jpg",
+    "image": "/voices/public/img/automobile-sign.jpg",
     "label": "Signs and Signals"
   }, {
     "value": "automobile-other",
     "facets": ["automobile"],
-    "image": "/lrtp-input/public/img/automobile-other.png",
+    "image": "/voices/public/img/automobile-other.png",
     "label": "Other"
   }],
   "fields": [{

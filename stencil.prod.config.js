@@ -10,7 +10,7 @@ exports.config = {
   outputTargets: [
     {
       type: 'www',
-      baseUrl: '/lrtp-input',
+      baseUrl: '/voices',
       dir: 'deploy',
       serviceWorker: null
     }
