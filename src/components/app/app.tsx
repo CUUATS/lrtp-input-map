@@ -103,7 +103,7 @@ export class App {
 
   render() {
     return ([
-      <gl-app label="Transportation Choices" menu={false}>
+      <gl-app label="C-U Transportation Voices" menu={false}>
         <gl-fullscreen slot="start-buttons"></gl-fullscreen>
         <gl-basemaps slot="start-buttons"></gl-basemaps>
         <ion-button slot="end-buttons" onClick={() => this.openSurvey()}>
