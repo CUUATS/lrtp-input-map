@@ -13,10 +13,14 @@ lrtp-app {
     animation-duration: 1.5s;
   }
   gl-form-page {
-    ion-list-header,
-    gl-field[type="text"] ion-label {
+    ion-list-header.list-header-md,
+    ion-list-header.list-header-ios,
+    gl-field[type="text"] ion-label.label-md,
+    gl-field[type="text"] ion-label.label-ios {
       font-weight: bold;
-      font-size: 1.1rem !important;
+      font-size: 1.1rem;
+      letter-spacing: normal;
+      text-transform: none;
     }
   }
 
