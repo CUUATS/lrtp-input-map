@@ -20,5 +20,13 @@
     &.lrtp-mode-plane {
       border-left-color: #4d63ac;
     }
+    .item-md h2,
+    .item-ios h2 {
+      font-size: 0.9rem;
+    }
+    .item-md p,
+    .item-ios p {
+      font-size: 0.8rem;
+    }
   }
 }
