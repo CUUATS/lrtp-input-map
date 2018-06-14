@@ -147,7 +147,7 @@
     }, {
       "value": "Walking or Wheelchair: Change curb ramp design",
       "facets": ["pedestrian-curbramp"],
-      "label": "Change curb ramp design"
+      "label": "Change curb ramp design (please describe below)"
     }, {
       "value": "Walking or Wheelchair: Repair or replace curb ramp",
       "facets": ["pedestrian-curbramp"],
@@ -163,7 +163,7 @@
     }, {
       "value": "Walking or Wheelchair: Remove a sidewalk obstruction",
       "facets": ["pedestrian-sidewalk"],
-      "label": "Remove a sidewalk obstruction"
+      "label": "Remove a sidewalk obstruction (please describe below)"
     }, {
       "value": "Walking or Wheelchair: Repair or replace sidewalk",
       "facets": ["pedestrian-sidewalk"],
@@ -229,9 +229,9 @@
       "facets": ["bicycle-facility"],
       "label": "Add an on-street bike lane"
     }, {
-      "value": "Bicycle: Add an off-street sidepath",
+      "value": "Bicycle: Add an off-street sidepath or trail",
       "facets": ["bicycle-facility"],
-      "label": "Add an off-street sidepath"
+      "label": "Add an off-street sidepath or trail"
     }, {
       "value": "Bicycle: Fix uneven pavement in bike lane or path",
       "facets": ["bicycle-facility"],
@@ -349,6 +349,10 @@
       "facets": ["bus-stop"],
       "label": "Add a stop here"
     }, {
+      "value": "Bus: Move this stop",
+      "facets": ["bus-stop"],
+      "label": "Move this stop (please describe below)"
+    }, {
       "value": "Bus: Remove this stop",
       "facets": ["bus-stop"],
       "label": "Remove this stop"
@@ -373,9 +377,9 @@
       "facets": ["bus-schedule"],
       "label": "Increase weekend service hours here"
     }, {
-      "value": "Bus: Reduce delayed buses here",
+      "value": "Bus: Reduce bus delays here",
       "facets": ["bus-schedule"],
-      "label": "Reduce late buses here"
+      "label": "Reduce bus delays here"
     }, {
       "value": "Bus: Good accessibility for multiple modes here",
       "facets": ["bus-other"],
@@ -407,7 +411,7 @@
     }, {
       "value": "Automobile: Change roadway design or width",
       "facets": ["automobile-driving"],
-      "label": "Change roadway design or width"
+      "label": "Change roadway design or width (please describe below)"
     }, {
       "value": "Automobile: Fix uneven pavement",
       "facets": ["automobile-driving"],
@@ -521,6 +525,10 @@
       "facets": ["train"],
       "label": "Add high-speed or bullet train access to Chicago"
     }, {
+      "value": "Train: Add train service to another city",
+      "facets": ["train"],
+      "label": "Add train service to another city"
+    }, {
       "value": "Train: Increase train trip frequency",
       "facets": ["train"],
       "label": "Increase train trip frequency"
@@ -543,7 +551,7 @@
     }, {
       "value": "Plane: Add direct flights to additional locations",
       "facets": ["plane"],
-      "label": "Add direct flights to additional locations"
+      "label": "Add direct flights to additional locations (please describe below)"
     }, {
       "value": "Plane: Add more departure and arrival times",
       "facets": ["plane"],
