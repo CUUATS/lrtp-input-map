@@ -12,6 +12,13 @@ lrtp-app {
     animation-name: flash-animation;
     animation-duration: 1.5s;
   }
+  gl-form-page {
+    ion-list-header,
+    gl-field[type="text"] ion-label {
+      font-weight: bold;
+      font-size: 1.1rem !important;
+    }
+  }
 
   @-webkit-keyframes flash-animation {
       from { background: yellow; }
