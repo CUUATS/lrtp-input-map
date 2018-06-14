@@ -1,10 +1,14 @@
 import { Component, Element, Listen, Prop } from '@stencil/core';
+import Driver from 'driver.js';
 import '@cuuats/webmapgl';
 import '@ionic/core';
 
 
 @Component({
-  styleUrl: 'app.scss',
+  styleUrls: [
+    '../../../node_modules/driver.js/dist/driver.min.css',
+    'app.scss'
+  ],
   tag: 'lrtp-app'
 })
 export class App {
@@ -33,6 +37,14 @@ export class App {
     this.clickCtrl.setClickable('lrtp:cluster', true);
     this.clickCtrl.setClickable('lrtp:comment', true);
     this.surveyCtrl = await this.lazySurveyCtrl.componentOnReady();
+
+    let shown = localStorage.getItem('lrtp.intro') === 'true';
+    if (!shown) {
+      localStorage.setItem('lrtp.intro', 'true');
+      // TODO: Figure out a better way to determine when the feature list
+      // is loaded.
+      setTimeout(() => this.showIntro(), 1000);
+    }
   }
 
   closeDrawer() {
@@ -101,12 +113,78 @@ export class App {
     return await alert.present();
   }
 
+  showIntro() {
+    let driver = new Driver({
+      animate: false,
+      padding: 0,
+      prevBtnText: 'Prev'
+    });
+
+    let steps = [
+      {
+        element: 'gl-map',
+        popover: {
+          title: 'Welcome',
+          description: 'Welcome to <strong>C-U Transportation Voices</strong> ' +
+          'by the Champaign County Regional Planning Commission. ' +
+          'You can browse the map to see comments.'
+        }
+      },
+      {
+        element: 'lrtp-comment-detail',
+        popover: {
+          title: 'View Comments',
+          description: 'The comments pane shows the details of all comments ' +
+            'currently visible in the map.'
+        }
+      },
+      {
+        element: '.lrtp-locate-button',
+        popover: {
+          title: 'Locate a Comment',
+          description: 'Tap the locate button to zoom the map to a comment.',
+          position: 'left'
+        }
+      },
+      {
+        element: 'gl-like-button',
+        popover: {
+          title: 'Like a Comment',
+          description: 'Show your support for a comment by tapping the star.',
+          position: 'left'
+        }
+      },
+      {
+        element: 'ion-fab',
+        popover: {
+          title: 'Add a Comment',
+          description: 'Add a comment by tapping the plus button, ' +
+            'selecting a location, and filling out the comment form.',
+          position: 'left'
+        }
+      },
+      {
+        element: '.lrtp-survey-button button',
+        popover: {
+          title: 'Take the Survey',
+          description: 'Tap the lightbulb to take a brief survey about the ' +
+            'future of transportation in our region. Happy browsing!',
+          position: 'left'
+        }
+      },
+    ];
+
+    driver.defineSteps(steps);
+    driver.start();
+  }
+
   render() {
     return ([
       <gl-app label="C-U Transportation Voices" menu={false}>
         <gl-fullscreen slot="start-buttons"></gl-fullscreen>
         <gl-basemaps slot="start-buttons"></gl-basemaps>
-        <ion-button slot="end-buttons" onClick={() => this.openSurvey()}>
+        <ion-button slot="end-buttons" class="lrtp-survey-button"
+            onClick={() => this.openSurvey()}>
           <ion-icon slot="icon-only" name="bulb"></ion-icon>
         </ion-button>
         <gl-drawer-toggle slot="end-buttons" icon="chatbubbles">
@@ -128,7 +206,8 @@ export class App {
           <gl-feature-add layers="lrtp:comment"
             url={this.commentUrl}
             token={this.token} onClick={() => this.closeDrawer()}
-            schema={this.schemaUrl} label="Add a Comment" alertDuration={0}>
+            schema={this.schemaUrl} label="Add a Comment" alertDuration={0}
+            data-step="1" data-intro="Foo bar!">
           </gl-feature-add>
         </gl-feature-buttons>
         <gl-drawer slot="after-content" open={true} drawer-title="Comments"

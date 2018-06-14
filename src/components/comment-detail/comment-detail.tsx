@@ -62,7 +62,7 @@ export class CommentDetail {
             {props.comment_description || null}
           </p>
         </ion-label>
-        <ion-button fill="clear" slot="end"
+        <ion-button fill="clear" slot="end" class="lrtp-locate-button"
             onClick={() => this.locate()}>
           <ion-icon slot="icon-only" name="locate"></ion-icon>
         </ion-button>

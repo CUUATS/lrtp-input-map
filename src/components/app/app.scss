@@ -39,4 +39,15 @@ lrtp-app {
   ion-toolbar ion-title .toolbar-title {
     font-size: 1em;
   }
+  div#driver-popover-item {
+    max-width: 200px;
+    min-width: 200px;
+    .driver-popover-title {
+      font-size: 14px;
+    }
+    .driver-popover-description {
+      font-size: 12px;
+      line-height: 1.2;
+    }
+  }
 }
