@@ -23,6 +23,49 @@ lrtp-app {
       text-transform: none;
     }
   }
+  gl-form-page ion-list-header {
+    justify-content: flex-start;
+  }
+  gl-draw-toolbar .toolbar-title::before,
+  gl-form-page ion-list-header::before,
+  gl-form-page .item-textarea ion-label::before {
+    background-color: black;
+    border-radius: 0.7em;
+    color: white;
+    content: '1';
+    display: inline-block;
+    font-weight: bold;
+    height: 1.4em;
+    line-height: 1.4em;
+    margin-right: 0.5em;
+    text-align: center;
+    width: 1.4em;
+  }
+  gl-form-page ion-list-header::before {
+    content: '4';
+  }
+  gl-form-page.gl-form-page-facet-none ion-list-header::before {
+    content: '2';
+  }
+  gl-form-page.gl-form-page-facet-pedestrian,
+  gl-form-page.gl-form-page-facet-bicycle,
+  gl-form-page.gl-form-page-facet-bus,
+  gl-form-page.gl-form-page-facet-automobile,
+  gl-form-page.gl-form-page-facet-plane,
+  gl-form-page.gl-form-page-facet-train {
+    ion-list-header::before {
+      content: '3';
+    }
+  }
+  gl-form-page .item-textarea ion-label::before {
+    content: '5';
+  }
+  gl-form-page.gl-form-page-facet-plane,
+  gl-form-page.gl-form-page-facet-train {
+    .item-textarea ion-label::before {
+      content: '4';
+    }
+  }
 
   @-webkit-keyframes flash-animation {
       from { background: yellow; }

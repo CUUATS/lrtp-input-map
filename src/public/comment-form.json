@@ -1,5 +1,8 @@
 {
   "facets": [{
+    "label": "Choose a Mode of Transportation",
+    "widget": "header"
+  }, {
     "value": "pedestrian",
     "image": "/voices/public/img/pedestrian.png",
     "label": "Walking or Wheelchair"
@@ -23,6 +26,10 @@
     "value": "plane",
     "image": "/voices/public/img/plane.png",
     "label": "Plane"
+  }, {
+    "label": "Choose a Category",
+    "widget": "header",
+    "facets": ["pedestrian", "bicycle", "bus", "automobile"]
   }, {
     "value": "pedestrian-crosswalk",
     "facets": ["pedestrian"],
@@ -116,7 +123,7 @@
   }],
   "fields": [{
     "attribute": "comment_type",
-    "label": "Comment",
+    "label": "Choose a Comment",
     "widget": "radio",
     "required": true,
     "facets": ["pedestrian-*", "bicycle-*", "bus-*", "automobile-*", "train", "plane"],
@@ -573,7 +580,7 @@
     "attribute": "comment_description",
     "type": "text",
     "widget": "textarea",
-    "label": "Additional Details (optional)",
+    "label": "Provide Additional Details (optional)",
     "facets": ["pedestrian-*", "bicycle-*", "bus-*", "automobile-*", "train", "plane"]
   }]
 }

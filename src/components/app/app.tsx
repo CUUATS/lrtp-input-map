@@ -206,8 +206,7 @@ export class App {
           <gl-feature-add layers="lrtp:comment"
             url={this.commentUrl}
             token={this.token} onClick={() => this.closeDrawer()}
-            schema={this.schemaUrl} label="Add a Comment" alertDuration={0}
-            data-step="1" data-intro="Foo bar!">
+            schema={this.schemaUrl} label="Add a Comment" alertDuration={0}>
           </gl-feature-add>
         </gl-feature-buttons>
         <gl-drawer slot="after-content" open={true} drawer-title="Comments"
