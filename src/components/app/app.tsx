@@ -2,6 +2,7 @@ import { Component, Element, Listen, Prop } from '@stencil/core';
 import Driver from 'driver.js';
 import '@cuuats/webmapgl';
 import '@ionic/core';
+import { _t } from '../i18n/i18n';
 
 
 @Component({
@@ -92,10 +93,9 @@ export class App {
     if (success) {
       let desc = feature.properties.comment_description;
       message = (!desc || desc == '') ?
-        'Your comment has been added.' :
-        'Your comment is awaiting moderation.';
+        _t('lrtp.app.comment-added') : _t('lrtp.app.comment-moderation');
     } else {
-      message = 'An error occurred. Please try again later.';
+      message = _t('lrtp.app.comment-error');
     }
 
     let options = {
@@ -117,58 +117,58 @@ export class App {
     let driver = new Driver({
       animate: false,
       padding: 0,
-      prevBtnText: 'Prev'
+      nextBtnText: _t('lrtp.app.intro.next'),
+      prevBtnText: _t('lrtp.app.intro.prev'),
+      doneBtnText: _t('lrtp.app.intro.done'),
+      closeBtnText: _t('lrtp.app.intro.close')
     });
 
     let steps = [
       {
         element: 'gl-map',
         popover: {
-          title: 'Welcome',
-          description: 'Welcome to <strong>C-U Transportation Voices</strong> ' +
-          'by the Champaign County Regional Planning Commission. ' +
-          'You can browse the map to see comments.'
+          title: _t('lrtp.app.intro.welcome.title'),
+          description: _t('lrtp.app.intro.welcome.text', {
+            app_label: '<strong>' + _t('lrtp.app.label') + '</strong>'
+          })
         }
       },
       {
         element: 'lrtp-comment-detail',
         popover: {
-          title: 'View Comments',
-          description: 'The comments pane shows the details of all comments ' +
-            'currently visible in the map.'
+          title: _t('lrtp.app.intro.view.title'),
+          description: _t('lrtp.app.intro.view.text')
         }
       },
       {
         element: '.lrtp-locate-button',
         popover: {
-          title: 'Locate a Comment',
-          description: 'Tap the locate button to zoom the map to a comment.',
+          title: _t('lrtp.app.intro.locate.title'),
+          description: _t('lrtp.app.intro.locate.text'),
           position: 'left'
         }
       },
       {
         element: 'gl-like-button',
         popover: {
-          title: 'Like a Comment',
-          description: 'Show your support for a comment by tapping the star.',
+          title: _t('lrtp.app.intro.like.title'),
+          description: _t('lrtp.app.intro.like.text'),
           position: 'left'
         }
       },
       {
         element: 'ion-fab',
         popover: {
-          title: 'Add a Comment',
-          description: 'Add a comment by tapping the plus button, ' +
-            'selecting a location, and filling out the comment form.',
+          title: _t('lrtp.app.intro.add.title'),
+          description: _t('lrtp.app.intro.add.text'),
           position: 'left'
         }
       },
       {
         element: '.lrtp-survey-button button',
         popover: {
-          title: 'Take the Survey',
-          description: 'Tap the lightbulb to take a brief survey about the ' +
-            'future of transportation in our region. Happy browsing!',
+          title: _t('lrtp.app.intro.survey.title'),
+          description: _t('lrtp.app.intro.survey.text'),
           position: 'left'
         }
       },
@@ -180,7 +180,7 @@ export class App {
 
   render() {
     return ([
-      <gl-app label="C-U Transportation Voices" menu={false}>
+      <gl-app label={_t('lrtp.app.label')} menu={false}>
         <gl-fullscreen slot="start-buttons"></gl-fullscreen>
         <gl-basemaps slot="start-buttons"></gl-basemaps>
         <ion-button slot="end-buttons" class="lrtp-survey-button"
@@ -192,24 +192,28 @@ export class App {
         <gl-map ref={(r: HTMLGlMapElement) => this.map = r}
             longitude={-88.228878} latitude={40.110319} zoom={12} maxzoom={22}>
           <gl-style url={this.styleUrl} id="lrtp"
-            name="Comments" enabled={true} token={this.token}></gl-style>
+            name={_t('lrtp.app.comment.label')}
+            enabled={true} token={this.token}></gl-style>
           <gl-style url="https://maps.cuuats.org/basemaps/imagery/style.json"
             basemap={true}
             thumbnail="https://maps.cuuats.org/tiles/imagery/13/2087/3098.png"
-            name="Imagery" enabled={false}></gl-style>
+            name={_t('lrtp.app.basemap.imagery')} enabled={false}></gl-style>
           <gl-style url="https://maps.cuuats.org/basemaps/hybrid/style.json"
             basemap={true}
             thumbnail="https://maps.cuuats.org/tiles/imagery/13/2087/3098.png"
-            name="Hybrid" enabled={true}></gl-style>
+            name={_t('lrtp.app.basemap.hybrid')} enabled={true}></gl-style>
         </gl-map>
         <gl-feature-buttons vertical="bottom" horizontal="end">
           <gl-feature-add layers="lrtp:comment"
             url={this.commentUrl}
             token={this.token} onClick={() => this.closeDrawer()}
-            schema={this.schemaUrl} label="Add a Comment" alertDuration={0}>
+            schema={this.schemaUrl} label={_t('lrtp.app.comment.add')}
+            toolbarLabel={_t('lrtp.app.comment.location')}
+            alertDuration={0}>
           </gl-feature-add>
         </gl-feature-buttons>
-        <gl-drawer slot="after-content" open={true} drawer-title="Comments"
+        <gl-drawer slot="after-content" open={true}
+            drawer-title={_t('lrtp.app.comment.label')}
             ref={(r: HTMLGlDrawerElement) => this.drawer = r}>
           <gl-feature-list source="lrtp:comments" item={false}
             component="lrtp-comment-detail"

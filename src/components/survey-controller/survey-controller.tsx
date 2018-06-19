@@ -1,4 +1,6 @@
 import { Component, Listen, Method, Prop } from '@stencil/core';
+import { _t } from '../i18n/i18n';
+
 
 @Component({
   tag: 'lrtp-survey-controller'
@@ -52,18 +54,17 @@ export class SurveyController {
     this.prompted = true;
     localStorage.setItem('lrtp.survey.prompted', 'true');
     return this.alertCtrl.create({
-      header: 'Take the Transportation Survey',
-      message: 'Please share your thoughts about the future of ' +
-        'transportation in our community by taking a brief survey. ' +
-        'You can access the survey later using ' +
-        'the <ion-icon name="bulb"></ion-icon> icon in the top toolbar.',
+      header: _t('lrtp.survey-controller.title'),
+      message: _t('lrtp.survey-controller.text', {
+        icon: '<ion-icon name="bulb"></ion-icon>'
+      }),
       buttons: [
         {
-          text: 'Take Later',
+          text: _t('lrtp.survey-controller.later'),
           role: 'cancel',
           cssClass: 'secondary'
         }, {
-          text: 'Take Now',
+          text: _t('lrtp.survey-controller.now'),
           handler: () => {
             window.location.href = this.surveyUrl;
           }
