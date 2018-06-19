@@ -24,7 +24,7 @@ export const phrases = {
           "text": "Welcome to %{app_label} by the Champaign County Regional Planning Commission. You can browse the map to see comments."
         },
         "view": {
-          "title":"View Comments",
+          "title": "View Comments",
           "text": "The comments pane shows the details of all comments currently visible in the map."
         },
         "locate": {
