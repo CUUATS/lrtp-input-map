@@ -15,8 +15,8 @@ export const phrases = {
         "error": "Ocurrió un error. Por favor, inténtelo de nuevo más tarde."
       },
       "intro": {
-        "next": "Siguiente",
-        "prev": "Anterior",
+        "next": "→",
+        "prev": "←",
         "done": "Hecho",
         "close": "Cerrado",
         "welcome": {
@@ -41,7 +41,7 @@ export const phrases = {
         },
         "survey": {
           "title": "Tome la Encuesta",
-          "text": "Tap the lightbulb to take a brief survey about the future of transportation in our region. Happy browsing!"
+          "text": "Toque la bombilla para realizar una breve encuesta sobre el futuro del transporte en nuestra región. ¡Feliz navegación!"
         }
       }
     },
