@@ -93,9 +93,9 @@ export class App {
     if (success) {
       let desc = feature.properties.comment_description;
       message = (!desc || desc == '') ?
-        _t('lrtp.app.comment-added') : _t('lrtp.app.comment-moderation');
+        _t('lrtp.app.comment.added') : _t('lrtp.app.comment.moderation');
     } else {
-      message = _t('lrtp.app.comment-error');
+      message = _t('lrtp.app.comment.error');
     }
 
     let options = {
