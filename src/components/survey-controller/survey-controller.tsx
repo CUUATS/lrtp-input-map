@@ -16,7 +16,6 @@ export class SurveyController {
   @Prop() commentThreshold: number = 1;
   @Prop() likeThreshold: number = 2;
   @Prop() delay: number = 3000;
-  @Prop() surveyUrl: string = 'http://ccrpc.org/';
 
   async componentWillLoad() {
     this.prompted = localStorage.getItem('lrtp.survey.prompted') === 'true';
@@ -53,6 +52,7 @@ export class SurveyController {
   create() {
     this.prompted = true;
     localStorage.setItem('lrtp.survey.prompted', 'true');
+
     return this.alertCtrl.create({
       header: _t('lrtp.survey-controller.title'),
       message: _t('lrtp.survey-controller.text', {
@@ -66,7 +66,8 @@ export class SurveyController {
         }, {
           text: _t('lrtp.survey-controller.now'),
           handler: () => {
-            window.location.href = this.surveyUrl;
+            window.location.href =
+              document.querySelector('lrtp-app').surveyUrl;
           }
         }
       ]

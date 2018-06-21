@@ -39,6 +39,7 @@ declare global {
       'likeUrl': string;
       'schemaUrl': string;
       'styleUrl': string;
+      'surveyUrl': string;
       'token': string;
     }
   }
@@ -66,6 +67,7 @@ declare global {
       'likeUrl'?: string;
       'schemaUrl'?: string;
       'styleUrl'?: string;
+      'surveyUrl'?: string;
       'token'?: string;
     }
   }
@@ -117,7 +119,6 @@ declare global {
       'create': () => Promise<HTMLIonAlertElement>;
       'delay': number;
       'likeThreshold': number;
-      'surveyUrl': string;
     }
   }
 
@@ -143,7 +144,6 @@ declare global {
       'commentThreshold'?: number;
       'delay'?: number;
       'likeThreshold'?: number;
-      'surveyUrl'?: string;
     }
   }
 }

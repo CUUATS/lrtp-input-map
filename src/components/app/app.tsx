@@ -31,6 +31,7 @@ export class App {
   @Prop() likeUrl: string;
   @Prop() schemaUrl: string;
   @Prop() styleUrl: string;
+  @Prop() surveyUrl: string;
   @Prop() token: string;
 
   async componentDidLoad() {
