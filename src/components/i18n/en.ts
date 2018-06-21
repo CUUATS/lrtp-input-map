@@ -241,7 +241,7 @@ export const phrases = {
         "transit": "Add transit option to and from the airport",
         "parking": "Offer free parking at the airport",
         "other": "Other (please describe below)"
-      },
+      }
     }
   }
 };
