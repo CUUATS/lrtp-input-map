@@ -1,5 +1,6 @@
 import { Component, Prop } from '@stencil/core';
 import '@ionic/core';
+import { _t } from '../i18n/i18n';
 
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'];
@@ -29,16 +30,12 @@ export class CommentDetail {
   }
 
   render() {
+    const small = screen.width <= 640;
     const props = this.feature.properties;
-    const mode = this.feature.properties.comment_type.split(':')[0];
-    const modeImage = '/voices/public/img/' + {
-      'Walking or Wheelchair': 'pedestrian.png',
-      'Bicycle': 'bicycle.png',
-      'Bus': 'bus.png',
-      'Automobile': 'automobile.png',
-      'Train': 'train.png',
-      'Plane': 'plane.png'
-    }[mode];
+    const mode = props.comment_mode;
+    const modeImage = '/voices/public/img/' + mode + '.png';
+    const comment = (_t(`lrtp.form.${mode}.label`) + ': ' +
+      _t(`lrtp.form.${props.comment_type}`)).replace(/\([^)]*\)/g, '');
 
     let dateStr = '';
     let date = new Date(this.feature.properties._created);
@@ -48,15 +45,13 @@ export class CommentDetail {
       if (props.comment_description) dateStr += ':';
     }
 
-    const small = screen.width <= 640;
-
     return (
       <ion-item lines="full" text-wrap>
         {(small) ? null: <ion-avatar slot="start">
             <img src={modeImage} alt={mode} />
           </ion-avatar>}
         <ion-label>
-          <h2>{props.comment_type}</h2>
+          <h2>{comment}</h2>
           <p>
             <strong>{dateStr}</strong>{' '}
             {props.comment_description || null}

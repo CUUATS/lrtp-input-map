@@ -68,7 +68,7 @@
         "circle-color": [
           "match",
           ["get", "comment_mode"],
-          "walking",
+          "pedestrian",
           "#944089",
           "bicycle",
           "#bdd938",

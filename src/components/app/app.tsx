@@ -209,6 +209,7 @@ export class App {
             token={this.token} onClick={() => this.closeDrawer()}
             schema={this.schemaUrl} label={_t('lrtp.app.comment.add')}
             toolbarLabel={_t('lrtp.app.comment.location')}
+            translateForm={true}
             alertDuration={0}>
           </gl-feature-add>
         </gl-feature-buttons>
