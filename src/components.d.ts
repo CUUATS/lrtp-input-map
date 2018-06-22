@@ -37,6 +37,7 @@ declare global {
     interface LrtpApp {
       'commentUrl': string;
       'likeUrl': string;
+      'multiuser': boolean;
       'schemaUrl': string;
       'styleUrl': string;
       'surveyUrl': string;
@@ -65,6 +66,7 @@ declare global {
     export interface LrtpAppAttributes extends HTMLAttributes {
       'commentUrl'?: string;
       'likeUrl'?: string;
+      'multiuser'?: boolean;
       'schemaUrl'?: string;
       'styleUrl'?: string;
       'surveyUrl'?: string;

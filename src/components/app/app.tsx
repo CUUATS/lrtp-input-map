@@ -29,10 +29,15 @@ export class App {
 
   @Prop() commentUrl: string;
   @Prop() likeUrl: string;
+  @Prop() multiuser: boolean = false;
   @Prop() schemaUrl: string;
   @Prop() styleUrl: string;
   @Prop() surveyUrl: string;
   @Prop() token: string;
+
+  async componentWillLoad() {
+    if (this.multiuser) localStorage.clear();
+  }
 
   async componentDidLoad() {
     this.clickCtrl = await this.lazyClickCtrl.componentOnReady();
