@@ -27,7 +27,9 @@ export class App {
   @Prop({connect: 'ion-toast-controller'}) toastCtrl!:
     HTMLIonToastControllerElement;
 
+  @Prop() bbox: string;
   @Prop() commentUrl: string;
+  @Prop() forwardGeocodeUrl: string;
   @Prop() likeUrl: string;
   @Prop() multiuser: boolean = false;
   @Prop() schemaUrl: string;
@@ -185,6 +187,7 @@ export class App {
   }
 
   render() {
+    let bbox = this.bbox.split(',').map((c) => parseFloat(c));
     return ([
       <gl-app label={_t('lrtp.app.label')} menu={false}>
         <gl-fullscreen slot="start-buttons"></gl-fullscreen>
@@ -195,6 +198,8 @@ export class App {
         </ion-button>
         <gl-drawer-toggle slot="end-buttons" icon="chatbubbles">
         </gl-drawer-toggle>
+        <lrtp-address-search forwardGeocodeUrl={this.forwardGeocodeUrl}
+            bbox={bbox as any}></lrtp-address-search>
         <gl-map ref={(r: HTMLGlMapElement) => this.map = r}
             longitude={-88.228878} latitude={40.110319} zoom={12} maxzoom={22}>
           <gl-style url={this.styleUrl} id="lrtp"

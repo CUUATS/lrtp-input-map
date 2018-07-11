@@ -34,8 +34,47 @@ import 'ionicons';
 declare global {
 
   namespace StencilComponents {
+    interface LrtpAddressSearch {
+      'bbox': [number, number, number, number];
+      'forwardGeocodeUrl': string;
+      'jobId': string;
+    }
+  }
+
+  interface HTMLLrtpAddressSearchElement extends StencilComponents.LrtpAddressSearch, HTMLStencilElement {}
+
+  var HTMLLrtpAddressSearchElement: {
+    prototype: HTMLLrtpAddressSearchElement;
+    new (): HTMLLrtpAddressSearchElement;
+  };
+  interface HTMLElementTagNameMap {
+    'lrtp-address-search': HTMLLrtpAddressSearchElement;
+  }
+  interface ElementTagNameMap {
+    'lrtp-address-search': HTMLLrtpAddressSearchElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'lrtp-address-search': JSXElements.LrtpAddressSearchAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface LrtpAddressSearchAttributes extends HTMLAttributes {
+      'bbox'?: [number, number, number, number];
+      'forwardGeocodeUrl'?: string;
+      'jobId'?: string;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
     interface LrtpApp {
+      'bbox': string;
       'commentUrl': string;
+      'forwardGeocodeUrl': string;
       'likeUrl': string;
       'multiuser': boolean;
       'schemaUrl': string;
@@ -64,7 +103,9 @@ declare global {
   }
   namespace JSXElements {
     export interface LrtpAppAttributes extends HTMLAttributes {
+      'bbox'?: string;
       'commentUrl'?: string;
+      'forwardGeocodeUrl'?: string;
       'likeUrl'?: string;
       'multiuser'?: boolean;
       'schemaUrl'?: string;
