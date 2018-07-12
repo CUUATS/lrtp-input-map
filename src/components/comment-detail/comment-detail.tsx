@@ -46,11 +46,11 @@ export class CommentDetail {
     }
 
     return (
-      <ion-item lines="full" text-wrap>
+      <ion-item lines="full">
         {(small) ? null: <ion-avatar slot="start">
             <img src={modeImage} alt={mode} />
           </ion-avatar>}
-        <ion-label>
+        <ion-label text-wrap>
           <h2>{comment}</h2>
           <p>
             <strong>{dateStr}</strong>{' '}
