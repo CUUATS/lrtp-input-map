@@ -1,6 +1,4 @@
 import { Component, Listen, Prop } from '@stencil/core';
-import '@cuuats/webmapgl';
-import '@ionic/core';
 
 
 @Component({

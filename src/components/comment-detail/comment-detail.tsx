@@ -1,5 +1,4 @@
 import { Component, Prop } from '@stencil/core';
-import '@ionic/core';
 import { _t } from '../i18n/i18n';
 
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',

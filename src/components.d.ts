@@ -25,9 +25,9 @@ declare global {
   interface HTMLAttributes {}
 }
 
-import '@cuuats/webmapgl';
-import '@ionic/core';
 import 'ionicons';
+import '@ionic/core';
+import '@cuuats/webmapgl';
 
 
 declare global {

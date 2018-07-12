@@ -1,8 +1,5 @@
 import { Component, Element, Listen, Prop } from '@stencil/core';
 import Driver from 'driver.js';
-import '@cuuats/webmapgl';
-import '@ionic/core';
-import 'ionicons';
 import { _t } from '../i18n/i18n';
 
 
