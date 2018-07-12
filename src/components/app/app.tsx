@@ -78,8 +78,9 @@ export class App {
           if (Math.abs(fx - dx) > 0.00001 || Math.abs(fy - dy) > 0.00001)
             return;
           if (found++ === 0)
-            detail.closest('ion-scroll').scrollTop = detail.offsetTop;
-          let container = detail.querySelector('div.item');
+            detail.closest('ion-content').getScrollElement().scrollTop =
+              detail.offsetTop;
+          let container = detail.querySelector('ion-item');
           container.classList.add('flash');
           setTimeout(() => container.classList.remove('flash'), 1500);
         });
