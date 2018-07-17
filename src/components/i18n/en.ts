@@ -1,5 +1,9 @@
 export const phrases = {
   "lrtp": {
+    "address-search": {
+      "success": "Location found: %{location}",
+      "failure": "Sorry, we couldn't find that location. Please try another search."
+    },
     "app": {
       "label": "C-U Transportation Voices",
       "basemap": {

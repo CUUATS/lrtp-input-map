@@ -1,4 +1,5 @@
 import { Component, Listen, Prop } from '@stencil/core';
+import { _t } from '../i18n/i18n';
 
 
 @Component({
@@ -10,6 +11,8 @@ export class AddressSearch {
 
   @Prop({connect: 'gl-geocode-controller'}) lazyGeocodeCtrl!:
     HTMLGlGeocodeControllerElement;
+  @Prop({connect: 'ion-toast-controller'}) toastCtrl!:
+    HTMLIonToastControllerElement;
 
   @Prop() bbox: [number, number, number, number];
   @Prop() forwardGeocodeUrl: string;
@@ -20,8 +23,54 @@ export class AddressSearch {
   }
 
   @Listen('body:glForwardGeocode')
-  handleGeocode(e: CustomEvent) {
-    console.log(e);
+  async handleGeocode(e: CustomEvent) {
+    let results = e.detail.results;
+    let message;
+    if (results && results.length) {
+      this.zoomToResult(results[0]);
+      message = _t('lrtp.address-search.success', {
+        location: this.formatAddress(results[0].address)
+      });
+    } else {
+      message = _t('lrtp.address-search.failure');
+    }
+
+    let options = {
+      message: message,
+      duration: 3000
+    };
+
+    let toast = await this.toastCtrl.create(options);
+    await toast.present();
+    return toast;
+  }
+
+  @Listen('keydown.enter')
+  handleEnter(){
+    this.geocode();
+  }
+
+  formatAddress(address: any) {
+    let parts = [];
+    if (address.name &&
+        address.name != address.housenumber &&
+        address.name != address.city)
+      parts.push(address.name);
+    if (address.street) {
+      let part = address.street;
+      if (address.housenumber) part = address.housenumber + ' ' + part;
+      parts.push(part);
+    }
+    if (address.city) parts.push(address.city);
+    return parts.join(', ');
+  }
+
+  zoomToResult(result: any) {
+    let map = document.querySelector('gl-map');
+    map.fitBounds(result.bbox, {
+      maxZoom: 18,
+      padding: 20
+    });
   }
 
   async geocode() {
