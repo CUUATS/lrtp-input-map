@@ -1,4 +1,4 @@
-import { Component, Listen, Prop } from '@stencil/core';
+import { Component, Listen, Prop, State } from '@stencil/core';
 import { _t } from '../i18n/i18n';
 
 
@@ -8,6 +8,8 @@ import { _t } from '../i18n/i18n';
 export class AddressSearch {
   input?: HTMLIonInputElement;
   geocodeCtrl?: HTMLGlGeocodeControllerElement;
+
+  @State() hasValue: boolean = false;
 
   @Prop({connect: 'gl-geocode-controller'}) lazyGeocodeCtrl!:
     HTMLGlGeocodeControllerElement;
@@ -84,13 +86,30 @@ export class AddressSearch {
     });
   }
 
+  updateHasValue() {
+    if (this.input && this.input.value) {
+      this.hasValue = true;
+    } else {
+      this.hasValue = false;
+    }
+  }
+
+  clearInput() {
+    this.input.value = '';
+  }
+
   render() {
     return (
       <ion-toolbar color="secondary">
         <ion-input ref={(r: HTMLIonInputElement) => this.input = r}
+          onIonChange={() => this.updateHasValue()}
           placeholder={_t('lrtp.address-search.prompt')}></ion-input>
-        <ion-buttons slot="end" onClick={() => this.geocode()}>
-          <ion-button>
+        <ion-buttons slot="end">
+          {(this.hasValue) ? <ion-button color="light"
+              onClick={() => this.clearInput()}>
+            <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+          </ion-button> : null}
+          <ion-button onClick={() => this.geocode()} color="dark">
             <ion-icon slot="icon-only" name="search"></ion-icon>
           </ion-button>
         </ion-buttons>
