@@ -88,7 +88,7 @@ export class AddressSearch {
     return (
       <ion-toolbar color="secondary">
         <ion-input ref={(r: HTMLIonInputElement) => this.input = r}
-          placeholder="Search by address or place name..."></ion-input>
+          placeholder={_t('lrtp.address-search.prompt')}></ion-input>
         <ion-buttons slot="end" onClick={() => this.geocode()}>
           <ion-button>
             <ion-icon slot="icon-only" name="search"></ion-icon>
