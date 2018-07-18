@@ -1,13 +1,18 @@
 import { Component, Element, Listen, Prop, State } from '@stencil/core';
+import { Mode } from '@ionic/core';
 import { _t } from '../i18n/i18n';
 
 
 @Component({
+  styleUrls: {
+    md: 'address-search.md.scss'
+  },
   tag: 'lrtp-address-search'
 })
 export class AddressSearch {
   input?: HTMLIonInputElement;
   geocodeCtrl?: HTMLGlGeocodeControllerElement;
+  mode!: Mode;
 
   @Element() el: HTMLLrtpAddressSearchElement;
 
