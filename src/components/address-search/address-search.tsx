@@ -44,11 +44,6 @@ export class AddressSearch {
     this.hasFocus = false;
   }
 
-  @Listen('keydown.enter')
-  handleEnter(){
-    this.geocode();
-  }
-
   @Listen('keydown.down')
   handleDown(e) {
     let nextItem;
@@ -99,7 +94,9 @@ export class AddressSearch {
       parts.push(part);
     }
     if (address.city) parts.push(address.city);
-    return parts.join(', ');
+    if (!parts.length && address.county) parts.push(address.county);
+    if (parts.length) return parts.join(', ');
+    return address.display;
   }
 
   async selectResult(result: any) {
