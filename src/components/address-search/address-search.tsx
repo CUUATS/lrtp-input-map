@@ -1,4 +1,4 @@
-import { Component, Listen, Prop, State } from '@stencil/core';
+import { Component, Element, Listen, Prop, State } from '@stencil/core';
 import { _t } from '../i18n/i18n';
 
 
@@ -9,16 +9,19 @@ export class AddressSearch {
   input?: HTMLIonInputElement;
   geocodeCtrl?: HTMLGlGeocodeControllerElement;
 
+  @Element() el: HTMLLrtpAddressSearchElement;
+
+  @State() hasFocus: boolean = false;
   @State() hasValue: boolean = false;
+  @State() results: any[] = [];
 
   @Prop({connect: 'gl-geocode-controller'}) lazyGeocodeCtrl!:
     HTMLGlGeocodeControllerElement;
-  @Prop({connect: 'ion-toast-controller'}) toastCtrl!:
-    HTMLIonToastControllerElement;
 
   @Prop() bbox: [number, number, number, number];
   @Prop() forwardGeocodeUrl: string;
   @Prop() jobId: string = 'lrtp-search';
+  @Prop() limit: number = 10;
 
   async componentWillLoad() {
     this.geocodeCtrl = await this.lazyGeocodeCtrl.componentOnReady();
@@ -26,30 +29,52 @@ export class AddressSearch {
 
   @Listen('body:glForwardGeocode')
   async handleGeocode(e: CustomEvent) {
-    let results = e.detail.results;
-    let message;
-    if (results && results.length) {
-      this.zoomToResult(results[0]);
-      message = _t('lrtp.address-search.success', {
-        location: this.formatAddress(results[0].address)
-      });
-    } else {
-      message = _t('lrtp.address-search.failure');
-    }
+    this.results = e.detail.results;
+  }
 
-    let options = {
-      message: message,
-      duration: 3000
-    };
-
-    let toast = await this.toastCtrl.create(options);
-    await toast.present();
-    return toast;
+  @Listen('body:click')
+  handleBodyClick() {
+    this.hasFocus = false;
   }
 
   @Listen('keydown.enter')
   handleEnter(){
     this.geocode();
+  }
+
+  @Listen('keydown.down')
+  handleDown() {
+    let nextItem;
+    if (document.activeElement.tagName === 'ION-ITEM') {
+      this.unsetFocus();
+      nextItem = document.activeElement.nextElementSibling;
+    }
+    if (!nextItem) nextItem = this.el.querySelector('ion-item');
+    if (nextItem) this.setFocus(nextItem);
+  }
+
+  @Listen('keydown.up')
+  handleUp(){
+    if (document.activeElement.tagName === 'ION-ITEM') {
+      this.unsetFocus();
+      let prevItem = document.activeElement.previousElementSibling;
+      if (prevItem) {
+        this.setFocus(prevItem);
+      } else if (this.input) {
+        this.input.querySelector('input').focus();
+      }
+    }
+  }
+
+  setFocus(el: Element) {
+    let button = el.shadowRoot.querySelector('button');
+    button.focus();
+    button.style.color = '#3880ff';
+  }
+
+  unsetFocus() {
+    let button = document.activeElement.shadowRoot.querySelector('button');
+    button.style.color = null;
   }
 
   formatAddress(address: any) {
@@ -67,12 +92,13 @@ export class AddressSearch {
     return parts.join(', ');
   }
 
-  zoomToResult(result: any) {
+  async selectResult(result: any) {
     let map = document.querySelector('gl-map');
     map.fitBounds(result.bbox, {
       maxZoom: 18,
       padding: 20
     });
+    this.hasFocus = false;
   }
 
   async geocode() {
@@ -82,38 +108,52 @@ export class AddressSearch {
       bbox: this.bbox,
       bounded: true,
       jobId: this.jobId,
-      limit: 1
+      limit: this.limit
     });
   }
 
-  updateHasValue() {
+  renderResults() {
+    if (!this.results.length || !this.hasValue || !this.hasFocus) return null;
+    let items = this.results.map((result) => (
+      <ion-item button={true} onClick={() => this.selectResult(result)}>
+        <ion-icon name="pin" slot="start"></ion-icon>
+        <ion-label>{this.formatAddress(result.address)}</ion-label>
+      </ion-item>
+    ));
+    return (
+      <ion-list lines="full">{items}</ion-list>
+    );
+  }
+
+  handleChange() {
     if (this.input && this.input.value) {
       this.hasValue = true;
+      this.geocode();
     } else {
       this.hasValue = false;
+      if (this.results.length) this.results = [];
     }
   }
 
-  clearInput() {
-    this.input.value = '';
+  handleFocus() {
+    this.hasFocus = true;
+  }
+
+  handleClick(e) {
+    // Prevent propagation of click events from the searchbar so that
+    // it does not lose focus.
+    e.stopPropagation();
   }
 
   render() {
-    return (
-      <ion-toolbar color="secondary">
-        <ion-input ref={(r: HTMLIonInputElement) => this.input = r}
-          onIonChange={() => this.updateHasValue()}
-          placeholder={_t('lrtp.address-search.prompt')}></ion-input>
-        <ion-buttons slot="end">
-          {(this.hasValue) ? <ion-button color="light"
-              onClick={() => this.clearInput()}>
-            <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
-          </ion-button> : null}
-          <ion-button onClick={() => this.geocode()} color="dark">
-            <ion-icon slot="icon-only" name="search"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    );
+    return ([
+      <ion-searchbar ref={(r: HTMLIonInputElement) => this.input = r}
+        placeholder={_t('lrtp.address-search.prompt')}
+        onIonChange={() => this.handleChange()}
+        onIonFocus={() => this.handleFocus()}
+        onClick={(e) => this.handleClick(e)}>
+      </ion-searchbar>,
+      this.renderResults()
+    ]);
   }
 }

@@ -37,6 +37,7 @@ declare global {
       'bbox': [number, number, number, number];
       'forwardGeocodeUrl': string;
       'jobId': string;
+      'limit': number;
     }
   }
 
@@ -62,6 +63,7 @@ declare global {
       'bbox'?: [number, number, number, number];
       'forwardGeocodeUrl'?: string;
       'jobId'?: string;
+      'limit'?: number;
     }
   }
 }
