@@ -1,4 +1,5 @@
 lrtp-address-search {
+  background-color: white;
   display: flex;
   flex-direction: column;
   left: 0;
@@ -10,7 +11,7 @@ lrtp-address-search {
   ion-searchbar {
     flex: none;
   }
-  ion-list.list-md {
+  ion-list.list-ios {
     margin-bottom: 0;
     overflow-y: scroll;
   }

@@ -5,6 +5,7 @@ import { _t } from '../i18n/i18n';
 
 @Component({
   styleUrls: {
+    ios: 'address-search.ios.scss',
     md: 'address-search.md.scss'
   },
   tag: 'lrtp-address-search'
@@ -48,19 +49,23 @@ export class AddressSearch {
   }
 
   @Listen('keydown.down')
-  handleDown() {
+  handleDown(e) {
     let nextItem;
     if (document.activeElement.tagName === 'ION-ITEM') {
       this.unsetFocus();
       nextItem = document.activeElement.nextElementSibling;
     }
     if (!nextItem) nextItem = this.el.querySelector('ion-item');
-    if (nextItem) this.setFocus(nextItem);
+    if (nextItem) {
+      e.preventDefault();
+      this.setFocus(nextItem);
+    }
   }
 
   @Listen('keydown.up')
-  handleUp(){
+  handleUp(e) {
     if (document.activeElement.tagName === 'ION-ITEM') {
+      e.preventDefault();
       this.unsetFocus();
       let prevItem = document.activeElement.previousElementSibling;
       if (prevItem) {
