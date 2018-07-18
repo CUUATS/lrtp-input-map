@@ -35,6 +35,7 @@ export class AddressSearch {
 
   @Listen('body:glForwardGeocode')
   async handleGeocode(e: CustomEvent) {
+    console.log(e.detail.results);
     this.results = e.detail.results;
   }
 
@@ -90,7 +91,6 @@ export class AddressSearch {
   formatAddress(address: any) {
     let parts = [];
     if (address.name &&
-        address.name != address.housenumber &&
         address.name != address.city)
       parts.push(address.name);
     if (address.street) {
