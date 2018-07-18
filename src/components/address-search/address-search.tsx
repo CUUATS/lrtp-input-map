@@ -35,7 +35,6 @@ export class AddressSearch {
 
   @Listen('body:glForwardGeocode')
   async handleGeocode(e: CustomEvent) {
-    console.log(e.detail.results);
     this.results = e.detail.results;
   }
 
@@ -101,10 +100,12 @@ export class AddressSearch {
 
   async selectResult(result: any) {
     let map = document.querySelector('gl-map');
-    map.fitBounds(result.bbox, {
-      maxZoom: 18,
-      padding: 20
-    });
+    setTimeout(() => {
+      map.fitBounds(result.bbox, {
+        maxZoom: 18,
+        padding: 20
+      });
+    }, 100);
     this.hasFocus = false;
   }
 
