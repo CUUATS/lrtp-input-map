@@ -14,8 +14,8 @@
   },
   "dependencies": {
     "@cuuats/webmapgl": "0.3.1",
-    "@ionic/core": "4.0.0-alpha.9",
-    "@stencil/core": "0.10.2",
+    "@ionic/core": "4.0.0-alpha.11",
+    "@stencil/core": "0.10.7",
     "@stencil/sass": "^0.0.5",
     "@types/node-polyglot": "^0.4.31",
     "driver.js": "^0.5.2",
