@@ -190,7 +190,7 @@ export class App {
         }
       },
       {
-        element: '.lrtp-survey-button button',
+        element: '.lrtp-survey-button',
         popover: {
           title: _t('lrtp.app.intro.survey.title'),
           description: _t('lrtp.app.intro.survey.text'),
