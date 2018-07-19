@@ -68,7 +68,6 @@ export class App {
     const zoom = await this.map.getZoom();
 
     if (feature.layer.id === 'lrtp:comment') {
-      this.drawer.open = true;
       this.map.easeTo({
         center: feature.geometry.coordinates,
         zoom: (zoom < 15) ? 15 : zoom,
