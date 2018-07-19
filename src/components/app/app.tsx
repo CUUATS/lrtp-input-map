@@ -65,28 +65,22 @@ export class App {
     if (!features || !features.length) return
 
     const feature = features[0];
+    const zoom = await this.map.getZoom();
+
     if (feature.layer.id === 'lrtp:comment') {
       this.drawer.open = true;
-      let [fx, fy] = feature.geometry.coordinates;
-      let found = 0;
-      Array.from(document.querySelectorAll('lrtp-comment-detail'))
-        .forEach((detail) => {
-          let [dx, dy] = detail.feature.geometry.coordinates;
-          if (Math.abs(fx - dx) > 0.00001 || Math.abs(fy - dy) > 0.00001)
-            return;
-          if (found++ === 0)
-            detail.closest('ion-content').getScrollElement().scrollTop =
-              detail.offsetTop;
-          let container = detail.querySelector('ion-item');
-          container.classList.add('flash');
-          setTimeout(() => container.classList.remove('flash'), 1500);
-        });
+      this.map.easeTo({
+        center: feature.geometry.coordinates,
+        zoom: (zoom < 15) ? 15 : zoom,
+        duration: 1000
+      });
+      setTimeout(() => this.flashFeature(feature.geometry.coordinates), 1250);
     } else {
-      const zoom = await this.map.getZoom();
       const maxZoom = await this.map.getMaxZoom();
       this.map.easeTo({
         center: feature.geometry.coordinates,
-        zoom: (zoom + 1 <= maxZoom) ? zoom + 1 : maxZoom
+        zoom: (zoom + 1 <= maxZoom) ? zoom + 1 : maxZoom,
+        duration: 500
       });
     }
   }
@@ -118,6 +112,23 @@ export class App {
   async openSurvey() {
     let alert = await this.surveyCtrl.create();
     return await alert.present();
+  }
+
+  flashFeature(coordinates: [number, number]) {
+    let [fx, fy] = coordinates;
+    let found = 0;
+    Array.from(document.querySelectorAll('lrtp-comment-detail'))
+      .forEach((detail) => {
+        let [dx, dy] = detail.feature.geometry.coordinates;
+        if (Math.abs(fx - dx) > 0.00001 || Math.abs(fy - dy) > 0.00001)
+          return;
+        if (found++ === 0)
+          detail.closest('ion-content').getScrollElement().scrollTop =
+            detail.offsetTop;
+        let container = detail.querySelector('ion-item');
+        container.classList.add('flash');
+        setTimeout(() => container.classList.remove('flash'), 1500);
+      });
   }
 
   showIntro() {
