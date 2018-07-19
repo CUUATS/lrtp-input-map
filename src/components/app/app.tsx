@@ -63,18 +63,16 @@ export class App {
   async handleClick(e: CustomEvent) {
     const features = e.detail.features;
     if (!features || !features.length) return
-
     const feature = features[0];
-    const zoom = await this.map.getZoom();
-
     if (feature.layer.id === 'lrtp:comment') {
-      this.map.easeTo({
-        center: feature.geometry.coordinates,
-        zoom: (zoom < 15) ? 15 : zoom,
-        duration: 1000
-      });
-      setTimeout(() => this.flashFeature(feature.geometry.coordinates), 1250);
+      if (!this.drawer.open) {
+        this.drawer.open = true;
+        setTimeout(() => this.handleCommentClick(feature), 250);
+      } else {
+        this.handleCommentClick(feature);
+      }
     } else {
+      const zoom = await this.map.getZoom();
       const maxZoom = await this.map.getMaxZoom();
       this.map.easeTo({
         center: feature.geometry.coordinates,
@@ -111,6 +109,16 @@ export class App {
   async openSurvey() {
     let alert = await this.surveyCtrl.create();
     return await alert.present();
+  }
+
+  async handleCommentClick(feature) {
+    const zoom = await this.map.getZoom();
+    this.map.easeTo({
+      center: feature.geometry.coordinates,
+      zoom: (zoom < 15) ? 15 : zoom,
+      duration: 1000
+    });
+    setTimeout(() => this.flashFeature(feature.geometry.coordinates), 1250);
   }
 
   flashFeature(coordinates: [number, number]) {
