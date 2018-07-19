@@ -100,12 +100,10 @@ export class AddressSearch {
 
   async selectResult(result: any) {
     let map = document.querySelector('gl-map');
-    setTimeout(() => {
-      map.fitBounds(result.bbox, {
-        maxZoom: 18,
-        padding: 20
-      });
-    }, 100);
+    map.fitBounds(result.bbox, {
+      maxZoom: 18,
+      padding: 20
+    });
     this.hasFocus = false;
   }
 
