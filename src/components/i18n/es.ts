@@ -1,5 +1,8 @@
 export const phrases = {
   "lrtp": {
+    "address-search": {
+      "prompt": "Buscar por dirección o nombre de lugar..."
+    },
     "app": {
       "label": "C-U Voces de Transporte",
       "basemap": {
