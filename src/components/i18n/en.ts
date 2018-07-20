@@ -1,9 +1,7 @@
 export const phrases = {
   "lrtp": {
     "address-search": {
-      "prompt": "Search by address or place name...",
-      "success": "Location found: %{location}",
-      "failure": "Sorry, we couldn't find that location. Please try another search."
+      "prompt": "Search by address or place name..."
     },
     "app": {
       "label": "C-U Transportation Voices",
