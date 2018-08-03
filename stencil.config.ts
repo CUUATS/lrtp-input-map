@@ -1,6 +1,6 @@
-const sass = require('@stencil/sass');
+import { sass } from '@stencil/sass';
 
-exports.config = {
+export const config = {
   namespace: 'lrtp',
   copy: [
     {
