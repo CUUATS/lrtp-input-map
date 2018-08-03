@@ -26,9 +26,15 @@ declare global {
 }
 
 import '@ionic/core';
-import '@cuuats/webmapgl';
 import 'ionicons';
+import '@stencil/router';
+import '@stencil/state-tunnel';
+import '@cuuats/webmapgl';
 
+import {
+  MatchResults,
+  RouterHistory,
+} from '@stencil/router';
 
 declare global {
 
@@ -158,36 +164,103 @@ declare global {
 declare global {
 
   namespace StencilComponents {
-    interface LrtpSurveyController {
-      'commentThreshold': number;
-      'create': () => Promise<HTMLIonAlertElement>;
-      'delay': number;
-      'likeThreshold': number;
+    interface LrtpCommentPage {
+      'history': RouterHistory;
+      'match': MatchResults;
     }
   }
 
-  interface HTMLLrtpSurveyControllerElement extends StencilComponents.LrtpSurveyController, HTMLStencilElement {}
+  interface HTMLLrtpCommentPageElement extends StencilComponents.LrtpCommentPage, HTMLStencilElement {}
 
-  var HTMLLrtpSurveyControllerElement: {
-    prototype: HTMLLrtpSurveyControllerElement;
-    new (): HTMLLrtpSurveyControllerElement;
+  var HTMLLrtpCommentPageElement: {
+    prototype: HTMLLrtpCommentPageElement;
+    new (): HTMLLrtpCommentPageElement;
   };
   interface HTMLElementTagNameMap {
-    'lrtp-survey-controller': HTMLLrtpSurveyControllerElement;
+    'lrtp-comment-page': HTMLLrtpCommentPageElement;
   }
   interface ElementTagNameMap {
-    'lrtp-survey-controller': HTMLLrtpSurveyControllerElement;
+    'lrtp-comment-page': HTMLLrtpCommentPageElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      'lrtp-survey-controller': JSXElements.LrtpSurveyControllerAttributes;
+      'lrtp-comment-page': JSXElements.LrtpCommentPageAttributes;
     }
   }
   namespace JSXElements {
-    export interface LrtpSurveyControllerAttributes extends HTMLAttributes {
-      'commentThreshold'?: number;
-      'delay'?: number;
-      'likeThreshold'?: number;
+    export interface LrtpCommentPageAttributes extends HTMLAttributes {
+      'history'?: RouterHistory;
+      'match'?: MatchResults;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface LrtpLocationPage {
+      'history': RouterHistory;
+      'match': MatchResults;
+    }
+  }
+
+  interface HTMLLrtpLocationPageElement extends StencilComponents.LrtpLocationPage, HTMLStencilElement {}
+
+  var HTMLLrtpLocationPageElement: {
+    prototype: HTMLLrtpLocationPageElement;
+    new (): HTMLLrtpLocationPageElement;
+  };
+  interface HTMLElementTagNameMap {
+    'lrtp-location-page': HTMLLrtpLocationPageElement;
+  }
+  interface ElementTagNameMap {
+    'lrtp-location-page': HTMLLrtpLocationPageElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'lrtp-location-page': JSXElements.LrtpLocationPageAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface LrtpLocationPageAttributes extends HTMLAttributes {
+      'history'?: RouterHistory;
+      'match'?: MatchResults;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface LrtpModePage {
+      'history': RouterHistory;
+      'match': MatchResults;
+    }
+  }
+
+  interface HTMLLrtpModePageElement extends StencilComponents.LrtpModePage, HTMLStencilElement {}
+
+  var HTMLLrtpModePageElement: {
+    prototype: HTMLLrtpModePageElement;
+    new (): HTMLLrtpModePageElement;
+  };
+  interface HTMLElementTagNameMap {
+    'lrtp-mode-page': HTMLLrtpModePageElement;
+  }
+  interface ElementTagNameMap {
+    'lrtp-mode-page': HTMLLrtpModePageElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'lrtp-mode-page': JSXElements.LrtpModePageAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface LrtpModePageAttributes extends HTMLAttributes {
+      'history'?: RouterHistory;
+      'match'?: MatchResults;
     }
   }
 }

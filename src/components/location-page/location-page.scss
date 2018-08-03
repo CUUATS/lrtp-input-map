@@ -1,0 +1,29 @@
+lrtp-location-page {
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  top: 0;
+  gl-map,
+  gl-map.mapboxgl-map {
+    bottom: 0;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+  }
+  .marker {
+    height: 41px;
+    left: 50%;
+    margin-left: -14px;
+    margin-top: -38px;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    width: 27px;
+  }
+}

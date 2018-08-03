@@ -18,15 +18,15 @@
   dependencies:
     ionicons "^4.1.1"
 
-"@ionic/core@4.0.0-beta.0":
-  version "4.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@ionic/core/-/core-4.0.0-beta.0.tgz#44905a763975b222218dd08fbb6a446d841c487e"
+"@ionic/core@4.0.0-beta.1":
+  version "4.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@ionic/core/-/core-4.0.0-beta.1.tgz#90173c466083e394615eaae6cd1e9795a6bda079"
   dependencies:
-    ionicons "4.2.5"
+    ionicons "4.2.6"
 
-"@stencil/core@0.10.10":
-  version "0.10.10"
-  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-0.10.10.tgz#d5e35470f22c2b05dc9da7441003c463e6d8b7bd"
+"@stencil/core@0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-0.11.0.tgz#eed0919372d11bf053ec8af11898ad0106267521"
   dependencies:
     chokidar "2.0.3"
     jsdom "11.11.0"
@@ -37,7 +37,6 @@
     rollup-plugin-node-resolve "3.3.0"
     rollup-pluginutils "2.3.0"
     typescript "~2.9.1"
-    uglify-es "3.3.9"
     workbox-build "^3.1.0"
 
 "@stencil/core@0.9.7":
@@ -60,11 +59,21 @@
   version "0.0.25"
   resolved "https://registry.yarnpkg.com/@stencil/router/-/router-0.0.25.tgz#9894e4c15e942f0897d503ce95545294fb514668"
 
-"@stencil/sass@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@stencil/sass/-/sass-0.0.5.tgz#eaa5145c2b46c64a6fce9629a3f3fca43a0bd1ab"
+"@stencil/router@^0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@stencil/router/-/router-0.2.5.tgz#3a8b1f4056dde2c1410c5adc826df6dfe45c989e"
+  dependencies:
+    "@stencil/state-tunnel" "0.0.7"
+
+"@stencil/sass@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@stencil/sass/-/sass-0.1.0.tgz#ecf53bc732b20577935e8de0fe53995649735b95"
   dependencies:
     node-sass "4.9.0"
+
+"@stencil/state-tunnel@0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@stencil/state-tunnel/-/state-tunnel-0.0.7.tgz#e65152a6c68a1ba34479b1befe9515ed4ce0ba77"
 
 "@types/estree@0.0.39":
   version "0.0.39"
@@ -1734,9 +1743,9 @@ invert-kv@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
 
-ionicons@4.2.5:
-  version "4.2.5"
-  resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-4.2.5.tgz#1665e8e08458ffa1a74aaf9f33ed00bce65f1a3c"
+ionicons@4.2.6:
+  version "4.2.6"
+  resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-4.2.6.tgz#ee08270fe54c82a3ee0a672c7eb862808868dc0b"
 
 ionicons@^4.1.1:
   version "4.1.2"

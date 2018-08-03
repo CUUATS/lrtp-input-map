@@ -143,7 +143,6 @@ export class AddressSearch {
 
   handleFocus() {
     this.hasFocus = true;
-    document.querySelector('gl-drawer').open = false;
   }
 
   handleClick(e) {

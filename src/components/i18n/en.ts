@@ -3,6 +3,32 @@ export const phrases = {
     "address-search": {
       "prompt": "Search by address or place name..."
     },
+    "mode-page": {
+      "app_title": "C-U Transportation Voices",
+      "intro": "Welcome to %{title} by the Champaign County Regional Planning Commission. Thanks for participating! To begin, choose a mode of transportation that you use regularly.",
+      "start": "Get Started",
+      "title": "Choose a Mode",
+      "pedestrian": "Walking or Wheelchair",
+      "bicycle": "Bicycle",
+      "bus": "Bus",
+      "automobile": "Automobile",
+      "train": "Train",
+      "plane": "Plane"
+    },
+    "location-page": {
+      "title": "Choose a Location",
+      "intro": "Now think of a location in the community where you like or dislike to %{mode_verb}. Center the map marker on that location by dragging and zooming the map, or search by address or place name. Then tap the checkmark above to continue.",
+      "pedestrian": "walk",
+      "bicycle": "bike",
+      "bus": "ride the bus",
+      "automobile": "drive",
+      "train": "take the train",
+      "plane": "take a plane",
+      "okay": "Okay"
+    },
+    "comment-page": {
+      "title": "Add Comments",
+    },
     "app": {
       "label": "C-U Transportation Voices",
       "basemap": {
