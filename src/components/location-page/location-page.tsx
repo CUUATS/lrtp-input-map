@@ -24,11 +24,11 @@ export class LocationPage {
 
   async showPopup() {
     const mode = this.match.params.mode;
-    const mode_verb = _t(`lrtp.location-page.${mode}`);
+    const action = _t(`lrtp.modes.${mode}.action`);
     let alert = await this.alertCtrl.create({
       header: _t('lrtp.location-page.title'),
       message: _t('lrtp.location-page.intro', {
-        mode_verb: `<strong>${mode_verb}</strong>`,
+        action: `<strong>${action}</strong>`,
       }),
       buttons: [_t('lrtp.location-page.okay')]
     });
@@ -45,6 +45,8 @@ export class LocationPage {
     const title = _t('lrtp.location-page.title');
     const app = document.querySelector('lrtp-app');
     const bbox = app.bbox.split(',').map((c) => parseFloat(c));
+    const lon = parseFloat(this.match.params.lon);
+    const lat = parseFloat(this.match.params.lat);
 
     return ([
       <ion-header>
@@ -64,7 +66,7 @@ export class LocationPage {
         <lrtp-address-search forwardGeocodeUrl={app.forwardGeocodeUrl}
           bbox={bbox as any}></lrtp-address-search>
         <gl-map ref={(r: HTMLGlMapElement) => this.map = r}
-            longitude={-88.228878} latitude={40.110319} zoom={12} maxzoom={22}>
+            longitude={lon} latitude={lat} zoom={12} maxzoom={22}>
           <gl-style url="https://maps.cuuats.org/basemaps/basic/style.json"
             basemap={true}
             name={_t('lrtp.app.basemap.hybrid')} enabled={true}></gl-style>

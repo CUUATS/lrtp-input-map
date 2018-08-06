@@ -1,6 +1,7 @@
 import { Component, Element, Listen, Prop, State } from '@stencil/core';
 import { Mode } from '@ionic/core';
 import { _t } from '../i18n/i18n';
+import { formatAddress } from '../utils';
 
 
 @Component({
@@ -82,22 +83,6 @@ export class AddressSearch {
     button.style.color = null;
   }
 
-  formatAddress(address: any) {
-    let parts = [];
-    if (address.name &&
-        address.name != address.city)
-      parts.push(address.name);
-    if (address.street) {
-      let part = address.street;
-      if (address.housenumber) part = address.housenumber + ' ' + part;
-      parts.push(part);
-    }
-    if (address.city) parts.push(address.city);
-    if (!parts.length && address.county) parts.push(address.county);
-    if (parts.length) return parts.join(', ');
-    return address.display;
-  }
-
   async selectResult(result: any) {
     let map = document.querySelector('gl-map');
     map.fitBounds(result.bbox, {
@@ -123,7 +108,7 @@ export class AddressSearch {
     let items = this.results.map((result) => (
       <ion-item button={true} onClick={() => this.selectResult(result)}>
         <ion-icon name="pin" slot="start"></ion-icon>
-        <ion-label>{this.formatAddress(result.address)}</ion-label>
+        <ion-label>{formatAddress(result.address)}</ion-label>
       </ion-item>
     ));
     return (

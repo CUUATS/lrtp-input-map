@@ -13,13 +13,15 @@ export class ModePage {
 
   @Prop() history: RouterHistory;
   @Prop() match: MatchResults;
+  @Prop() defaultLat: number;
+  @Prop() defaultLon: number;
 
   componentDidLoad() {
     if (doOnce('lrtp.mode-page.popup')) this.showPopup();
   }
 
   async showPopup() {
-    const title = _t('lrtp.mode-page.app_title');
+    const title = _t('lrtp.app.title');
     let alert = await this.alertCtrl.create({
       header: title,
       message: _t('lrtp.mode-page.intro', {
@@ -33,16 +35,18 @@ export class ModePage {
   getListItems() {
     const modes = [
       'pedestrian', 'bicycle', 'bus', 'automobile', 'train', 'plane'];
-    const lon = this.match.params.lon || 0;
-    const lat = this.match.params.lat || 0;
+    const params = this.match.params;
+    const lon = params.lon || this.defaultLon;
+    const lat = params.lat || this.defaultLat;
+    const next = (!params.lon && !params.lat) ? 'location' : 'comment';
 
     return modes.map((mode) => (
-      <stencil-route-link url={`/location/${mode}/${lon}/${lat}`}>
+      <stencil-route-link url={`/${next}/${mode}/${lon}/${lat}`}>
         <ion-item detail={true}>
           <ion-thumbnail slot="start">
             <img src={`/voices/public/img/${mode}.png`} />
           </ion-thumbnail>
-          <ion-label text-wrap>{_t(`lrtp.mode-page.${mode}`)}</ion-label>
+          <ion-label text-wrap>{_t(`lrtp.modes.${mode}.label`)}</ion-label>
         </ion-item>
       </stencil-route-link>
     ));

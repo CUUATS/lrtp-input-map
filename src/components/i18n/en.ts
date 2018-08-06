@@ -4,33 +4,24 @@ export const phrases = {
       "prompt": "Search by address or place name..."
     },
     "mode-page": {
-      "app_title": "C-U Transportation Voices",
       "intro": "Welcome to %{title} by the Champaign County Regional Planning Commission. Thanks for participating! To begin, choose a mode of transportation that you use regularly.",
       "start": "Get Started",
-      "title": "Choose a Mode",
-      "pedestrian": "Walking or Wheelchair",
-      "bicycle": "Bicycle",
-      "bus": "Bus",
-      "automobile": "Automobile",
-      "train": "Train",
-      "plane": "Plane"
+      "title": "Choose a Mode"
     },
     "location-page": {
       "title": "Choose a Location",
-      "intro": "Now think of a location in the community where you like or dislike to %{mode_verb}. Center the map marker on that location by dragging and zooming the map, or search by address or place name. Then tap the checkmark above to continue.",
-      "pedestrian": "walk",
-      "bicycle": "bike",
-      "bus": "ride the bus",
-      "automobile": "drive",
-      "train": "take the train",
-      "plane": "take a plane",
+      "intro": "Now think of a location in the community where you like or dislike to %{action}. Center the map marker on that location by dragging and zooming the map, or search by address or place name. Then tap the checkmark above to continue.",
       "okay": "Okay"
     },
     "comment-page": {
       "title": "Add Comments",
+      "change": "Change",
+      "new": "New Comment",
+      "comments": "My Comments",
+      "form-title": "Add a Comment"
     },
     "app": {
-      "label": "C-U Transportation Voices",
+      "title": "C-U Transportation Voices",
       "basemap": {
         "imagery": "Imagery",
         "hybrid": "Imagery with Labels"
@@ -42,36 +33,6 @@ export const phrases = {
         "added": "Your comment has been added.",
         "moderation": "Your comment is awaiting moderation.",
         "error": "An error occurred. Please try again later."
-      },
-      "intro": {
-        "next": "Next",
-        "prev": "Prev",
-        "done": "Done",
-        "close": "Close",
-        "welcome": {
-          "title": "Welcome",
-          "text": "Welcome to %{app_label} by the Champaign County Regional Planning Commission. You can browse the map to see comments."
-        },
-        "view": {
-          "title": "View Comments",
-          "text": "The comments pane shows the details of all comments currently visible in the map."
-        },
-        "locate": {
-          "title": "Locate a Comment",
-          "text": "Tap the locate button to zoom the map to a comment."
-        },
-        "like": {
-          "title": "Like a Comment",
-          "text": "Show your support for a comment by tapping the star."
-        },
-        "add": {
-          "title": "Add a Comment",
-          "text": "Add a comment by tapping the plus button, selecting a location, and filling out the comment form."
-        },
-        "survey": {
-          "title": "Take the Survey",
-          "text": "Tap the lightbulb to take a brief survey about the future of transportation in our region. Happy browsing!"
-        }
       }
     },
     "survey-controller": {
@@ -80,7 +41,7 @@ export const phrases = {
       "later": "Take Later",
       "now": "Take Now"
     },
-    "form": {
+    "modes": {
       "labels": {
         "mode": "Choose a Mode of Transportation",
         "category": "Choose a Category",
@@ -89,6 +50,7 @@ export const phrases = {
       },
       "pedestrian": {
         "label": "Walking or Wheelchair",
+        "action": "walk",
         "crosswalk": {
           "label": "Crosswalks",
           "ok": "Crosswalk functions well",
@@ -132,6 +94,7 @@ export const phrases = {
       },
       "bicycle": {
         "label": "Bicycle",
+        "action": "bike",
         "facility": {
           "label": "Bike Lanes and Paths",
           "ok": "Bike lanes and paths function well",
@@ -168,6 +131,7 @@ export const phrases = {
       },
       "bus": {
         "label": "Bus",
+        "action": "ride the bus",
         "amenity": {
           "label": "Benches, Shelters, and Amenities",
           "ok": "Amenities at this stop function well",
@@ -207,6 +171,7 @@ export const phrases = {
       },
       "automobile": {
         "label": "Automobile",
+        "action": "drive",
         "driving": {
           "label": "Driving Conditions",
           "ok": "Good automobile circulation here",
@@ -254,6 +219,7 @@ export const phrases = {
       },
       "train": {
         "label": "Train",
+        "action": "take the train",
         "ok": "I like the current options for train travel",
         "highspeed": "Add high-speed or bullet train access to Chicago",
         "destination": "Add train service to another city",
@@ -264,6 +230,7 @@ export const phrases = {
       },
       "plane": {
         "label": "Plane",
+        "action": "take a plane",
         "ok": "I like the current options for plane travel",
         "destination": "Add direct flights to additional locations (please describe below)",
         "times": "Add more departure and arrival times",

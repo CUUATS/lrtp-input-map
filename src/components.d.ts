@@ -81,9 +81,10 @@ declare global {
     interface LrtpApp {
       'bbox': string;
       'commentUrl': string;
+      'defaultLat': number;
+      'defaultLon': number;
       'forwardGeocodeUrl': string;
-      'likeUrl': string;
-      'multiuser': boolean;
+      'reverseGeocodeUrl': string;
       'schemaUrl': string;
       'styleUrl': string;
       'surveyUrl': string;
@@ -112,9 +113,10 @@ declare global {
     export interface LrtpAppAttributes extends HTMLAttributes {
       'bbox'?: string;
       'commentUrl'?: string;
+      'defaultLat'?: number;
+      'defaultLon'?: number;
       'forwardGeocodeUrl'?: string;
-      'likeUrl'?: string;
-      'multiuser'?: boolean;
+      'reverseGeocodeUrl'?: string;
       'schemaUrl'?: string;
       'styleUrl'?: string;
       'surveyUrl'?: string;
@@ -235,6 +237,8 @@ declare global {
 
   namespace StencilComponents {
     interface LrtpModePage {
+      'defaultLat': number;
+      'defaultLon': number;
       'history': RouterHistory;
       'match': MatchResults;
     }
@@ -259,6 +263,8 @@ declare global {
   }
   namespace JSXElements {
     export interface LrtpModePageAttributes extends HTMLAttributes {
+      'defaultLat'?: number;
+      'defaultLon'?: number;
       'history'?: RouterHistory;
       'match'?: MatchResults;
     }

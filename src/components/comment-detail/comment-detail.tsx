@@ -33,8 +33,8 @@ export class CommentDetail {
     const props = this.feature.properties;
     const mode = props.comment_mode;
     const modeImage = '/voices/public/img/' + mode + '.png';
-    const comment = (_t(`lrtp.form.${mode}.label`) + ': ' +
-      _t(`lrtp.form.${props.comment_type}`)).replace(/\([^)]*\)/g, '');
+    const comment = (_t(`lrtp.modes.${mode}.label`) + ': ' +
+      _t(`lrtp.modes.${props.comment_type}`)).replace(/\([^)]*\)/g, '');
 
     let dateStr = '';
     let date = new Date(this.feature.properties._created);
