@@ -1,5 +1,4 @@
 import { Component, Prop } from '@stencil/core';
-import { MatchResults, RouterHistory } from '@stencil/router';
 import { _t } from '../i18n/i18n';
 import { doOnce } from '../utils';
 
@@ -14,8 +13,9 @@ export class LocationPage {
   @Prop({connect: 'ion-alert-controller'}) alertCtrl!:
     HTMLIonAlertControllerElement;
 
-  @Prop() history: RouterHistory;
-  @Prop() match: MatchResults;
+  @Prop() lat: number;
+  @Prop() lon: number;
+  @Prop() tmode: string;
 
   componentDidLoad() {
     this.map.resizeMap();
@@ -23,8 +23,7 @@ export class LocationPage {
   }
 
   async showPopup() {
-    const mode = this.match.params.mode;
-    const action = _t(`lrtp.modes.${mode}.action`);
+    const action = _t(`lrtp.modes.${this.tmode}.action`);
     let alert = await this.alertCtrl.create({
       header: _t('lrtp.location-page.title'),
       message: _t('lrtp.location-page.intro', {
@@ -36,17 +35,15 @@ export class LocationPage {
   }
 
   async chooseLocation() {
-    const mode = this.match.params.mode;
     const center = await this.map.getCenter();
-    this.history.push(`/comment/${mode}/${center.lng}/${center.lat}`);
+    const router = document.querySelector('ion-router');
+    router.push(`/comment/${this.tmode}/${center.lng}/${center.lat}`);
   }
 
   render() {
     const title = _t('lrtp.location-page.title');
     const app = document.querySelector('lrtp-app');
     const bbox = app.bbox.split(',').map((c) => parseFloat(c));
-    const lon = parseFloat(this.match.params.lon);
-    const lat = parseFloat(this.match.params.lat);
 
     return ([
       <ion-header>
@@ -66,7 +63,7 @@ export class LocationPage {
         <lrtp-address-search forwardGeocodeUrl={app.forwardGeocodeUrl}
           bbox={bbox as any}></lrtp-address-search>
         <gl-map ref={(r: HTMLGlMapElement) => this.map = r}
-            longitude={lon} latitude={lat} zoom={12} maxzoom={22}>
+            longitude={this.lon} latitude={this.lat} zoom={12} maxzoom={22}>
           <gl-style url="https://maps.cuuats.org/basemaps/basic/style.json"
             basemap={true}
             name={_t('lrtp.app.basemap.hybrid')} enabled={true}></gl-style>

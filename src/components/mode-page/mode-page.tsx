@@ -1,5 +1,4 @@
 import { Component, Prop } from '@stencil/core';
-import { MatchResults, RouterHistory } from '@stencil/router';
 import { _t } from '../i18n/i18n';
 import { doOnce } from '../utils';
 
@@ -11,10 +10,9 @@ export class ModePage {
   @Prop({connect: 'ion-alert-controller'}) alertCtrl!:
     HTMLIonAlertControllerElement;
 
-  @Prop() history: RouterHistory;
-  @Prop() match: MatchResults;
-  @Prop() defaultLat: number;
-  @Prop() defaultLon: number;
+  @Prop() next: 'location' | 'comment' = 'comment';
+  @Prop() lat: number;
+  @Prop() lon: number;
 
   componentDidLoad() {
     if (doOnce('lrtp.mode-page.popup')) this.showPopup();
@@ -35,20 +33,15 @@ export class ModePage {
   getListItems() {
     const modes = [
       'pedestrian', 'bicycle', 'bus', 'automobile', 'train', 'plane'];
-    const params = this.match.params;
-    const lon = params.lon || this.defaultLon;
-    const lat = params.lat || this.defaultLat;
-    const next = (!params.lon && !params.lat) ? 'location' : 'comment';
 
     return modes.map((mode) => (
-      <stencil-route-link url={`/${next}/${mode}/${lon}/${lat}`}>
-        <ion-item detail={true}>
-          <ion-thumbnail slot="start">
-            <img src={`/voices/public/img/${mode}.png`} />
-          </ion-thumbnail>
-          <ion-label text-wrap>{_t(`lrtp.modes.${mode}.label`)}</ion-label>
-        </ion-item>
-      </stencil-route-link>
+      <ion-item detail={true}
+          href={`#/${this.next}/${mode}/${this.lon}/${this.lat}`}>
+        <ion-thumbnail slot="start">
+          <img src={`/voices/public/img/${mode}.png`} />
+        </ion-thumbnail>
+        <ion-label text-wrap>{_t(`lrtp.modes.${mode}.label`)}</ion-label>
+      </ion-item>
     ));
   }
 

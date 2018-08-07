@@ -4,13 +4,13 @@ export const config = {
   namespace: 'lrtp',
   copy: [
     {
-      src: 'public',
-      dest: 'voices/public'
+      src: 'public'
     }
   ],
   outputTargets: [
     {
       type: 'www',
+      baseUrl: '/voices',
       serviceWorker: null
     }
   ],

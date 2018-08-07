@@ -25,16 +25,11 @@ declare global {
   interface HTMLAttributes {}
 }
 
-import '@stencil/router';
-import '@stencil/state-tunnel';
 import '@ionic/core';
 import 'ionicons';
 import '@cuuats/webmapgl';
+import '@stencil/router';
 
-import {
-  MatchResults,
-  RouterHistory,
-} from '@stencil/router';
 
 declare global {
 
@@ -163,8 +158,9 @@ declare global {
 
   namespace StencilComponents {
     interface LrtpCommentPage {
-      'history': RouterHistory;
-      'match': MatchResults;
+      'lat': number;
+      'lon': number;
+      'tmode': string;
     }
   }
 
@@ -187,8 +183,9 @@ declare global {
   }
   namespace JSXElements {
     export interface LrtpCommentPageAttributes extends HTMLAttributes {
-      'history'?: RouterHistory;
-      'match'?: MatchResults;
+      'lat'?: number;
+      'lon'?: number;
+      'tmode'?: string;
     }
   }
 }
@@ -198,8 +195,9 @@ declare global {
 
   namespace StencilComponents {
     interface LrtpLocationPage {
-      'history': RouterHistory;
-      'match': MatchResults;
+      'lat': number;
+      'lon': number;
+      'tmode': string;
     }
   }
 
@@ -222,8 +220,9 @@ declare global {
   }
   namespace JSXElements {
     export interface LrtpLocationPageAttributes extends HTMLAttributes {
-      'history'?: RouterHistory;
-      'match'?: MatchResults;
+      'lat'?: number;
+      'lon'?: number;
+      'tmode'?: string;
     }
   }
 }
@@ -233,10 +232,9 @@ declare global {
 
   namespace StencilComponents {
     interface LrtpModePage {
-      'defaultLat': number;
-      'defaultLon': number;
-      'history': RouterHistory;
-      'match': MatchResults;
+      'lat': number;
+      'lon': number;
+      'next': 'location' | 'comment';
     }
   }
 
@@ -259,10 +257,42 @@ declare global {
   }
   namespace JSXElements {
     export interface LrtpModePageAttributes extends HTMLAttributes {
-      'defaultLat'?: number;
-      'defaultLon'?: number;
-      'history'?: RouterHistory;
-      'match'?: MatchResults;
+      'lat'?: number;
+      'lon'?: number;
+      'next'?: 'location' | 'comment';
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface LrtpNotfoundPage {
+
+    }
+  }
+
+  interface HTMLLrtpNotfoundPageElement extends StencilComponents.LrtpNotfoundPage, HTMLStencilElement {}
+
+  var HTMLLrtpNotfoundPageElement: {
+    prototype: HTMLLrtpNotfoundPageElement;
+    new (): HTMLLrtpNotfoundPageElement;
+  };
+  interface HTMLElementTagNameMap {
+    'lrtp-notfound-page': HTMLLrtpNotfoundPageElement;
+  }
+  interface ElementTagNameMap {
+    'lrtp-notfound-page': HTMLLrtpNotfoundPageElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'lrtp-notfound-page': JSXElements.LrtpNotfoundPageAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface LrtpNotfoundPageAttributes extends HTMLAttributes {
+
     }
   }
 }

@@ -1,6 +1,6 @@
 import { Component, Listen, Prop, State } from '@stencil/core';
-import { MatchResults, RouterHistory } from '@stencil/router';
-import { FormOptions } from '@cuuats/webmapgl/src/components/form-controller/form-controller';
+import { FormOptions } from
+  '@cuuats/webmapgl/src/components/form-controller/form-controller';
 import { _t } from '../i18n/i18n';
 import { formatAddress } from '../utils';
 
@@ -20,8 +20,9 @@ export class CommentPage {
   @Prop({connect: 'gl-geocode-controller'}) lazyGeocodeCtrl!:
     HTMLGlGeocodeControllerElement;
 
-  @Prop() history: RouterHistory;
-  @Prop() match: MatchResults;
+  @Prop() lat: number;
+  @Prop() lon: number;
+  @Prop() tmode: string;
 
   async componentWillLoad() {
     const app = document.querySelector('lrtp-app');
@@ -29,8 +30,8 @@ export class CommentPage {
     let response = await this.geocodeCtrl.reverse({
       url: app.reverseGeocodeUrl,
       location: {
-        lon: parseFloat(this.match.params.lon),
-        lat: parseFloat(this.match.params.lat)
+        lon: this.lon,
+        lat: this.lat
       }
     });
     this.address = (response.address) ?
@@ -44,17 +45,16 @@ export class CommentPage {
   }
 
   changeMode() {
-    const params = this.match.params;
-    this.history.push(`/mode/${params.lon}/${params.lat}`);
+    const router = document.querySelector('ion-router');
+    router.push(`/mode/${this.lon}/${this.lat}`);
   }
 
   changeLocation() {
-    const params = this.match.params;
-    this.history.push(`/location/${params.mode}/${params.lon}/${params.lat}`);
+    const router = document.querySelector('ion-router');
+    router.push(`/location/${this.tmode}/${this.lon}/${this.lat}`);
   }
 
   async addComment() {
-    const params = this.match.params;
     const options: FormOptions = {
       translate: true,
       label: _t('lrtp.comment-page.form-title')
@@ -63,20 +63,20 @@ export class CommentPage {
       type: 'Feature',
       geometry: {
         type: 'Point',
-        coordinates: [params.lon, params.lat]
+        coordinates: [this.lon, this.lat]
       },
       properties: {
-        comment_mode: params.mode,
+        comment_mode: this.tmode,
         comment_address: this.address
       }
     };
     let modal = await this.formCtrl.create(
-      `/voices/public/${params.mode}-form.json`, feature, options);
+      `/voices/public/${this.tmode}-form.json`, feature, options);
     await modal.present();
   }
 
   render() {
-    const modeLabel = _t(`lrtp.modes.${this.match.params.mode}.label`);
+    const modeLabel = _t(`lrtp.modes.${this.tmode}.label`);
     const modeIcon = {
       'pedestrian': 'walk',
       'bicycle': 'bicycle',
@@ -84,7 +84,7 @@ export class CommentPage {
       'automobile': 'car',
       'train': 'train',
       'plane': 'airplane'
-    }[this.match.params.mode];
+    }[this.tmode];
     const change = _t('lrtp.comment-page.change');
 
     return ([

@@ -19,23 +19,23 @@ export class App {
 
   render() {
     const modeProps = {
-      defaultLat: this.defaultLat,
-      defaultLon: this.defaultLon
+      lat: this.defaultLat,
+      lon: this.defaultLon,
+      next: 'location'
     };
     return (
       <ion-app>
-        <stencil-router>
-          <stencil-route-switch scrollTopOffset={0}>
-            <stencil-route url='/' component='lrtp-mode-page' exact={true}
-              componentProps={modeProps} />
-            <stencil-route url='/mode/:lon/:lat' component='lrtp-mode-page'
-              componentProps={modeProps} />
-            <stencil-route url='/location/:mode/:lon/:lat'
-              component='lrtp-location-page' />
-            <stencil-route url='/comment/:mode/:lon/:lat'
-              component='lrtp-comment-page' />
-          </stencil-route-switch>
-        </stencil-router>
+        <ion-router>
+          <ion-route url='/' component='lrtp-mode-page'
+            componentProps={modeProps}></ion-route>
+          <ion-route url='/mode/:lon/:lat'
+            component='lrtp-mode-page'></ion-route>
+          <ion-route url='/location/:tmode/:lon/:lat'
+            component='lrtp-location-page'></ion-route>
+          <ion-route url='/comment/:tmode/:lon/:lat'
+            component='lrtp-comment-page'></ion-route>
+        </ion-router>
+        <ion-nav></ion-nav>
       </ion-app>
     );
   }
