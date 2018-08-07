@@ -1,4 +1,4 @@
-import { Component, Prop, State } from '@stencil/core';
+import { Component, Listen, Prop, State } from '@stencil/core';
 import { MatchResults, RouterHistory } from '@stencil/router';
 import { FormOptions } from '@cuuats/webmapgl/src/components/form-controller/form-controller';
 import { _t } from '../i18n/i18n';
@@ -13,6 +13,7 @@ export class CommentPage {
   geocodeCtrl?: HTMLGlGeocodeControllerElement;
 
   @State() address: string;
+  @State() features: any[] = [];
 
   @Prop({connect: 'gl-form-controller'}) formCtrl!:
     HTMLGlFormControllerElement;
@@ -34,6 +35,12 @@ export class CommentPage {
     });
     this.address = (response.address) ?
       formatAddress(response.address) : _t('lrtp.comment-page.location');
+  }
+
+  @Listen('body:glFormSubmit')
+  async submitForm(e: CustomEvent) {
+    e.detail.feature.properties._created = (new Date()).getTime();
+    this.features = [e.detail.feature, ...this.features];
   }
 
   changeMode() {
@@ -59,8 +66,8 @@ export class CommentPage {
         coordinates: [params.lon, params.lat]
       },
       properties: {
-        mode: params.mode,
-        address: this.address
+        comment_mode: params.mode,
+        comment_address: this.address
       }
     };
     let modal = await this.formCtrl.create(
@@ -114,11 +121,12 @@ export class CommentPage {
             Add a Comment
           </ion-button>
         </div>
-        <ion-list lines="full">
-          <ion-list-header color="light">
+        <gl-feature-list features={this.features} item={false} batchSize={100}
+            component="lrtp-comment-detail">
+          <ion-list-header color="light" slot="start">
             <ion-label>{_t('lrtp.comment-page.comments')}</ion-label>
           </ion-list-header>
-        </ion-list>
+        </gl-feature-list>
       </ion-content>
     ]);
   }

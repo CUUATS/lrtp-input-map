@@ -25,10 +25,10 @@ declare global {
   interface HTMLAttributes {}
 }
 
-import '@ionic/core';
-import 'ionicons';
 import '@stencil/router';
 import '@stencil/state-tunnel';
+import '@ionic/core';
+import 'ionicons';
 import '@cuuats/webmapgl';
 
 import {
@@ -131,8 +131,6 @@ declare global {
   namespace StencilComponents {
     interface LrtpCommentDetail {
       'feature': any;
-      'likeUrl': string;
-      'token': string;
     }
   }
 
@@ -156,8 +154,6 @@ declare global {
   namespace JSXElements {
     export interface LrtpCommentDetailAttributes extends HTMLAttributes {
       'feature'?: any;
-      'likeUrl'?: string;
-      'token'?: string;
     }
   }
 }

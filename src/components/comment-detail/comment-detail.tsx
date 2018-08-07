@@ -9,18 +9,7 @@ const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
   tag: 'lrtp-comment-detail'
 })
 export class CommentDetail {
-  @Prop() likeUrl: string;
   @Prop() feature: any;
-  @Prop() token: string;
-
-  locate() {
-    if (!this.feature.geometry) return;
-    let map = document.querySelector('gl-map');
-    map.flyTo({
-      center: this.feature.geometry.coordinates,
-      zoom: 18
-    });
-  }
 
   hostData() {
     return {
@@ -29,7 +18,6 @@ export class CommentDetail {
   }
 
   render() {
-    const small = screen.width <= 640;
     const props = this.feature.properties;
     const mode = props.comment_mode;
     const modeImage = '/voices/public/img/' + mode + '.png';
@@ -41,27 +29,22 @@ export class CommentDetail {
     if (!isNaN(date.getTime())) {
       dateStr = `${monthNames[date.getMonth()]} ${date.getDate()}, `
         + `${date.getFullYear()}`;
-      if (props.comment_description) dateStr += ':';
+      if (props.comment_address) dateStr += ':';
     }
 
     return (
       <ion-item lines="full">
-        {(small) ? null: <ion-avatar slot="start">
-            <img src={modeImage} alt={mode} />
-          </ion-avatar>}
+        <ion-avatar slot="start">
+          <img src={modeImage} alt={mode} />
+        </ion-avatar>
         <ion-label text-wrap>
           <h2>{comment}</h2>
           <p>
-            <strong>{dateStr}</strong>{' '}
-            {props.comment_description || null}
+            <strong>{dateStr}</strong> {props.comment_address || null}
           </p>
+          {(props.comment_description) ?
+            <p>{props.comment_description}</p> : null}
         </ion-label>
-        <ion-button fill="clear" slot="end" class="lrtp-locate-button"
-            onClick={() => this.locate()}>
-          <ion-icon slot="icon-only" name="locate"></ion-icon>
-        </ion-button>
-        <gl-like-button slot="end" url={this.likeUrl} token={this.token}
-          feature={this.feature}></gl-like-button>
       </ion-item>
     );
   }
