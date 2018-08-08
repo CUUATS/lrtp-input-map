@@ -6,27 +6,21 @@
     "required": true,
     "options": [{
       "value": "plane.ok",
-      "facets": ["plane"],
       "label": "lrtp.modes.plane.ok"
     }, {
       "value": "plane.destination",
-      "facets": ["plane"],
       "label": "lrtp.modes.plane.destination"
     }, {
       "value": "plane.times",
-      "facets": ["plane"],
       "label": "lrtp.modes.plane.times"
     }, {
       "value": "plane.transit",
-      "facets": ["plane"],
       "label": "lrtp.modes.plane.transit"
     }, {
       "value": "plane.parking",
-      "facets": ["plane"],
       "label": "lrtp.modes.plane.parking"
     }, {
       "value": "plane.other",
-      "facets": ["plane"],
       "label": "lrtp.modes.plane.other"
     }]
   }, {

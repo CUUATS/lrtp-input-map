@@ -6,31 +6,24 @@
     "required": true,
     "options": [{
       "value": "train.ok",
-      "facets": ["train"],
       "label": "lrtp.modes.train.ok"
     }, {
       "value": "train.highspeed",
-      "facets": ["train"],
       "label": "lrtp.modes.train.highspeed"
     }, {
       "value": "train.destination",
-      "facets": ["train"],
       "label": "lrtp.modes.train.destination"
     }, {
       "value": "train.frequency",
-      "facets": ["train"],
       "label": "lrtp.modes.train.frequency"
     }, {
       "value": "train.delays",
-      "facets": ["train"],
       "label": "lrtp.modes.train.delays"
     }, {
       "value": "train.prices",
-      "facets": ["train"],
       "label": "lrtp.modes.train.prices"
     }, {
       "value": "train.other",
-      "facets": ["train"],
       "label": "lrtp.modes.train.other"
     }]
   }, {
