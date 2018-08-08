@@ -13,6 +13,8 @@ export class ModePage {
   @Prop() next: 'location' | 'comment' = 'comment';
   @Prop() lat: number;
   @Prop() lon: number;
+  @Prop() planeDefault: [number, number];
+  @Prop() trainDefault: [number, number];
 
   componentDidLoad() {
     if (doOnce('lrtp.mode-page.popup')) this.showPopup();
@@ -34,15 +36,29 @@ export class ModePage {
     const modes = [
       'pedestrian', 'bicycle', 'bus', 'automobile', 'train', 'plane'];
 
-    return modes.map((mode) => (
-      <ion-item detail={true}
-          href={`#/${this.next}/${mode}/${this.lon}/${this.lat}`}>
-        <ion-thumbnail slot="start">
-          <img src={`/voices/public/img/${mode}.png`} />
-        </ion-thumbnail>
-        <ion-label text-wrap>{_t(`lrtp.modes.${mode}.label`)}</ion-label>
-      </ion-item>
-    ));
+    return modes.map((mode) => {
+      let fixedMode = mode === 'train' || mode == 'plane';
+      let next = (fixedMode) ? 'comment' : this.next;
+      let lon = this.lon;
+      let lat = this.lat;
+      if (mode == 'plane' && this.planeDefault) {
+        lon = this.planeDefault[0];
+        lat = this.planeDefault[1];
+      }
+      if (mode == 'train' && this.trainDefault) {
+        lon = this.trainDefault[0];
+        lat = this.trainDefault[1];
+      }
+      return (
+        <ion-item detail={true}
+            href={`#/${next}/${mode}/${lon}/${lat}`}>
+          <ion-thumbnail slot="start">
+            <img src={`/voices/public/img/${mode}.png`} />
+          </ion-thumbnail>
+          <ion-label text-wrap>{_t(`lrtp.modes.${mode}.label`)}</ion-label>
+        </ion-item>
+      );
+    });
   }
 
   render() {

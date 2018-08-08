@@ -11,18 +11,29 @@ export class App {
   @Prop() defaultLat: number;
   @Prop() defaultLon: number;
   @Prop() forwardGeocodeUrl: string;
+  @Prop() planeDefaultLat: number;
+  @Prop() planeDefaultLon: number;
   @Prop() reverseGeocodeUrl: string;
   @Prop() schemaUrl: string;
   @Prop() styleUrl: string;
   @Prop() surveyUrl: string;
   @Prop() token: string;
+  @Prop() trainDefaultLat: number;
+  @Prop() trainDefaultLon: number;
 
   render() {
-    const modeProps = {
+    let modeProps = {
       lat: this.defaultLat,
       lon: this.defaultLon,
       next: 'location'
     };
+
+    if (this.planeDefaultLat && this.planeDefaultLon)
+      modeProps['planeDefault'] = [this.planeDefaultLon, this.planeDefaultLat];
+
+    if (this.trainDefaultLat && this.trainDefaultLon)
+      modeProps['trainDefault'] = [this.trainDefaultLon, this.trainDefaultLat];
+
     return (
       <ion-app>
         <ion-router>

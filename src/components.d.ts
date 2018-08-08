@@ -79,11 +79,15 @@ declare global {
       'defaultLat': number;
       'defaultLon': number;
       'forwardGeocodeUrl': string;
+      'planeDefaultLat': number;
+      'planeDefaultLon': number;
       'reverseGeocodeUrl': string;
       'schemaUrl': string;
       'styleUrl': string;
       'surveyUrl': string;
       'token': string;
+      'trainDefaultLat': number;
+      'trainDefaultLon': number;
     }
   }
 
@@ -111,11 +115,15 @@ declare global {
       'defaultLat'?: number;
       'defaultLon'?: number;
       'forwardGeocodeUrl'?: string;
+      'planeDefaultLat'?: number;
+      'planeDefaultLon'?: number;
       'reverseGeocodeUrl'?: string;
       'schemaUrl'?: string;
       'styleUrl'?: string;
       'surveyUrl'?: string;
       'token'?: string;
+      'trainDefaultLat'?: number;
+      'trainDefaultLon'?: number;
     }
   }
 }
@@ -235,6 +243,8 @@ declare global {
       'lat': number;
       'lon': number;
       'next': 'location' | 'comment';
+      'planeDefault': [number, number];
+      'trainDefault': [number, number];
     }
   }
 
@@ -260,6 +270,8 @@ declare global {
       'lat'?: number;
       'lon'?: number;
       'next'?: 'location' | 'comment';
+      'planeDefault'?: [number, number];
+      'trainDefault'?: [number, number];
     }
   }
 }
