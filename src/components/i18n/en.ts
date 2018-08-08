@@ -17,7 +17,7 @@ export const phrases = {
       "title": "Add Comments",
       "change": "Change",
       "new": "New Comment",
-      "comments": "My Comments",
+      "comments": "Submitted Comments",
       "form-title": "Add a Comment",
       "location": "Unknown Location"
     },
