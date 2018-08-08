@@ -13,6 +13,8 @@ export class LocationPage {
   @Prop({connect: 'ion-alert-controller'}) alertCtrl!:
     HTMLIonAlertControllerElement;
 
+  @Prop() bbox: string;
+  @Prop() forwardGeocodeUrl: string;
   @Prop() lat: number;
   @Prop() lon: number;
   @Prop() tmode: string;
@@ -42,8 +44,7 @@ export class LocationPage {
 
   render() {
     const title = _t('lrtp.location-page.title');
-    const app = document.querySelector('lrtp-app');
-    const bbox = app.bbox.split(',').map((c) => parseFloat(c));
+    const bbox = this.bbox.split(',').map((c) => parseFloat(c));
 
     return ([
       <ion-header>
@@ -60,7 +61,7 @@ export class LocationPage {
         </ion-toolbar>
       </ion-header>,
       <ion-content scrollEnabled={false}>
-        <lrtp-address-search forwardGeocodeUrl={app.forwardGeocodeUrl}
+        <lrtp-address-search forwardGeocodeUrl={this.forwardGeocodeUrl}
           bbox={bbox as any}></lrtp-address-search>
         <gl-map ref={(r: HTMLGlMapElement) => this.map = r}
             longitude={this.lon} latitude={this.lat} zoom={12} maxzoom={22}>

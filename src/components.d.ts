@@ -168,6 +168,7 @@ declare global {
     interface LrtpCommentPage {
       'lat': number;
       'lon': number;
+      'reverseGeocodeUrl': string;
       'tmode': string;
     }
   }
@@ -193,6 +194,7 @@ declare global {
     export interface LrtpCommentPageAttributes extends HTMLAttributes {
       'lat'?: number;
       'lon'?: number;
+      'reverseGeocodeUrl'?: string;
       'tmode'?: string;
     }
   }
@@ -203,6 +205,8 @@ declare global {
 
   namespace StencilComponents {
     interface LrtpLocationPage {
+      'bbox': string;
+      'forwardGeocodeUrl': string;
       'lat': number;
       'lon': number;
       'tmode': string;
@@ -228,6 +232,8 @@ declare global {
   }
   namespace JSXElements {
     export interface LrtpLocationPageAttributes extends HTMLAttributes {
+      'bbox'?: string;
+      'forwardGeocodeUrl'?: string;
       'lat'?: number;
       'lon'?: number;
       'tmode'?: string;

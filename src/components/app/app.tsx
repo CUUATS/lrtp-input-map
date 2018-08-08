@@ -34,6 +34,15 @@ export class App {
     if (this.trainDefaultLat && this.trainDefaultLon)
       modeProps['trainDefault'] = [this.trainDefaultLon, this.trainDefaultLat];
 
+    const locationProps = {
+      bbox: this.bbox,
+      forwardGeocodeUrl: this.forwardGeocodeUrl
+    };
+
+    const commentProps = {
+      reverseGeocodeUrl: this.reverseGeocodeUrl
+    };
+
     return (
       <ion-app>
         <ion-router>
@@ -42,9 +51,11 @@ export class App {
           <ion-route url='/mode/:lon/:lat'
             component='lrtp-mode-page'></ion-route>
           <ion-route url='/location/:tmode/:lon/:lat'
-            component='lrtp-location-page'></ion-route>
+            component='lrtp-location-page'
+            componentProps={locationProps}></ion-route>
           <ion-route url='/comment/:tmode/:lon/:lat'
-            component='lrtp-comment-page'></ion-route>
+            component='lrtp-comment-page'
+            componentProps={commentProps}></ion-route>
         </ion-router>
         <ion-nav></ion-nav>
       </ion-app>

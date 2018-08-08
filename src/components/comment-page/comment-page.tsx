@@ -22,13 +22,23 @@ export class CommentPage {
 
   @Prop() lat: number;
   @Prop() lon: number;
+  @Prop() reverseGeocodeUrl: string;
   @Prop() tmode: string;
 
   async componentWillLoad() {
-    const app = document.querySelector('lrtp-app');
+    await this.reverseGeocodeLocation();
+  }
+
+  @Listen('body:glFormSubmit')
+  async submitForm(e: CustomEvent) {
+    e.detail.feature.properties._created = (new Date()).getTime();
+    this.features = [e.detail.feature, ...this.features];
+  }
+
+  async reverseGeocodeLocation() {
     this.geocodeCtrl = await this.lazyGeocodeCtrl.componentOnReady();
     let response = await this.geocodeCtrl.reverse({
-      url: app.reverseGeocodeUrl,
+      url: this.reverseGeocodeUrl,
       location: {
         lon: this.lon,
         lat: this.lat
@@ -36,12 +46,6 @@ export class CommentPage {
     });
     this.address = (response.address) ?
       formatAddress(response.address) : _t('lrtp.comment-page.location');
-  }
-
-  @Listen('body:glFormSubmit')
-  async submitForm(e: CustomEvent) {
-    e.detail.feature.properties._created = (new Date()).getTime();
-    this.features = [e.detail.feature, ...this.features];
   }
 
   changeMode() {
