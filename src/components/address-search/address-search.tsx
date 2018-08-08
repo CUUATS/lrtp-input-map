@@ -36,7 +36,8 @@ export class AddressSearch {
 
   @Listen('body:glForwardGeocode')
   async handleGeocode(e: CustomEvent) {
-    this.results = e.detail.results;
+    if (e.detail.response.error) return;
+    this.results = e.detail.response;
   }
 
   @Listen('body:click')

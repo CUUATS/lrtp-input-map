@@ -18,7 +18,8 @@ export const phrases = {
       "change": "Change",
       "new": "New Comment",
       "comments": "My Comments",
-      "form-title": "Add a Comment"
+      "form-title": "Add a Comment",
+      "location": "Unknown Location"
     },
     "app": {
       "title": "C-U Transportation Voices",
