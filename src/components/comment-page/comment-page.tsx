@@ -5,6 +5,8 @@ import { _t } from '../i18n/i18n';
 import { formatAddress } from '../utils';
 
 
+const COMMENTS_KEY = 'lrtp.comments';
+
 @Component({
   styleUrl: 'comment-page.scss',
   tag: 'lrtp-comment-page'
@@ -26,6 +28,7 @@ export class CommentPage {
   @Prop() tmode: string;
 
   async componentWillLoad() {
+    this.loadFeatures();
     await this.reverseGeocodeLocation();
   }
 
@@ -33,6 +36,19 @@ export class CommentPage {
   async submitForm(e: CustomEvent) {
     e.detail.feature.properties._created = (new Date()).getTime();
     this.features = [e.detail.feature, ...this.features];
+    this.saveFeatures();
+  }
+
+  loadFeatures() {
+    const featureString = sessionStorage.getItem(COMMENTS_KEY) || '[]';
+    this.features = JSON.parse(featureString);
+  }
+
+  saveFeatures() {
+    // Suppress exceptions due to private browsing or full session storage.
+    try {
+      sessionStorage.setItem(COMMENTS_KEY, JSON.stringify(this.features));
+    } catch {}
   }
 
   async reverseGeocodeLocation() {
