@@ -83,11 +83,15 @@ export class CommentPage {
         },
         {
           text: _t('lrtp.comment-page.thanks.survey'),
-          handler: () => { window.location.href = this.surveyUrl }
+          handler: () => this.openSurvey()
         }
       ]
     });
     await alert.present();
+  }
+
+  openSurvey() {
+    window.location.href = this.surveyUrl;
   }
 
   async reverseGeocodeLocation() {
@@ -154,6 +158,10 @@ export class CommentPage {
             <ion-button onClick={() => this.showHelpPopup()}>
               <ion-icon slot="icon-only"
                 name="help-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button slot="end-buttons"
+                onClick={() => this.openSurvey()}>
+              <ion-icon slot="icon-only" name="checkmark"></ion-icon>
             </ion-button>
           </ion-buttons>
         </ion-toolbar>

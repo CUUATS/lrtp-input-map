@@ -25,7 +25,7 @@ export const phrases = {
       "okay": "Okay",
       "thanks": {
         "title": "Thank You!",
-        "description": "Thank you for your comment! You can continue adding comments, or take a brief survey about transportation in our community. To take the survey later, tap the lightbulb above.",
+        "description": "Thank you for your comment! You can continue adding comments, or take a brief survey about transportation in our community. To take the survey later, tap the checkmark above.",
         "add": "Add Comments",
         "survey": "Take Survey"
       }
