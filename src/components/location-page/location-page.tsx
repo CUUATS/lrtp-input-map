@@ -66,8 +66,7 @@ export class LocationPage {
         <gl-map ref={(r: HTMLGlMapElement) => this.map = r}
             longitude={this.lon} latitude={this.lat} zoom={12} maxzoom={22}>
           <gl-style url="https://maps.cuuats.org/basemaps/basic/style.json"
-            basemap={true}
-            name={_t('lrtp.app.basemap.hybrid')} enabled={true}></gl-style>
+            basemap={true} enabled={true}></gl-style>
         </gl-map>
         <img src="/voices/public/img/marker.svg" class="marker" />
       </ion-content>

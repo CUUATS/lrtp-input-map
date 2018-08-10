@@ -1,12 +1,11 @@
 import { Component, Listen, Prop, State } from '@stencil/core';
 import { FormOptions } from
   '@cuuats/webmapgl/src/components/form-controller/form-controller';
-import { _t } from '../i18n/i18n';
 import { formatAddress } from '../utils';
-// import { doOnce } from '../utils';
+import { doOnce } from '../utils';
+import { COMMENTS_KEY } from '../app/app';
+import { _t } from '../i18n/i18n';
 
-
-const COMMENTS_KEY = 'lrtp.comments';
 
 @Component({
   styleUrl: 'comment-page.scss',
@@ -36,12 +35,13 @@ export class CommentPage {
     await this.reverseGeocodeLocation();
   }
 
-  @Listen('body:glFormSubmit')
-  async submitForm(e: CustomEvent) {
-    e.detail.feature.properties._created = (new Date()).getTime();
-    this.features = [e.detail.feature, ...this.features];
-    this.saveFeatures();
-    if (this.features.length === 1) this.showThanksPopup();
+  componentDidLoad() {
+    if (doOnce('lrtp.comment-page.popup')) this.showPopup();
+  }
+
+  @Listen('body:lrtpFeatureAdded')
+  updateFeatures(e: CustomEvent) {
+    this.features = e.detail;
   }
 
   loadFeatures() {
@@ -49,14 +49,7 @@ export class CommentPage {
     this.features = JSON.parse(featureString);
   }
 
-  saveFeatures() {
-    // Suppress exceptions due to private browsing or full session storage.
-    try {
-      sessionStorage.setItem(COMMENTS_KEY, JSON.stringify(this.features));
-    } catch {}
-  }
-
-  async showHelpPopup() {
+  async showPopup() {
     const infinitive = _t(`lrtp.modes.${this.tmode}.infinitive`);
     const button = _t('lrtp.comment-page.add-button');
     let alert = await this.alertCtrl.create({
@@ -67,25 +60,6 @@ export class CommentPage {
         button: `<strong>${button}</strong>`
       }),
       buttons: [_t('lrtp.comment-page.okay')]
-    });
-    await alert.present();
-  }
-
-  async showThanksPopup() {
-    let alert = await this.alertCtrl.create({
-      header: _t('lrtp.comment-page.thanks.title'),
-      message: _t('lrtp.comment-page.thanks.description'),
-      buttons: [
-        {
-          text: _t('lrtp.comment-page.thanks.add'),
-          role: 'cancel',
-          cssClass: 'secondary'
-        },
-        {
-          text: _t('lrtp.comment-page.thanks.survey'),
-          handler: () => this.openSurvey()
-        }
-      ]
     });
     await alert.present();
   }
@@ -155,7 +129,7 @@ export class CommentPage {
         <ion-toolbar color="primary">
           <ion-title>{_t('lrtp.comment-page.title')}</ion-title>
           <ion-buttons slot="end">
-            <ion-button onClick={() => this.showHelpPopup()}>
+            <ion-button onClick={() => this.showPopup()}>
               <ion-icon slot="icon-only"
                 name="help-circle-outline"></ion-icon>
             </ion-button>

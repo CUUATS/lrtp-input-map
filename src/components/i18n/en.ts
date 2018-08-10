@@ -22,36 +22,21 @@ export const phrases = {
       "location": "Unknown Location",
       "intro": "What do you like or dislike about %{infinitive} at %{address}? Tap the %{button} button to let us know!",
       "add-button": "Add a Comment",
-      "okay": "Okay",
+      "okay": "Okay"
+    },
+    "app": {
+      "title": "C-U Transportation Voices",
+      "comment": {
+        "added": "Your comment has been added.",
+        "moderation": "Your comment is awaiting moderation.",
+        "error": "An error occurred. Please try again later."
+      },
       "thanks": {
         "title": "Thank You!",
         "description": "Thank you for your comment! You can continue adding comments, or take a brief survey about transportation in our community. To take the survey later, tap the checkmark above.",
         "add": "Add Comments",
         "survey": "Take Survey"
       }
-
-
-    },
-    "app": {
-      "title": "C-U Transportation Voices",
-      "basemap": {
-        "imagery": "Imagery",
-        "hybrid": "Imagery with Labels"
-      },
-      "comment": {
-        "label": "Comments",
-        "location": "Choose a Location",
-        "add": "Add a Comment",
-        "added": "Your comment has been added.",
-        "moderation": "Your comment is awaiting moderation.",
-        "error": "An error occurred. Please try again later."
-      }
-    },
-    "survey-controller": {
-      "title": "Take the Transportation Survey",
-      "text": "Please share your thoughts about the future of transportation in our community by taking a brief survey. You can access the survey later using the %{icon} icon in the top toolbar.",
-      "later": "Take Later",
-      "now": "Take Now"
     },
     "modes": {
       "labels": {

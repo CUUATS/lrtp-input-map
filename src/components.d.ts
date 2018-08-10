@@ -171,6 +171,7 @@ declare global {
       'defaultLat'?: number;
       'defaultLon'?: number;
       'forwardGeocodeUrl'?: string;
+      'onLrtpFeatureAdded'?: (event: CustomEvent) => void;
       'planeDefaultLat'?: number;
       'planeDefaultLon'?: number;
       'reverseGeocodeUrl'?: string;

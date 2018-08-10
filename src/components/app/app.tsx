@@ -1,11 +1,24 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, Listen, Prop } from '@stencil/core';
+import { _t } from '../i18n/i18n';
 
+
+export const COMMENTS_KEY = 'lrtp.comments';
 
 @Component({
   styleUrl: 'app.scss',
   tag: 'lrtp-app'
 })
 export class App {
+  features: any[] = [];
+  remoteCtrl?: HTMLGlRemoteControllerElement;
+
+  @Prop({connect: 'ion-alert-controller'}) alertCtrl!:
+    HTMLIonAlertControllerElement;
+  @Prop({connect: 'gl-remote-controller'}) lazyRemoteCtrl!:
+    HTMLGlRemoteControllerElement;
+  @Prop({connect: 'ion-toast-controller'}) toastCtrl!:
+    HTMLIonToastControllerElement;
+
   @Prop() bbox: string;
   @Prop() commentUrl: string;
   @Prop() defaultLat: number;
@@ -20,6 +33,98 @@ export class App {
   @Prop() token: string;
   @Prop() trainDefaultLat: number;
   @Prop() trainDefaultLon: number;
+
+  @Event() lrtpFeatureAdded: EventEmitter;
+
+  @Listen('body:glFormSubmit')
+  async submitForm(e: CustomEvent) {
+    const feature = e.detail.feature;
+
+    // Temporarily remove properties that are not saved to the database.
+    const props = {...feature.properties};
+    props._created = (new Date()).getTime();
+    delete feature.properties.comment_address;
+    delete feature.properties.comment_mode;
+
+    let res;
+    try {
+      res = await this.remoteCtrl.send({
+        url: this.commentUrl,
+        feature: feature,
+        token: this.token
+      });
+      feature.properties = props;
+    } catch(e) {
+      this.handleSubmit(false, feature);
+    }
+    if (res) this.handleSubmit(res.status === 200, feature);
+  }
+
+  async componentWillLoad() {
+    this.loadFeatures();
+    this.remoteCtrl = await this.lazyRemoteCtrl.componentOnReady();
+  }
+
+  async handleSubmit(success: boolean, feature: any) {
+    let message;
+    if (success) {
+      let desc = feature.properties.comment_description;
+      message = (!desc || desc == '') ?
+        _t('lrtp.app.comment.added') : _t('lrtp.app.comment.moderation');
+    } else {
+      message = _t('lrtp.app.comment.error');
+    }
+
+    let options = {
+      message: message,
+      duration: 3000
+    };
+
+    let toast = await this.toastCtrl.create(options);
+    await toast.present();
+
+    if (success) {
+      this.features = [feature, ...this.features];
+      this.saveFeatures();
+      this.lrtpFeatureAdded.emit(this.features);
+      if (this.features.length === 1) this.showThanksPopup();
+    }
+  }
+
+  loadFeatures() {
+    const featureString = sessionStorage.getItem(COMMENTS_KEY) || '[]';
+    this.features = JSON.parse(featureString);
+  }
+
+  saveFeatures() {
+    // Suppress exceptions due to private browsing or full session storage.
+    try {
+      sessionStorage.setItem(COMMENTS_KEY, JSON.stringify(this.features));
+    } catch {}
+  }
+
+  async showThanksPopup() {
+    let alert = await this.alertCtrl.create({
+      header: _t('lrtp.app.thanks.title'),
+      message: _t('lrtp.app.thanks.description'),
+      buttons: [
+        {
+          text: _t('lrtp.app.thanks.add'),
+          role: 'cancel',
+          cssClass: 'secondary'
+        },
+        {
+          text: _t('lrtp.app.thanks.survey'),
+          handler: () => this.openSurvey()
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  openSurvey() {
+    window.location.href = this.surveyUrl;
+  }
 
   render() {
     let modeProps = {
