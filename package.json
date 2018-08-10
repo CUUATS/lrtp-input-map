@@ -7,7 +7,7 @@
     "dist/"
   ],
   "scripts": {
-    "build": "npx stencil build --config stencil.prod.config.ts",
+    "build": "npx stencil build",
     "start": "npx stencil build --dev --watch --serve",
     "test": "jest",
     "test.watch": "jest --watch"

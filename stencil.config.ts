@@ -17,7 +17,6 @@ export const config = {
   plugins: [
     sass()
   ],
-  watch: true,
   globalScript: 'src/global/lrtp.ts',
   globalStyle: 'src/global/lrtp.css'
 };
