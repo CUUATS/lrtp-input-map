@@ -61,6 +61,7 @@ declare global {
       'lat': number;
       'lon': number;
       'reverseGeocodeUrl': string;
+      'surveyUrl': string;
       'tmode': string;
     }
 
@@ -189,6 +190,7 @@ declare global {
       'lat'?: number;
       'lon'?: number;
       'reverseGeocodeUrl'?: string;
+      'surveyUrl'?: string;
       'tmode'?: string;
     }
 

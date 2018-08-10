@@ -40,7 +40,8 @@ export class App {
     };
 
     const commentProps = {
-      reverseGeocodeUrl: this.reverseGeocodeUrl
+      reverseGeocodeUrl: this.reverseGeocodeUrl,
+      surveyUrl: this.surveyUrl
     };
 
     return (

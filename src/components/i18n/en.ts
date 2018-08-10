@@ -19,7 +19,18 @@ export const phrases = {
       "new": "New Comment",
       "comments": "Submitted Comments",
       "form-title": "Add a Comment",
-      "location": "Unknown Location"
+      "location": "Unknown Location",
+      "intro": "What do you like or dislike about %{infinitive} at %{address}? Tap the %{button} button to let us know!",
+      "add-button": "Add a Comment",
+      "okay": "Okay",
+      "thanks": {
+        "title": "Thank You!",
+        "description": "Thank you for your comment! You can continue adding comments, or take a brief survey about transportation in our community. To take the survey later, tap the lightbulb above.",
+        "add": "Add Comments",
+        "survey": "Take Survey"
+      }
+
+
     },
     "app": {
       "title": "C-U Transportation Voices",
@@ -52,6 +63,7 @@ export const phrases = {
       "pedestrian": {
         "label": "Walking or Wheelchair",
         "action": "walk",
+        "infinitive": "walking",
         "crosswalk": {
           "label": "Crosswalks",
           "ok": "Crosswalk functions well",
@@ -96,6 +108,7 @@ export const phrases = {
       "bicycle": {
         "label": "Bicycle",
         "action": "bike",
+        "infinitive": "biking",
         "facility": {
           "label": "Bike Lanes and Paths",
           "ok": "Bike lanes and paths function well",
@@ -133,6 +146,7 @@ export const phrases = {
       "bus": {
         "label": "Bus",
         "action": "ride the bus",
+        "infinitive": "riding the bus",
         "amenity": {
           "label": "Benches, Shelters, and Amenities",
           "ok": "Amenities at this stop function well",
@@ -173,6 +187,7 @@ export const phrases = {
       "automobile": {
         "label": "Automobile",
         "action": "drive",
+        "infinitive": "driving the bus",
         "driving": {
           "label": "Driving Conditions",
           "ok": "Good automobile circulation here",
@@ -221,6 +236,7 @@ export const phrases = {
       "train": {
         "label": "Train",
         "action": "take the train",
+        "infinitive": "taking the train",
         "ok": "I like the current options for train travel",
         "highspeed": "Add high-speed or bullet train access to Chicago",
         "destination": "Add train service to another city",
@@ -232,6 +248,7 @@ export const phrases = {
       "plane": {
         "label": "Plane",
         "action": "take a plane",
+        "infinitive": "taking a plane",
         "ok": "I like the current options for plane travel",
         "destination": "Add direct flights to additional locations (please describe below)",
         "times": "Add more departure and arrival times",

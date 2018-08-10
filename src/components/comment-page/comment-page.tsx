@@ -3,6 +3,7 @@ import { FormOptions } from
   '@cuuats/webmapgl/src/components/form-controller/form-controller';
 import { _t } from '../i18n/i18n';
 import { formatAddress } from '../utils';
+// import { doOnce } from '../utils';
 
 
 const COMMENTS_KEY = 'lrtp.comments';
@@ -17,6 +18,8 @@ export class CommentPage {
   @State() address: string;
   @State() features: any[] = [];
 
+  @Prop({connect: 'ion-alert-controller'}) alertCtrl!:
+    HTMLIonAlertControllerElement;
   @Prop({connect: 'gl-form-controller'}) formCtrl!:
     HTMLGlFormControllerElement;
   @Prop({connect: 'gl-geocode-controller'}) lazyGeocodeCtrl!:
@@ -25,6 +28,7 @@ export class CommentPage {
   @Prop() lat: number;
   @Prop() lon: number;
   @Prop() reverseGeocodeUrl: string;
+  @Prop() surveyUrl: string;
   @Prop() tmode: string;
 
   async componentWillLoad() {
@@ -37,6 +41,7 @@ export class CommentPage {
     e.detail.feature.properties._created = (new Date()).getTime();
     this.features = [e.detail.feature, ...this.features];
     this.saveFeatures();
+    if (this.features.length === 1) this.showThanksPopup();
   }
 
   loadFeatures() {
@@ -49,6 +54,40 @@ export class CommentPage {
     try {
       sessionStorage.setItem(COMMENTS_KEY, JSON.stringify(this.features));
     } catch {}
+  }
+
+  async showHelpPopup() {
+    const infinitive = _t(`lrtp.modes.${this.tmode}.infinitive`);
+    const button = _t('lrtp.comment-page.add-button');
+    let alert = await this.alertCtrl.create({
+      header: _t('lrtp.comment-page.title'),
+      message: _t('lrtp.comment-page.intro', {
+        infinitive: `<strong>${infinitive}</strong>`,
+        address: `<strong>${this.address}</strong>`,
+        button: `<strong>${button}</strong>`
+      }),
+      buttons: [_t('lrtp.comment-page.okay')]
+    });
+    await alert.present();
+  }
+
+  async showThanksPopup() {
+    let alert = await this.alertCtrl.create({
+      header: _t('lrtp.comment-page.thanks.title'),
+      message: _t('lrtp.comment-page.thanks.description'),
+      buttons: [
+        {
+          text: _t('lrtp.comment-page.thanks.add'),
+          role: 'cancel',
+          cssClass: 'secondary'
+        },
+        {
+          text: _t('lrtp.comment-page.thanks.survey'),
+          handler: () => { window.location.href = this.surveyUrl }
+        }
+      ]
+    });
+    await alert.present();
   }
 
   async reverseGeocodeLocation() {
@@ -111,6 +150,12 @@ export class CommentPage {
       <ion-header>
         <ion-toolbar color="primary">
           <ion-title>{_t('lrtp.comment-page.title')}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button onClick={() => this.showHelpPopup()}>
+              <ion-icon slot="icon-only"
+                name="help-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
         </ion-toolbar>
       </ion-header>,
       <ion-content>
@@ -138,7 +183,7 @@ export class CommentPage {
         <div padding>
           <ion-button expand="block" onClick={() => this.addComment()}>
             <ion-icon slot="start" name="create"></ion-icon>
-            Add a Comment
+            {_t('lrtp.comment-page.add-button')}
           </ion-button>
         </div>
         <gl-feature-list features={this.features} item={false} batchSize={100}
