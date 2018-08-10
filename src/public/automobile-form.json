@@ -1,23 +1,23 @@
 {
   "facets": [{
     "value": "automobile-driving",
-    "image": "/voices/public/img/automobile-driving.jpg",
+    "image": "/voices-mobile/public/img/automobile-driving.jpg",
     "label": "lrtp.modes.automobile.driving.label"
   }, {
     "value": "automobile-parking",
-    "image": "/voices/public/img/automobile-parking.jpg",
+    "image": "/voices-mobile/public/img/automobile-parking.jpg",
     "label": "lrtp.modes.automobile.parking.label"
   }, {
     "value": "automobile-multimodal",
-    "image": "/voices/public/img/automobile-multimodal.jpg",
+    "image": "/voices-mobile/public/img/automobile-multimodal.jpg",
     "label": "lrtp.modes.automobile.multimodal.label"
   }, {
     "value": "automobile-sign",
-    "image": "/voices/public/img/automobile-sign.jpg",
+    "image": "/voices-mobile/public/img/automobile-sign.jpg",
     "label": "lrtp.modes.automobile.sign.label"
   }, {
     "value": "automobile-other",
-    "image": "/voices/public/img/automobile-other.png",
+    "image": "/voices-mobile/public/img/automobile-other.png",
     "label": "lrtp.modes.automobile.other.label"
   }],
   "fields": [{

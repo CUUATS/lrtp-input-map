@@ -1,19 +1,19 @@
 {
   "facets": [{
     "value": "bicycle-facility",
-    "image": "/voices/public/img/bicycle-facility.jpg",
+    "image": "/voices-mobile/public/img/bicycle-facility.jpg",
     "label": "lrtp.modes.bicycle.facility.label"
   }, {
     "value": "bicycle-parking",
-    "image": "/voices/public/img/bicycle-parking.jpg",
+    "image": "/voices-mobile/public/img/bicycle-parking.jpg",
     "label": "lrtp.modes.bicycle.parking.label"
   }, {
     "value": "bicycle-sign",
-    "image": "/voices/public/img/bicycle-sign.jpg",
+    "image": "/voices-mobile/public/img/bicycle-sign.jpg",
     "label": "lrtp.modes.bicycle.sign.label"
   }, {
     "value": "bicycle-other",
-    "image": "/voices/public/img/bicycle-other.png",
+    "image": "/voices-mobile/public/img/bicycle-other.png",
     "label": "lrtp.modes.bicycle.other.label"
   }],
   "fields": [{

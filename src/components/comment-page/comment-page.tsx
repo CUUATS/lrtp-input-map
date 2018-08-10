@@ -108,7 +108,7 @@ export class CommentPage {
       }
     };
     let modal = await this.formCtrl.create(
-      `/voices/public/${this.tmode}-form.json`, feature, options);
+      `/voices-mobile/public/${this.tmode}-form.json`, feature, options);
     await modal.present();
   }
 

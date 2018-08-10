@@ -4,23 +4,23 @@
     "widget": "header"
   }, {
     "value": "pedestrian-crosswalk",
-    "image": "/voices/public/img/pedestrian-crosswalk.jpg",
+    "image": "/voices-mobile/public/img/pedestrian-crosswalk.jpg",
     "label": "lrtp.modes.pedestrian.crosswalk.label"
   }, {
     "value": "pedestrian-curbramp",
-    "image": "/voices/public/img/pedestrian-curbramp.jpg",
+    "image": "/voices-mobile/public/img/pedestrian-curbramp.jpg",
     "label": "lrtp.modes.pedestrian.curbramp.label"
   }, {
     "value": "pedestrian-sidewalk",
-    "image": "/voices/public/img/pedestrian-sidewalk.jpg",
+    "image": "/voices-mobile/public/img/pedestrian-sidewalk.jpg",
     "label": "lrtp.modes.pedestrian.sidewalk.label"
   }, {
     "value": "pedestrian-sign",
-    "image": "/voices/public/img/pedestrian-signal.jpg",
+    "image": "/voices-mobile/public/img/pedestrian-signal.jpg",
     "label": "lrtp.modes.pedestrian.sign.label"
   }, {
     "value": "pedestrian-other",
-    "image": "/voices/public/img/pedestrian-other.png",
+    "image": "/voices-mobile/public/img/pedestrian-other.png",
     "label": "lrtp.modes.pedestrian.other.label"
   }],
   "fields": [{

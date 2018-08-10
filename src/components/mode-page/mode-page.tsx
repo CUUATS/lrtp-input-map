@@ -53,7 +53,7 @@ export class ModePage {
         <ion-item detail={true}
             href={`#/${next}/${mode}/${lon}/${lat}`}>
           <ion-thumbnail slot="start">
-            <img src={`/voices/public/img/${mode}.png`} />
+            <img src={`/voices-mobile/public/img/${mode}.png`} />
           </ion-thumbnail>
           <ion-label text-wrap>{_t(`lrtp.modes.${mode}.label`)}</ion-label>
         </ion-item>

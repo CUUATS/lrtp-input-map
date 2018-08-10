@@ -10,7 +10,7 @@ export const config = {
   outputTargets: [
     {
       type: 'www',
-      baseUrl: '/voices',
+      baseUrl: '/voices-mobile',
       serviceWorker: null
     }
   ],

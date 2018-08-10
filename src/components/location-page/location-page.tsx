@@ -68,7 +68,7 @@ export class LocationPage {
           <gl-style url="https://maps.cuuats.org/basemaps/basic/style.json"
             basemap={true} enabled={true}></gl-style>
         </gl-map>
-        <img src="/voices/public/img/marker.svg" class="marker" />
+        <img src="/voices-mobile/public/img/marker.svg" class="marker" />
       </ion-content>
     ]);
   }

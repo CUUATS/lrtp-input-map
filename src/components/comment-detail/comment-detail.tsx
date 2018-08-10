@@ -20,7 +20,7 @@ export class CommentDetail {
   render() {
     const props = this.feature.properties;
     const mode = props.comment_mode;
-    const modeImage = '/voices/public/img/' + mode + '.png';
+    const modeImage = '/voices-mobile/public/img/' + mode + '.png';
     const comment = (_t(`lrtp.modes.${mode}.label`) + ': ' +
       _t(`lrtp.modes.${props.comment_type}`)).replace(/\([^)]*\)/g, '');
 

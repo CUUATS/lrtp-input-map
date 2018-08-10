@@ -1,19 +1,19 @@
 {
   "facets": [{
     "value": "bus-amenity",
-    "image": "/voices/public/img/bus-amenity.jpg",
+    "image": "/voices-mobile/public/img/bus-amenity.jpg",
     "label": "lrtp.modes.bus.amenity.label"
   }, {
     "value": "bus-stop",
-    "image": "/voices/public/img/bus-stop.jpg",
+    "image": "/voices-mobile/public/img/bus-stop.jpg",
     "label": "lrtp.modes.bus.stop.label"
   }, {
     "value": "bus-schedule",
-    "image": "/voices/public/img/bus-schedule.jpg",
+    "image": "/voices-mobile/public/img/bus-schedule.jpg",
     "label": "lrtp.modes.bus.schedule.label"
   }, {
     "value": "bus-other",
-    "image": "/voices/public/img/bus-other.png",
+    "image": "/voices-mobile/public/img/bus-other.png",
     "label": "lrtp.modes.bus.other.label"
   }],
   "fields": [{
