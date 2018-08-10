@@ -40,7 +40,6 @@ export const phrases = {
     },
     "modes": {
       "labels": {
-        "mode": "Choose a Mode of Transportation",
         "category": "Choose a Category",
         "comment": "Choose a Comment",
         "details": "Provide Additional Details (optional)"
@@ -172,7 +171,7 @@ export const phrases = {
       "automobile": {
         "label": "Automobile",
         "action": "drive",
-        "infinitive": "driving the bus",
+        "infinitive": "driving",
         "driving": {
           "label": "Driving Conditions",
           "ok": "Good automobile circulation here",
