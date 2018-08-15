@@ -20,7 +20,7 @@ export const phrases = {
       "comments": "Comentarios Enviados",
       "form-title": "Añada un Comentario",
       "location": "Ubicación Desconocida",
-      "intro": "¿Qué le gusta o no le gusta de {infinitive} en {address}? ¡Toque el botón {button} para hacernos saber!",
+      "intro": "¿Qué le gusta o no le gusta de %{infinitive} en %{address}? ¡Toque el botón %{button} para hacernos saber!",
       "add-button": "Añada un Comentario",
       "okay": "Correcto"
     },
