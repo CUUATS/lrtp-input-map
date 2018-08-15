@@ -3,66 +3,51 @@ export const phrases = {
     "address-search": {
       "prompt": "Buscar por dirección o nombre de lugar..."
     },
+    "mode-page": {
+      "intro": "Bienvenido a %{title} por la Comisión de Planificación Regional del Condado de Champaign. ¡Gracias por participar! Para comenzar, elija un modo de transporte que use regularmente.",
+      "start": "Puede Empezar",
+      "title": "Elige un Modo de Transporte"
+    },
+    "location-page": {
+      "title": "Elija una Ubicación",
+      "intro": "Ahora piense en un lugar en la comunidad que le guste o no le guste %{action}. Centre el marcador de mapas en esa ubicación arrastrando y haciendo zoom en el mapa, o busque por dirección o nombre del lugar. Luego toque la marca de verificación que se encuentra arriba para continuar.",
+      "okay": "Correcto"
+    },
+    "comment-page": {
+      "title": "Agregue Comentarios",
+      "change": "Cambio",
+      "new": "Neuvo",
+      "comments": "Comentarios Enviados",
+      "form-title": "Añada un Comentario",
+      "location": "Ubicación Desconocida",
+      "intro": "¿Qué le gusta o no le gusta de {infinitive} en {address}? ¡Toque el botón {button} para hacernos saber!",
+      "add-button": "Añada un Comentario",
+      "okay": "Correcto"
+    },
     "app": {
-      "label": "C-U Voces de Transporte",
-      "basemap": {
-        "imagery": "Imágenes",
-        "hybrid": "Imágenes con etiquetas"
-      },
+      "title": "C-U Voces de Transporte",
       "comment": {
-        "label": "Comentarios",
-        "location": "Elija una ubicación",
-        "add": "Añada un comentario",
         "added": "Tu comentario ha sido agregado.",
         "moderation": "Tu comentario está esperando ser moderado.",
         "error": "Ocurrió un error. Por favor, inténtelo de nuevo más tarde."
       },
-      "intro": {
-        "next": "→",
-        "prev": "←",
-        "done": "Hecho",
-        "close": "Cerrado",
-        "welcome": {
-          "title": "Bienvenido",
-          "text": "Bienvenido a %{app_label} por la Comisión de Planificación Regional del Condado de Champaign. Puede navegar por el mapa para ver comentarios."
-        },
-        "view": {
-          "title": "Ver comentarios",
-          "text": "El panel de comentarios muestra los detalles de todos los comentarios actualmente visibles en el mapa."
-        },
-        "locate": {
-          "title": "Encuentra un comentario",
-          "text": "Toca el botón de localizar para acercar el mapa a un comentario."
-        },
-        "like": {
-          "title": "Te gusta el comentario",
-          "text": "Muestra tu apoyo para un comentario tocando la estrella."
-        },
-        "add": {
-          "title": "Añada un comentario",
-          "text": "Para agregar un comentario, toque el botón más, seleccione una ubicación y complete el formulario de comentarios."
-        },
-        "survey": {
-          "title": "Tome la Encuesta",
-          "text": "Toque la bombilla para realizar una breve encuesta sobre el futuro del transporte en nuestra región. ¡Feliz navegación!"
-        }
+      "thanks": {
+        "title": "¡Gracias!",
+        "description": "¡Gracias por su comentario! Puede continuar agregando comentarios o realizar una breve encuesta sobre el transporte en nuestra comunidad. Para realizar la encuesta más tarde, toque la marca de verificación que se encuentra arriba.",
+        "add": "Agregue Comentarios",
+        "survey": "Tome la Encuesta"
       }
     },
-    "survey-controller": {
-      "title": "Tome la Encuesta de Transporte",
-      "text": "Por favor, comparta sus ideas sobre el futuro del transporte en nuestra comunidad mediante una breve encuesta. Puede acceder a la encuesta más tarde utilizando el ícono% {icon} en la barra de herramientas localizada en la parte superior.",
-      "later": "Hazlo más tarde",
-      "now": "Hazlo ahora"
-    },
-    "form": {
+    "modes": {
       "labels": {
-        "mode": "Elige un Modo de Transporte",
         "category": "Elige una Categoría",
         "comment": "Elija un Comentario",
         "details": "Incluya detalles adicionales (opcional)"
       },
       "pedestrian": {
         "label": "Caminar or Silla de Ruedas",
+        "action": "caminar",
+        "infinitive": "caminar",
         "crosswalk": {
           "label": "Paso de Peatones",
           "ok": "Paso de peatones funciona bien",
@@ -106,6 +91,8 @@ export const phrases = {
       },
       "bicycle": {
         "label": "Bicicleta",
+        "action": "andar en bicicleta",
+        "infinitive": "andar en bicicleta",
         "facility": {
           "label": "Carriles y Senderos para Bicicletas",
           "ok": "Carriles y senderos para bicicletas funcionan bien",
@@ -142,6 +129,8 @@ export const phrases = {
       },
       "bus": {
         "label": "Autobús",
+        "action": "viajar en un autobús",
+        "infinitive": "viajar en un autobús",
         "amenity": {
           "label": "Bancos, Refugios, y Comodidades",
           "ok": "Las amenidades en esta parada funcionan bien",
@@ -181,6 +170,8 @@ export const phrases = {
       },
       "automobile": {
         "label": "Automóvil",
+        "action": "conducir un vehículo",
+        "infinitive": "conducir un vehículo",
         "driving": {
           "label": "Condiciones de Manejo",
           "ok": "Buena circulación de automóviles aquí",
@@ -228,6 +219,8 @@ export const phrases = {
       },
       "train": {
         "label": "Tren",
+        "action": "tomar el tren",
+        "infinitive": "tomar el tren",
         "ok": "Me gustan las opciones existentes para viajar en tren",
         "highspeed": "Agrega tren de alta velocidad o tren bala a Chicago",
         "destination": "Agrega servicio de tren a otra ciudad",
@@ -238,6 +231,8 @@ export const phrases = {
       },
       "plane": {
         "label": "Avión",
+        "action": "tomar un avión",
+        "infinitive": "tomar un avión",
         "ok": "Me gustan las opciones existentes para viajar en avión",
         "destination": "Agrega vuelos directos a otros lugares (por favor describa abajo)",
         "times": "Agrega más tiempo de salida y llegada",
