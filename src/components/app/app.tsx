@@ -125,13 +125,14 @@ export class App {
     let [fx, fy] = coordinates;
     let found = 0;
     Array.from(document.querySelectorAll('lrtp-comment-detail'))
-      .forEach((detail) => {
+      .forEach(async (detail) => {
         let [dx, dy] = detail.feature.geometry.coordinates;
         if (Math.abs(fx - dx) > 0.00001 || Math.abs(fy - dy) > 0.00001)
           return;
-        if (found++ === 0)
-          detail.closest('ion-content').getScrollElement().scrollTop =
-            detail.offsetTop;
+        if (found++ === 0) {
+          let scrollEl = await detail.closest('ion-content').getScrollElement();
+          scrollEl.scrollTop = detail.offsetTop;
+        }
         let container = detail.querySelector('ion-item');
         container.classList.add('flash');
         setTimeout(() => container.classList.remove('flash'), 1500);

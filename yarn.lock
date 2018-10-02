@@ -18,27 +18,24 @@
   dependencies:
     ionicons "^4.1.1"
 
-"@ionic/core@4.0.0-beta.0":
-  version "4.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@ionic/core/-/core-4.0.0-beta.0.tgz#44905a763975b222218dd08fbb6a446d841c487e"
+"@ionic/core@4.0.0-beta.12":
+  version "4.0.0-beta.12"
+  resolved "https://registry.yarnpkg.com/@ionic/core/-/core-4.0.0-beta.12.tgz#2568f111899b8e2faf03b62d28ead4a6c6c8d09d"
   dependencies:
-    ionicons "4.2.5"
+    ionicons "4.4.4"
 
-"@stencil/core@0.10.10":
-  version "0.10.10"
-  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-0.10.10.tgz#d5e35470f22c2b05dc9da7441003c463e6d8b7bd"
+"@stencil/core@0.13.2":
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-0.13.2.tgz#9b312e71e305d834f3ea2fe64fa4f99999ff0d07"
   dependencies:
     chokidar "2.0.3"
     jsdom "11.11.0"
-    rollup "^0.59.4"
-    rollup-plugin-commonjs "9.1.3"
+    rollup "0.65.0"
+    rollup-plugin-commonjs "9.1.5"
     rollup-plugin-node-builtins "2.1.2"
-    rollup-plugin-node-globals "1.2.1"
     rollup-plugin-node-resolve "3.3.0"
-    rollup-pluginutils "2.3.0"
+    rollup-pluginutils "2.3.1"
     typescript "~2.9.1"
-    uglify-es "3.3.9"
-    workbox-build "^3.1.0"
 
 "@stencil/core@0.9.7":
   version "0.9.7"
@@ -1734,9 +1731,9 @@ invert-kv@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
 
-ionicons@4.2.5:
-  version "4.2.5"
-  resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-4.2.5.tgz#1665e8e08458ffa1a74aaf9f33ed00bce65f1a3c"
+ionicons@4.4.4:
+  version "4.4.4"
+  resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-4.4.4.tgz#d2b2dfe240e4c8686f59acd91c9c8c1dd13931c1"
 
 ionicons@^4.1.1:
   version "4.1.2"
@@ -3613,6 +3610,15 @@ rollup-plugin-commonjs@9.1.3:
     resolve "^1.5.0"
     rollup-pluginutils "^2.0.1"
 
+rollup-plugin-commonjs@9.1.5:
+  version "9.1.5"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-commonjs/-/rollup-plugin-commonjs-9.1.5.tgz#c167d545d0d01f273e632748bff56fe7487b0145"
+  dependencies:
+    estree-walker "^0.5.1"
+    magic-string "^0.22.4"
+    resolve "^1.5.0"
+    rollup-pluginutils "^2.0.1"
+
 rollup-plugin-node-builtins@2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/rollup-plugin-node-builtins/-/rollup-plugin-node-builtins-2.1.2.tgz#24a1fed4a43257b6b64371d8abc6ce1ab14597e9"
@@ -3647,6 +3653,20 @@ rollup-pluginutils@2.3.0, rollup-pluginutils@^2.0.1:
   dependencies:
     estree-walker "^0.5.2"
     micromatch "^2.3.11"
+
+rollup-pluginutils@2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.3.1.tgz#760d185ccc237dedc12d7ae48c6bcd127b4892d0"
+  dependencies:
+    estree-walker "^0.5.2"
+    micromatch "^2.3.11"
+
+rollup@0.65.0:
+  version "0.65.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.65.0.tgz#280db1252169b68fc3043028346b337dde453fba"
+  dependencies:
+    "@types/estree" "0.0.39"
+    "@types/node" "*"
 
 rollup@^0.59.4:
   version "0.59.4"
